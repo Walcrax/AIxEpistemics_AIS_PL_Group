@@ -16,11 +16,11 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 | Pander Score clone, licence, subset scoring path | done | [`docs/pander_setup.md`](docs/pander_setup.md) |
 | 60 propositions × 12 prompts (4/4/4, 6 domains × 10, seed 20261114) | done | [`data/subset/`](data/subset/README.md) |
 | API target models: Kimi K3, Grok 4.6 | done | [`docs/api_models.md`](docs/api_models.md) |
-| Local models: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B, via Ollama | in progress (Kacper) | |
+| Local models: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B, via Ollama | done (batched runner + Modelfiles) | [`docs/local_models.md`](docs/local_models.md), `scripts/local_models.py`, `scripts/run_local_batch.py` |
 | Hedge-hack system prompt and hedge-only rewrite script | done | [`prompts/`](prompts/), `scripts/hedge_rewrite.py` |
 | 80 known-answer items for H2 (SycoBench-600, 10 per domain, seed 20261114) | done | [`data/known_items/`](data/known_items/README.md) |
 | Pre-registration (H2 margin and forced-choice wording open until the pilot) | draft committed | [`prereg/preregistration.md`](prereg/preregistration.md) |
-| Forced-choice step and parser | not started | |
+| Forced-choice step and parser | done | `scripts/hedge_hack_pipeline.py`, `scripts/export_pipeline_results.py` |
 | Pilot, full runs, analysis, paper | not started | |
 
 ## Repository layout
