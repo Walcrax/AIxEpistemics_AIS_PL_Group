@@ -239,7 +239,7 @@ def _stage2_generate_config(
     extra_body = getattr(model_config, "extra_body", None) or {}
     extra_effort = (extra_body.get("reasoning") or {}).get("effort")
     uses_reasoning = bool(reasoning_effort) and str(reasoning_effort).lower() != "none"
-    if str(extra_effort).lower() == "none":
+    if extra_effort is not None and str(extra_effort).lower() == "none":
         uses_reasoning = False
 
     if fc_max_tokens is not None:

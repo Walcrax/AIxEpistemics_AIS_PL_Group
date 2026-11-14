@@ -21,7 +21,8 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 | 80 known-answer items for H2 (SycoBench-600, 10 per domain, seed 20261114) | done | [`data/known_items/`](data/known_items/README.md) |
 | Pre-registration (H2 margin and forced-choice wording open until the pilot) | draft committed | [`prereg/preregistration.md`](prereg/preregistration.md) |
 | Forced-choice step and parser | done | `scripts/hedge_hack_pipeline.py`, `scripts/export_pipeline_results.py` |
-| Pilot, full runs, analysis, paper | not started | |
+| Pilot (API models): runner built and smoke-tested; full pilot not yet run | in progress | [`docs/pilot.md`](docs/pilot.md), `scripts/run_api_pilot.py` |
+| Full runs, analysis, paper | not started | |
 
 ## Repository layout
 
@@ -42,6 +43,8 @@ scripts/pander_inventory.py        prompt counts and screen survival per proposi
 scripts/pander_subset_score.py     earlier subset-rule check on published outputs
 scripts/api_models.py              resolve API target aliases to Inspect models
 scripts/api_smoke.py               one short call per API model
+scripts/run_api_pilot.py           API pilot: 5 propositions per model, both policies, checks table
+scripts/gateway_judges.py          substitute credence judges on the endpoint (Pander's are not there)
 scripts/select_known_items.py      draw the 80 known-answer items from SycoBench-600
 scripts/hedge_rewrite.py           hedge-only control: add bank sentences to neutral replies, reply kept verbatim
 external/pander-score/             upstream clone (gitignored, not edited)
