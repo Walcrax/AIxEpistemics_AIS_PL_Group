@@ -129,3 +129,24 @@ Quick pre-judge analysis (5 propositions, not a hypothesis test):
 - **Length & local runtime pacing (`40` props):** Qwen is verbose (`5,438 → 5,799` chars, `+6.6%`) and took `81m 25s` total, whereas Mistral was concise and slightly shorter under `hedge_hack` (`2,749 → 2,559` chars, `-6.9%`), finishing in **`28m 18s`** (`~2.9×` faster). Scaling `8×` to a `40`-prop subset projects to **`~14h 38m`** on one desktop (`~10h 51m` Qwen + `~3h 46m` Mistral), or **`~17–18h`** including `80` known items and `60`-prompt neutral noise-floor reruns.
 - **Forced-choice shift & H2 (`M = 10`):** Qwen's `FINAL: TRUE` shifted `-5.0` pp (`34 → 31`) and Mistral's stayed flat at `0.0` pp (`27 → 27`). Paired `neutral` vs. `hedge_hack` flip rates were `15.0%` for Qwen (`9/60`: `6` T→F, `3` F→T) and `16.7%` for Mistral (`10/60`: `5` T→F, `5` F→T), right in line with the API neutral rerun flip rate (`16.7%`).
 - **Strong prior dependence on Mistral (`FINAL:`):** By user prior (`n=20` per cell), Qwen was flat under `neutral` (`55%` skeptic / `60%` neutral / `55%` believer) and spread modestly under `hedge_hack` (`50%` / `45%` / `60%`, valence slope `+8.95 → +13.21`), whereas Mistral tracked the user's prior strongly in Stage 2 forced choices (`35%` / `40%` / `60%` under `neutral`; `25%` / `45%` / `65%` under `hedge_hack`, forced-choice valence slope `+50.48 → +53.79`).
+
+## Local pilot judged, 2026-11-14 (Qwen 3.8 27B and Mistral Small 3.1, 5 propositions)
+
+`scripts/judge_local_replies.py` on `outputs/pilot_local/pipeline_results.jsonl` (240 replies), with the current
+substitute judges. The local models have no published Pander score, so there is no reference column.
+
+| Model / policy | Score (slice) | Kept after judge filter | Refusal | FINAL | FINAL TRUE / FALSE | Mean cred |
+|---|---|---|---|---|---|---|
+| Mistral neutral | +24.7 [+12.4, +36.7] | 57/60 | 0% | 100% | 27 / 33 | 0.404 |
+| Mistral hedge-hack | +18.7 [+5.6, +30.8] | 58/60 | 0% | 100% | 27 / 33 | 0.382 |
+| Qwen neutral | +13.6 [+5.4, +23.4] | 57/60 | 0% | 100% | 34 / 26 | 0.471 |
+| Qwen hedge-hack | +0.9 [−11.4, +14.1] | 58/60 | 0% | 100% | 31 / 29 | 0.414 |
+
+Checks: **all pass.** No refusals under hedge-hack. FINAL parsed 240/240. Long replies judge cleanly: no reply was
+marked uninformative, and 2 to 3 per run dropped for judge disagreement (more than 0.2 apart), about as many as for
+the API models. Judging cost $7.28 (judge-openai 1.37M in / 0.07M out, judge-google 1.45M in / 0.18M out).
+
+Early signal (5 propositions, not a result; run-to-run noise about 4 to 5 points, judge noise about 2): hedge-hack
+lowers the judged score for both local models, Mistral by 6.0 and Qwen by 12.7 points. Their committed answers barely
+move (Mistral 27 → 27 TRUE, Qwen 34 → 31, inside the ±10-point margin). That is the pattern H1 and H2 predict
+together, a judged gain without changed answers, unlike Grok, whose answers also shifted (19 → 12 TRUE).
