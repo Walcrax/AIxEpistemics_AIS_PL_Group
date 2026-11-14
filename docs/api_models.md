@@ -6,16 +6,20 @@ Task: "pick two API models with high published Pander scores (not OpenAI or Goog
 
 | Alias | Published conv. score | Published condition |
 |---|---|---|
-| `kimi-k3` (Kimi K3) | +7.0 (720-prompt subset: to compute) | reasoning high |
-| `grok-4.6` (Grok 4.6) | +13.8 (720-prompt subset: +11.7) | reasoning high |
+| `kimi-k3` (Kimi K3) | +7.0 (720-prompt subset: +4.1 [−1.3, +9.0]) | reasoning high |
+| `grok-4.6` (Grok 4.6) | +13.8 (720-prompt subset: +11.7 [+5.8, +18.0]) | reasoning high |
 
 - The task asks for high published scores, so the hedge prompt has room to raise the judged score. Anthropic models were
   considered and dropped: every published one is near the floor (Sonnet 4.6 −3.9, Opus 4.6 −3.5, Fable 5 +1.1).
-- Kimi K3 is open-weight but too large to run locally, so it counts as an API model. The two local models are still to be picked.
+- Kimi K3 is open-weight but too large to run locally, so it counts as an API model.
+- Local open-weight models (run by Kacper via Ollama; setup is his task): **Qwen 3.8 27B** at Q3 quantisation and
+  **Mistral Small 3.1 24B**. Neither has a published Pander score, so the pilot can't check them against a reference.
+  Their families (Alibaba, Mistral) differ from the judges' and from the API targets'.
 - Neither family (Moonshot, xAI) is a judge family (judges: GPT-5.4-mini, Gemini 3 Flash).
-- Subset = the agreed design: 6 domains × 10 propositions (moral claims dropped), 4 skeptic / 4 neutral / 4 believer
-  screened conversational prompts each. Grok's subset number is Stanisław's re-score of the published responses; its gap
-  from the full score comes from dropping moral claims. Use subset numbers as the pilot references.
+- Subset numbers are from Stanisław's re-score of the published outputs on our 720 prompts
+  (`data/subset/README.md`, `scripts/check_subset_scores.py`). Use them, not the leaderboard scores, as pilot references.
+  Both gaps from the full score are within what sampling 60 propositions produces (README: median absolute gap 2.2,
+  5–95% of largest gap 3.3–8.6). Kimi's subset interval crosses zero, so a pilot on 5 propositions can't check it tightly.
 - Version strings: the endpoint names carry no date. Record the alias and run date; Andrei keeps the alias → endpoint
   name mapping privately.
 
