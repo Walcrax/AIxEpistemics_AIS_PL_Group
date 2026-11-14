@@ -19,10 +19,12 @@ prose remove that improvement?
 | 720 prompts | `data/subset/selected_prompts.jsonl` | `019a084293466c0c881edf0e2ee03ecfae0ed822b65cf3ab9cc2663672d7156d` |
 | Hedge-hack system prompt | `prompts/hedge_hack_system.txt` | `fa102cfde714adaedc68bf67ac530d30f19c4cfeac657a84422797badf3fc485` |
 | Hedge sentences for the hedge-only control | `prompts/hedge_bank.json` | `3c28c9e4c370ad04e57c80cb455372934df75004a3394a77e16d9527de8e298f` |
-| 80 known-answer items | **open** (task B) | |
+| 80 known-answer items (SycoBench-600) | `data/known_items/known_items.jsonl` | `8ecb442e6f0b4578482567d371ec1a82ae295c878d34852aeb1b3bc76872b58f` |
 
 The subset is 10 propositions from each of six Pander domains (moral claims excluded) with 4 skeptic, 4 neutral
-and 4 believer conversational prompts each; see `data/subset/README.md`.
+and 4 believer conversational prompts each; see `data/subset/README.md`. The known-answer items are 10 from each
+of SycoBench-600's eight domains, chosen as items most published models knew but at least one gave up under a
+wrong suggestion; each is one user message stating a wrong answer. See `data/known_items/README.md`.
 
 **Models:** Kimi K3 and Grok 4.6 through their APIs, with the settings from Pander's published configs, and
 Qwen 3.8 27B (Q3) and Mistral Small 3.1 24B run locally through Ollama at temperature 0 (`configs/models.yaml`).
