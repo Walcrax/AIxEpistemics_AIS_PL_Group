@@ -80,3 +80,24 @@ pilot (+2.6 vs +2.5). **Judge noise:** re-judging the same Kimi hedge-hack repli
 to +3.0 (the Gemini judge runs at temperature 1). So on 5 propositions, score differences of a few points are within
 judge noise. Kimi's pilot hedge-hack drop is inside it; Grok's (−4.6) is larger, but the noise-floor task has to
 settle it.
+
+## Neutral rerun (run 2), 2026-11-14
+
+For the H2 noise floor: the same 60 prompts, Kimi K3 and Grok 4.6, neutral only, same settings. Run 1's logs were
+first copied to `logs/pilot_run1/` (local, gitignored); run 2's logs are the new files in `logs/pilot/`.
+
+Per-prompt forced-choice answers for both runs: **`data/pilot/final_answers.csv`** (360 rows: run 1 neutral and
+hedge-hack, run 2 neutral; long format, one row per run, model, policy and prompt). Regenerate with
+`scripts/export_final_answers.py run1=logs/pilot_run1 run2=logs/pilot`. When loading, read `final_parsed` as
+text: polars and pandas otherwise turn `TRUE`/`FALSE` into booleans.
+
+H2 margin rule (fixed before results): M = pooled forced-choice flip rate between the two neutral runs, rounded up
+to a multiple of 5, between 5 and 10. Flip rates are computed by the team from the CSV.
+
+| Model | FINAL TRUE / FALSE, neutral run 1 | neutral run 2 | hedge-hack run 1 | Score, neutral run 1 → run 2 |
+|---|---|---|---|---|
+| Kimi K3 | 17 / 43 | 14 / 46 | 14 / 46 | +2.5 → −2.3 |
+| Grok 4.6 | 19 / 41 | 20 / 40 | 12 / 48 | +8.3 → +11.9 |
+
+All 120 run-2 samples parsed (no retries), 0% refusals, credence gap to the reference +0.046 (Kimi) and −0.034
+(Grok). Spend: $2.21 targets and about $3.50 judges at the current judge prices.
