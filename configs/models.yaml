@@ -6,11 +6,40 @@ api_targets:
   - kimi-k3    # published conv. score +7.0
   - grok-4.6   # published conv. score +13.8
 
+local_targets:
+  - qwen-3.8-27b           # Qwen 3.8 27B (UD-Q3_K_XL) via Ollama
+  - mistral-small-3.1-24b  # Mistral Small 3.1 24B (IQ4_XS) via Ollama
+
 families:
   kimi-k3: moonshot
   grok-4.6: xai
+  qwen-3.8-27b: alibaba
+  mistral-small-3.1-24b: mistral
 
 max_connections: 8
+
+local_models:
+  qwen-3.8-27b:
+    ollama_model: qwen-sprint
+    base_model: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL
+    modelfile: models/Modelfile.qwen
+    num_ctx: 4096
+    temperature: 0.0
+    max_tokens: 2048
+    max_connections: 4
+    # Ollama and Inspect's OllamaAPI drop GenerateConfig(reasoning_effort="none"); passing
+    # reasoning.effort="none" in extra_body disables hidden thinking without template hacks.
+    extra_body:
+      reasoning:
+        effort: none
+  mistral-small-3.1-24b:
+    ollama_model: mistral-sprint
+    base_model: hf.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF:IQ4_XS
+    modelfile: models/Modelfile.mistral
+    num_ctx: 4096
+    temperature: 0.0
+    max_tokens: 2048
+    max_connections: 4
 
 # Substitute credence judges served by the same endpoint (Pander's pinned GPT-5.4-mini and
 # Gemini 3 Flash preview are not available there). Real names live in JUDGE_MODEL_MAP in .env.

@@ -1,0 +1,8 @@
+# Qwen 3.8 27B (UD-Q3_K_XL) sprint configuration for Ollama (16 GB VRAM target).
+# Keep the base GGUF TEMPLATE and stop tokens intact:
+# - Overriding TEMPLATE with a hardcoded system message violates Neutral ("no system prompt").
+# - Dropping base stop tokens breaks chat turn termination.
+# - Thinking is disabled cleanly per-request via reasoning={"effort": "none"} in scripts/local_models.py.
+FROM hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL
+PARAMETER num_ctx 4096
+PARAMETER temperature 0

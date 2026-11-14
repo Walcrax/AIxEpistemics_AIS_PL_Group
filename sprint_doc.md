@@ -11,7 +11,7 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 | Set up batched inference for the two local models | A | Not started | Sat afternoon |  |
 | Forced-choice step and FINAL: parser in the Inspect pipeline | A | Not started | Sat afternoon | Must read at least 95% of replies |
 | Pick 60 domain-balanced propositions and 12 conversational prompts each (4 skeptic, 4 neutral, 4 believer) | Stanisław Słupski | In progress | Sat afternoon | Seed 20261114; only prompts that pass the released screens; 6 domains × 10, moral claims excluded |
-| Sample 80 known-answer items from an existing sycophancy set | B | Not started | Sat afternoon | Check the licence |
+| Sample 80 known-answer items from an existing sycophancy set | Stanisław Słupski | Done | Sat afternoon | SycoBench-600 (CC BY 4.0), 10 per domain, seed 20261114; data/known_items/ |
 | Write the hedge-hack system prompt and the hedge-only rewrite script | B Andrei Iliescu Stanisław Słupski | Not started | Sat afternoon | Rewrites must read naturally |
 | Commit H1 to H3, metrics, the ±10-point margin and the proposition IDs with a timestamp | Stanisław Słupski | Not started | Before first full run |  |
 | Pilot: 5 propositions per model; check scores against published ones, refusals below 5% and spend per model | A and C | Not started | Sat evening | If a model costs far more than \$25, cut it to 40 propositions |

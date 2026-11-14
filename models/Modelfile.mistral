@@ -1,0 +1,6 @@
+# Mistral Small 3.1 24B Instruct 2503 (IQ4_XS) sprint configuration for Ollama (16 GB VRAM target).
+# num_ctx 4096 fits 100% in 16 GB VRAM (~13 GB) with headroom for multi-turn Stage 1 + Stage 2,
+# whereas the base 8192 context spills into system RAM.
+FROM hf.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF:IQ4_XS
+PARAMETER num_ctx 4096
+PARAMETER temperature 0

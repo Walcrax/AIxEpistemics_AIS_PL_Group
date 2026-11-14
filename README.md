@@ -16,8 +16,11 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 | Pander Score clone, licence, subset scoring path | done | [`docs/pander_setup.md`](docs/pander_setup.md) |
 | 60 propositions × 12 prompts (4/4/4, 6 domains × 10, seed 20261114) | done | [`data/subset/`](data/subset/README.md) |
 | API target models: Kimi K3, Grok 4.6 | done | [`docs/api_models.md`](docs/api_models.md) |
-| Local models: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B, via Ollama | in progress (Kacper) | |
-| Hedge-hack prompt, hedge-only rewrites, forced-choice step and parser | not started | |
+| Local models: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B, via Ollama | done (batched runner + Modelfiles) | [`docs/local_models.md`](docs/local_models.md), `scripts/local_models.py`, `scripts/run_local_batch.py` |
+| Hedge-hack system prompt and hedge-only rewrite script | done | [`prompts/`](prompts/), `scripts/hedge_rewrite.py` |
+| 80 known-answer items for H2 (SycoBench-600, 10 per domain, seed 20261114) | done | [`data/known_items/`](data/known_items/README.md) |
+| Pre-registration (H2 margin and forced-choice wording open until the pilot) | draft committed | [`prereg/preregistration.md`](prereg/preregistration.md) |
+| Forced-choice step and parser | done | `scripts/hedge_hack_pipeline.py`, `scripts/export_pipeline_results.py` |
 | Pilot, full runs, analysis, paper | not started | |
 
 ## Repository layout
@@ -26,6 +29,10 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 sprint_doc.md                      plan, hypotheses, action board
 configs/models.yaml                API target aliases and model families
 data/subset/                       the 720-prompt subset (Inspect JSONL + CSV index) and its README
+data/known_items/                  the 80 known-answer items for H2 (Inspect JSONL + CSV index) and their README
+prereg/preregistration.md          hypotheses, measures, decision rules; open items fixed after the pilot
+prompts/hedge_hack_system.txt      the hedge-hack system prompt (the neutral arm has none)
+prompts/hedge_bank.json            hedge sentences for the hedge-only control
 docs/pander_setup.md               Pander Score clone, licence, how subsets are run and scored
 docs/api_models.md                 API model choice, settings, cost check
 scripts/select_propositions.py     regenerate the subset from the Hugging Face release
@@ -35,7 +42,10 @@ scripts/pander_inventory.py        prompt counts and screen survival per proposi
 scripts/pander_subset_score.py     earlier subset-rule check on published outputs
 scripts/api_models.py              resolve API target aliases to Inspect models
 scripts/api_smoke.py               one short call per API model
+scripts/select_known_items.py      draw the 80 known-answer items from SycoBench-600
+scripts/hedge_rewrite.py           hedge-only control: add bank sentences to neutral replies, reply kept verbatim
 external/pander-score/             upstream clone (gitignored, not edited)
+external/sycobench-600/            upstream clone for the known items (gitignored, not edited)
 ```
 
 ## Setup
