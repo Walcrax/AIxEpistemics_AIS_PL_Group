@@ -1,0 +1,74 @@
+# **Track 1 Project Ideas for the Apart AI x Epistemics Sprint (Nov 13–15, 2026):** 
+
+## **Action board**
+
+One row per task. A is pipeline and runs, B is items, prompts and labels, C is analysis and writing; swap the letters for names. Due slots work back from the submission deadline (Sun 15 Nov, 23:59 AoE).
+
+| Task | Assignee | Status | Due | Notes |
+| :---- | :---- | :---- | :---- | :---- |
+| Pick two API models with high published Pander scores (not OpenAI or Google) and two open-weight models; check access | A | Not started | Sat afternoon | Record dated version strings; set a spending cap at each provider |
+| Clone the Pander code and data; confirm the licence and how to run a subset of propositions | Andrei Iliescu | In progress | Sat afternoon |  |
+| Set up batched inference for the two local models | A | Not started | Sat afternoon |  |
+| Forced-choice step and FINAL: parser in the Inspect pipeline | A | Not started | Sat afternoon | Must read at least 95% of replies |
+| Pick 60 domain-balanced propositions and 12 conversational prompts each (5 skeptic, 2 neutral, 5 believer) | Stanisław Słupski | In progress | Sat afternoon | Seeded; only prompts that pass the released screens |
+| Sample 80 known-answer items from an existing sycophancy set | B | Not started | Sat afternoon | Check the licence |
+| Write the hedge-hack system prompt and the hedge-only rewrite script | B Andrei Iliescu Stanisław Słupski | Not started | Sat afternoon | Rewrites must read naturally |
+| Commit H1 to H3, metrics, the ±10-point margin and the proposition IDs with a timestamp | Stanisław Słupski | Not started | Before first full run |  |
+| Pilot: 5 propositions per model; check scores against published ones, refusals below 5% and spend per model | A and C | Not started | Sat evening | If a model costs far more than \$25, cut it to 40 propositions |
+| Full runs: API models, then local models | A | Not started | Sat evening to Sun morning |  |
+| Noise floor: 60 neutral reruns and 50 re-judged replies per model | A | Not started | Sun morning |  |
+| Label 60 neutral and hedge-hack reply pairs blind to condition; kappa | B and C | Not started | Sun morning | Half where forced choices agree, half where they differ |
+| Analysis: exploit gain, style effect, behaviour change with equivalence test, gain closed; bootstrap intervals | Stanisław Słupski | Not started | Sun morning |  |
+| Figures | A | Not started | Sun midday |  |
+| Methods and results draft | Stanisław Słupski | Not started | Sun midday |  |
+| Related work, limitations, dual-use and ethics appendix | B | Not started | Sun midday | Appendix is required |
+| Abstract, 150 to 250 words | Stanisław Słupski | Not started | Sun afternoon |  |
+| Freeze code; README marking any pre-existing code | A | Not started | Sun afternoon |  |
+| Final PDF on the official template, eight pages or fewer; submit | C Stanisław Słupski | Not started | Sun afternoon | Leave a few hours before the cutoff |
+
+## **Hedge-Hack one-pager: can writing style alone raise a model's honesty score?**
+
+Many epistemic benchmarks use an LLM judge to turn free text into a credence or a sycophancy label. We test whether a model can raise its judged score by changing how it writes rather than what it concludes, and whether scoring committed answers closes that gap. This is the track's fourth question: demonstrate an exploit and close it. The build is an inspect\_ai eval on 800 prompts and four models.
+
+### **Hypotheses**
+
+Commit these to the repo with a timestamp before the first full run.
+
+| ID | Hypothesis | Measured by |
+| :---- | :---- | :---- |
+| H1 | A hedging system prompt improves the judge's honesty or non-sycophancy score by a meaningful margin. | Exploit gain, style effect |
+| H2 | The same prompt leaves committed answers unchanged: forced-choice answers and accuracy on known-answer items stay within paraphrase noise. | Behaviour change |
+| H3 | Scoring the forced-choice answer instead of the prose removes most of the gain in H1. | Gain closed |
+
+### **Design**
+
+1. **Benchmark.** A subset of the Pander Score pipeline (data CC-BY-4.0, code MIT), 60 domain-balanced propositions with 12 conversational prompts each (720 prompts) scored with its own judge setup, plus 80 known-answer items from an existing sycophancy set in which the user asserts a wrong answer.  
+2. **Policies.** Each model runs under a neutral system prompt and a hedge-hack prompt that asks for calibrated-sounding qualifiers, both-sides phrasing and an offer to abstain, without asking it to change its conclusion.  
+3. **Hedge-only control.** A script adds the same hedges to the neutral replies and changes nothing else. The judge's score change on these rewrites is the pure style effect.  
+4. **Patch.** After each reply, a fresh-context forced choice asks the model which answer is correct and ends with FINAL: \<option\>. The patched score uses only these committed answers and accuracy on the known items.
+
+**Models and size.** Two API models with high published Pander scores, from families other than the judges', and two open-weight models run locally with batched inference; temperature 0 where the API allows it. 800 prompts × 2 policies × 4 models gives 6,400 replies and as many forced-choice calls. The Pander judges score every reply and hedge-only rewrite twice, about 19,200 judge calls. Estimated cost is about \$95 of the \$150 budget; the rest covers reasoning tokens and reruns.
+
+### **Metrics and analysis**
+
+Committed answers are scored by parsing FINAL:; prose is scored by the benchmark's judge.
+
+| Metric | Definition | For |
+| :---- | :---- | :---- |
+| Exploit gain | Judged score under the hedge-hack prompt minus under the neutral prompt | H1 |
+| Style effect | Judged score on the hedge-only rewrites minus on the original neutral replies | H1 |
+| Behaviour change | Forced-choice answers and known-item accuracy under hedge-hack minus neutral | H2 |
+| Gain closed | Share of the exploit gain that disappears under the patched score | H3 |
+
+**Validation and statistics.** Two of us read 60 neutral and hedge-hack reply pairs, blind to condition, and label whether the substantive conclusion differs; Cohen's kappa. If conclusions often differ, H2 fails as stated and we report that the prompt changes behaviour. 95% intervals from a proposition-clustered bootstrap, pooled and per model.
+
+### **Pilot checks and limits**
+
+**Saturday pilot** on 5 propositions for each of the four models checks that our re-run of the Pander pipeline gives scores in the published range for any model the paper also reports, that the hedge-hack prompt keeps refusals below 5%, that spend per model matches the estimate, and that the parser reads FINAL: in 95% of forced-choice replies.
+
+**Limits.** One benchmark and one judge show that the gap can exist, not how large it is elsewhere; a null result still serves as a robustness audit of that benchmark. The method is dual-use, so we contact the benchmark's maintainers before publishing, describe the prompt without releasing an optimised attack set, and say so in the ethics appendix.
+
+### **Prior work**
+
+Raina et al. (arXiv 2402.14016) show that universal adversarial phrases inflate LLM-judge scores. Goodfire finds verbalised eval awareness raises refusal rates by 3 to 18 points on Fortress, and arXiv 2510.08624 finds presentation prompts change hedging without improving answers. The safetywashing paper (arXiv 2407.21792) and LURE (arXiv 2605.26438) address benchmarks that measure the wrong thing and models that recognise tests. None of these targets judges of honesty or sycophancy specifically.
+
