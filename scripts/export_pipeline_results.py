@@ -8,7 +8,10 @@ and team analysis scripts.
 from __future__ import annotations
 
 import argparse
+import contextlib
+import io
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -16,6 +19,21 @@ from typing import Any
 from inspect_ai.log import EvalLog, read_eval_log
 
 ROOT = Path(__file__).resolve().parent.parent
+SCRIPTS_DIR = Path(__file__).resolve().parent
+_STAGE2_METADATA_KEYS = {
+    "policy",
+    "commitment_type",
+    "valid_options",
+    "stage1_completion",
+    "stage1_usage",
+    "stage2_prompt",
+    "stage2_raw",
+    "stage2_retry_used",
+    "stage2_retry_raw",
+    "final_parsed",
+    "final_parse_reason",
+    "dataset_kind",
+}
 
 
 def _infer_target_model(log: EvalLog) -> str:
@@ -56,6 +74,7 @@ def extract_rows_from_log(log: EvalLog, *, log_path: Path | None = None) -> list
         )
         rows.append(
             {
+                "id": str(sample.id),
                 "sample_id": str(sample.id),
                 "target_model": target_model,
                 "policy": policy,
@@ -73,6 +92,7 @@ def extract_rows_from_log(log: EvalLog, *, log_path: Path | None = None) -> list
                 "target": str(sample.target),
                 "input": str(sample.input),
                 "response_text": stage1_text or "",
+                "metadata": {k: v for k, v in meta.items() if k not in _STAGE2_METADATA_KEYS},
                 "valid_options": meta.get("valid_options"),
                 "stage2_raw": meta.get("stage2_raw"),
                 "stage2_retry_used": bool(meta.get("stage2_retry_used", False)),
@@ -149,8 +169,9 @@ def export_eval_logs(
     *,
     out_jsonl: Path,
     rewrite_jsonl: Path | None = None,
+    rewritten_jsonl: Path | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    """Read Inspect ``.eval`` logs and write normalized JSONL (and optional rewrite-ready JSONL)."""
+    """Read Inspect ``.eval`` logs and write normalized JSONL (and optional rewrite files)."""
     log_paths = resolve_log_paths(inputs)
     all_rows: list[dict[str, Any]] = []
     for path in log_paths:
@@ -162,16 +183,28 @@ def export_eval_logs(
         for row in all_rows:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-    if rewrite_jsonl is not None:
-        rewrite_jsonl.parent.mkdir(parents=True, exist_ok=True)
+    if rewrite_jsonl is not None or rewritten_jsonl is not None:
         neutral_subset = [
             r
             for r in all_rows
             if r.get("policy") == "neutral" and r.get("dataset_kind") == "subset"
         ]
-        with rewrite_jsonl.open("w", encoding="utf-8") as fh:
-            for r in neutral_subset:
-                fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+        target_rewrite_in = rewrite_jsonl or (
+            rewritten_jsonl.with_name("neutral_for_rewrite.jsonl") if rewritten_jsonl else None
+        )
+        if target_rewrite_in is not None:
+            target_rewrite_in.parent.mkdir(parents=True, exist_ok=True)
+            with target_rewrite_in.open("w", encoding="utf-8") as fh:
+                for r in neutral_subset:
+                    fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+            if rewritten_jsonl is not None and neutral_subset:
+                if str(SCRIPTS_DIR) not in sys.path:
+                    sys.path.insert(0, str(SCRIPTS_DIR))
+                import hedge_rewrite  # type: ignore
+
+                rewritten_jsonl.parent.mkdir(parents=True, exist_ok=True)
+                with contextlib.redirect_stdout(io.StringIO()):
+                    hedge_rewrite.main(target_rewrite_in, rewritten_jsonl)
 
     return all_rows, summarize_rows(all_rows)
 
@@ -198,9 +231,20 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="Optional JSONL filtered to neutral proposition replies ready for scripts/hedge_rewrite.py.",
     )
+    parser.add_argument(
+        "--rewritten-out",
+        type=Path,
+        default=None,
+        help="Optional hedge-only rewritten JSONL produced via scripts/hedge_rewrite.py.",
+    )
     args = parser.parse_args(argv)
 
-    rows, summary = export_eval_logs(args.inputs, out_jsonl=args.out, rewrite_jsonl=args.rewrite_out)
+    rows, summary = export_eval_logs(
+        args.inputs,
+        out_jsonl=args.out,
+        rewrite_jsonl=args.rewrite_out,
+        rewritten_jsonl=args.rewritten_out,
+    )
     print(json.dumps({"rows_exported": len(rows), "out": str(args.out), "summary": summary}, indent=2))
     return 0
 

@@ -46,6 +46,19 @@ Run a fast mixed smoke test (2 subset propositions + 2 known-answer items across
 python -I scripts/run_local_batch.py --dataset smoke
 ```
 
+Run the 5-proposition local pilot matching [`scripts/run_api_pilot.py`](../scripts/run_api_pilot.py) (`240` samples -> `logs/pilot_local/` and `outputs/pilot_local/`, ready for `scripts/judge_local_replies.py`; see [`docs/pilot.md`](pilot.md)):
+
+```powershell
+python -I scripts/run_local_batch.py --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy both --log-dir logs/pilot_local --export-dir outputs/pilot_local
+```
+
+Or generate a slice dynamically via `--props 5` / explicit proposition IDs:
+
+```powershell
+python -I scripts/run_local_batch.py --props 5
+python -I scripts/run_local_batch.py --proposition-ids prop_id_1 prop_id_2 ...
+```
+
 Run Stage A (`4x2x4` slice) or the full 720-prompt Pander subset + 80 known items:
 
 ```powershell
@@ -54,14 +67,14 @@ python -I scripts/run_local_batch.py --dataset subset --policy both
 python -I scripts/run_local_batch.py --dataset known --policy both
 ```
 
-Pilot on the same 5 propositions as the API models (judged afterwards by Andrei, see `docs/pilot.md`):
+Resume an interrupted Inspect `.eval` log without re-running completed samples:
 
 ```powershell
-python -I scripts/run_local_batch.py --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy both --log-dir logs/pilot_local --export-dir outputs/pilot_local
+inspect eval-retry logs\<unfinished_log>.eval
 ```
 
-Export `.eval` logs into normalized JSONL and Neutral inputs for `scripts/hedge_rewrite.py`:
+Export `.eval` logs into normalized JSONL, Neutral inputs, and offline hedge-only rewrites:
 
 ```powershell
-python -I scripts/export_pipeline_results.py logs --out outputs/pipeline_results.jsonl --rewrite-out outputs/neutral_for_rewrite.jsonl
+python -I scripts/export_pipeline_results.py logs --out outputs/pipeline_results.jsonl --rewrite-out outputs/neutral_for_rewrite.jsonl --rewritten-out outputs/neutral_rewritten.jsonl
 ```

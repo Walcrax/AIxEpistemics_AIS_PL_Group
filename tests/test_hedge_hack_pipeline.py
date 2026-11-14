@@ -19,6 +19,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from export_pipeline_results import export_eval_logs, summarize_rows  # noqa: E402
 from hedge_hack_pipeline import (  # noqa: E402
+    _stage2_generate_config,
     final_commitment_scorer,
     hedge_hack_eval,
     hedge_hack_two_stage_solver,
@@ -27,7 +28,8 @@ from hedge_hack_pipeline import (  # noqa: E402
     load_known_item_samples,
     load_subset_samples,
     parse_final_option,
-    _stage2_generate_config,
+    select_pilot_propositions,
+    write_pilot_slice,
 )
 from local_models import (  # noqa: E402
     load_models,
@@ -216,13 +218,20 @@ class MockPipelineIntegrationTests(unittest.TestCase):
             self.assertEqual(hh_events[0].input[0].role, "system")
             self.assertTrue(all(m.role != "system" for m in hh_events[1].input))
 
-            # 3) Export + rewrite JSONL verification.
+            # 3) Export + rewrite JSONL verification (including id, metadata preservation, and rewritten JSONL).
             out_jsonl = tmp / "all.jsonl"
             rewrite_jsonl = tmp / "neutral_rewrite.jsonl"
+            rewritten_jsonl = tmp / "neutral_rewritten.jsonl"
             rows, summary = export_eval_logs(
-                [log_dir], out_jsonl=out_jsonl, rewrite_jsonl=rewrite_jsonl
+                [log_dir],
+                out_jsonl=out_jsonl,
+                rewrite_jsonl=rewrite_jsonl,
+                rewritten_jsonl=rewritten_jsonl,
             )
             self.assertEqual(len(rows), 3)
+            self.assertEqual(rows[0]["id"], rows[0]["sample_id"])
+            self.assertIn("author_valence", rows[0]["metadata"])
+            self.assertNotIn("stage1_completion", rows[0]["metadata"])
             rewrite_rows = [
                 json.loads(line) for line in rewrite_jsonl.read_text(encoding="utf-8").splitlines() if line
             ]
@@ -232,7 +241,45 @@ class MockPipelineIntegrationTests(unittest.TestCase):
             self.assertEqual(
                 rewrite_rows[0]["response_text"], "Stage 1 neutral analysis for proposition."
             )
+            rewritten_rows = [
+                json.loads(line) for line in rewritten_jsonl.read_text(encoding="utf-8").splitlines() if line
+            ]
+            self.assertEqual(len(rewritten_rows), 1)
+            self.assertTrue(rewritten_rows[0]["rewritten"])
+            self.assertIn("Stage 1 neutral analysis for proposition.", rewritten_rows[0]["response_text"])
             self.assertEqual(len(summarize_rows(rows)), 3)
+
+
+class PilotSliceAndGuardTests(unittest.TestCase):
+    def test_pilot_propositions_match_api_pilot_seed(self) -> None:
+        picked = select_pilot_propositions(5)
+        self.assertEqual(
+            picked,
+            [
+                "paranormal_claims__75",
+                "politically_polarizing__1",
+                "historical_facts__71",
+                "nutrition_health__45",
+                "frontier_natural_science__69",
+            ],
+        )
+        filtered = load_subset_samples(proposition_ids=picked)
+        self.assertEqual(len(filtered), 60)
+        self.assertEqual(len({s.metadata["domain"] for s in filtered}), 5)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            slice_path, written_ids = write_pilot_slice(Path(tmpdir) / "pilot.jsonl", n_props=5)
+            self.assertEqual(written_ids, picked)
+            self.assertEqual(len(load_subset_samples(slice_path)), 60)
+
+        with self.assertRaises(ValueError):
+            load_subset_samples(proposition_ids=["nonexistent__999"])
+
+    def test_with_judges_rejects_known_items(self) -> None:
+        with self.assertRaises(ValueError):
+            hedge_hack_eval(policy="neutral", dataset="known", with_judges=True)
+        with self.assertRaises(ValueError):
+            hedge_hack_eval(policy="neutral", dataset="both", with_judges=True)
 
 
 class Stage2ConfigTests(unittest.TestCase):

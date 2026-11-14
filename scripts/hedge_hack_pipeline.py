@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import random
 import re
 import sys
 from collections.abc import Sequence
@@ -454,14 +455,101 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def _normalize_proposition_ids(
+    proposition_ids: Sequence[str] | str | None,
+) -> list[str] | None:
+    if proposition_ids is None:
+        return None
+    if isinstance(proposition_ids, str):
+        items = [part.strip() for part in proposition_ids.split(",") if part.strip()]
+    else:
+        items = [str(part).strip() for part in proposition_ids if str(part).strip()]
+    return list(dict.fromkeys(items)) if items else None
+
+
+def select_pilot_propositions(
+    n_props: int,
+    *,
+    subset_path: Path = SUBSET_PATH,
+    seed: int = 20261114,
+) -> list[str]:
+    """Select *n_props* domain-spread proposition IDs matching ``run_api_pilot.pilot_slice``."""
+    if n_props <= 0:
+        raise ValueError(f"n_props must be positive, got {n_props}")
+    rows = _read_jsonl(subset_path)
+    by_domain: dict[str, list[str]] = {}
+    for r in rows:
+        meta = r.get("metadata") or {}
+        pid = str(meta["proposition_id"])
+        dom = str(meta["domain"])
+        if pid not in by_domain.setdefault(dom, []):
+            by_domain[dom].append(pid)
+
+    total_props = sum(len(v) for v in by_domain.values())
+    if n_props > total_props:
+        raise ValueError(f"Requested {n_props} propositions, but only {total_props} exist in {subset_path}")
+
+    rng = random.Random(seed)
+    domains = sorted(by_domain)
+    rng.shuffle(domains)
+    picked: list[str] = []
+    i = 0
+    while len(picked) < n_props:
+        pool = [p for p in sorted(by_domain[domains[i % len(domains)]]) if p not in picked]
+        if pool:
+            picked.append(rng.choice(pool))
+        i += 1
+    return picked
+
+
+def write_pilot_slice(
+    out_path: Path,
+    *,
+    n_props: int | None = None,
+    proposition_ids: Sequence[str] | str | None = None,
+    subset_path: Path = SUBSET_PATH,
+    seed: int = 20261114,
+) -> tuple[Path, list[str]]:
+    """Write a filtered proposition subset JSONL matching ``selected_prompts.jsonl`` schema."""
+    rows = _read_jsonl(subset_path)
+    wanted = _normalize_proposition_ids(proposition_ids)
+    if wanted is None:
+        if n_props is None:
+            raise ValueError("Specify either n_props or proposition_ids.")
+        wanted = select_pilot_propositions(n_props, subset_path=subset_path, seed=seed)
+
+    available = {str((r.get("metadata") or {}).get("proposition_id")) for r in rows}
+    missing = [pid for pid in wanted if pid not in available]
+    if missing:
+        raise ValueError(f"Unknown proposition_id(s) not in {subset_path}: {missing}")
+
+    wanted_set = set(wanted)
+    keep = [r for r in rows if str((r.get("metadata") or {}).get("proposition_id")) in wanted_set]
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in keep),
+        encoding="utf-8",
+    )
+    return out_path, wanted
+
+
 def load_subset_samples(
     path: Path = SUBSET_PATH,
     *,
     only_4_2_4: bool = False,
+    proposition_ids: Sequence[str] | str | None = None,
     limit: int | None = None,
 ) -> list[Sample]:
     """Load the 720-prompt Pander proposition subset into Inspect ``Sample`` objects."""
     rows = _read_jsonl(path)
+    wanted = _normalize_proposition_ids(proposition_ids)
+    if wanted is not None:
+        available = {str((r.get("metadata") or {}).get("proposition_id")) for r in rows}
+        missing = [pid for pid in wanted if pid not in available]
+        if missing:
+            raise ValueError(f"Unknown proposition_id(s) not in {path}: {missing}")
+        wanted_set = set(wanted)
+        rows = [r for r in rows if str((r.get("metadata") or {}).get("proposition_id")) in wanted_set]
     if only_4_2_4:
         rows = [r for r in rows if (r.get("metadata") or {}).get("in_4_2_4")]
     if limit is not None:
@@ -503,12 +591,20 @@ def load_eval_dataset(
     subset_path: Path = SUBSET_PATH,
     known_path: Path = KNOWN_ITEMS_PATH,
     only_4_2_4: bool = False,
+    proposition_ids: Sequence[str] | str | None = None,
     limit: int | None = None,
 ) -> MemoryDataset:
     """Construct the Inspect ``MemoryDataset`` for ``subset``, ``known``, or ``both``."""
     samples: list[Sample] = []
     if dataset in ("subset", "both"):
-        samples.extend(load_subset_samples(subset_path, only_4_2_4=only_4_2_4, limit=limit))
+        samples.extend(
+            load_subset_samples(
+                subset_path,
+                only_4_2_4=only_4_2_4,
+                proposition_ids=proposition_ids,
+                limit=limit,
+            )
+        )
     if dataset in ("known", "both"):
         samples.extend(load_known_item_samples(known_path, limit=limit))
     return MemoryDataset(samples=samples, name=f"hedge_hack_{dataset}")
@@ -550,17 +646,24 @@ def hedge_hack_eval(
     subset_path: str | None = None,
     known_path: str | None = None,
     only_4_2_4: bool = False,
+    proposition_ids: Sequence[str] | str | None = None,
     limit: int | None = None,
     fc_max_tokens: int | None = None,
     retry_on_unparsed: bool = True,
     with_judges: bool = False,
 ) -> Task:
     """Two-stage Inspect task pairing Stage 1 generation with Stage 2 forced choice."""
+    if with_judges and dataset != "subset":
+        raise ValueError(
+            "with_judges=True is only valid with dataset='subset' "
+            "(SycoBench known items do not use Pander credence judges)."
+        )
     ds = load_eval_dataset(
         dataset=dataset,
         subset_path=Path(subset_path) if subset_path else SUBSET_PATH,
         known_path=Path(known_path) if known_path else KNOWN_ITEMS_PATH,
         only_4_2_4=only_4_2_4,
+        proposition_ids=proposition_ids,
         limit=limit,
     )
     scorers: list[Scorer] = [final_commitment_scorer()]

@@ -24,9 +24,12 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from export_pipeline_results import export_eval_logs, summarize_rows  # noqa: E402
 from hedge_hack_pipeline import (  # noqa: E402
+    SUBSET_PATH,
     DatasetKind,
     PolicyName,
+    _normalize_proposition_ids,
     hedge_hack_eval,
+    write_pilot_slice,
 )
 from local_models import (  # noqa: E402
     list_local_targets,
@@ -72,24 +75,56 @@ def run_batch(
     models: list[str],
     policies: list[PolicyName],
     dataset: str,
-    only_4_2_4: bool,
-    limit: int | None,
     subset_path: Path | None = None,
+    known_path: Path | None = None,
+    only_4_2_4: bool,
+    props: int | None = None,
+    proposition_ids: list[str] | str | None = None,
+    limit: int | None,
     max_connections: int | None,
     max_tokens: int | None,
     fc_max_tokens: int | None,
     with_judges: bool,
     use_base: bool,
-    log_dir: Path,
+    log_dir: Path | None,
     export_dir: Path | None,
+    no_export: bool = False,
+    stage: str | None = None,
     fail_on_error: float | bool,
     display: str,
 ) -> dict[str, Any]:
     """Execute batched evaluations sequentially across *models* and *policies*."""
+    if props is not None and proposition_ids is not None:
+        raise ValueError("Pass either --props or --proposition-ids, not both.")
+    if (props is not None or proposition_ids is not None) and dataset in ("smoke", "known"):
+        raise ValueError("--props and --proposition-ids require --dataset subset (or both).")
+
+    is_pilot = stage == "pilot" or props is not None or proposition_ids is not None or subset_path is not None
+    effective_stage = stage or ("smoke" if dataset == "smoke" else ("pilot" if is_pilot else "batch"))
+    resolved_log_dir = log_dir or (ROOT / "logs" / ("pilot_local" if is_pilot else ""))
+    resolved_export_dir = (
+        None
+        if no_export
+        else (export_dir or (ROOT / "outputs" / ("pilot_local" if is_pilot else "local_batch")))
+    )
+
     ds_kind: DatasetKind = "both" if dataset == "smoke" else dataset  # type: ignore[assignment]
     effective_limit = (2 if limit is None else limit) if dataset == "smoke" else limit
 
-    log_dir.mkdir(parents=True, exist_ok=True)
+    effective_subset_path = subset_path or SUBSET_PATH
+    picked_ids = _normalize_proposition_ids(proposition_ids)
+    slice_file: Path | None = None
+    if props is not None or picked_ids is not None:
+        slice_dir = resolved_export_dir or resolved_log_dir
+        slice_file, picked_ids = write_pilot_slice(
+            slice_dir / "pilot_prompts.jsonl",
+            n_props=props,
+            proposition_ids=picked_ids,
+            subset_path=effective_subset_path,
+        )
+        effective_subset_path = slice_file
+
+    resolved_log_dir.mkdir(parents=True, exist_ok=True)
     log_paths: list[Path] = []
     run_summaries: list[dict[str, Any]] = []
 
@@ -103,9 +138,10 @@ def run_batch(
             task = hedge_hack_eval(
                 policy=policy,
                 dataset=ds_kind,
+                subset_path=str(effective_subset_path),
+                known_path=str(known_path) if known_path else None,
                 only_4_2_4=only_4_2_4,
                 limit=effective_limit,
-                subset_path=str(subset_path) if subset_path else None,
                 fc_max_tokens=fc_max_tokens,
                 with_judges=with_judges,
             )
@@ -114,14 +150,16 @@ def run_batch(
                 task,
                 model=model_obj,
                 max_connections=conc,
-                log_dir=str(log_dir),
+                log_dir=str(resolved_log_dir),
                 display=display,  # type: ignore[arg-type]
                 fail_on_error=fail_on_error,
                 metadata={
                     "target_model": canonical,
                     "policy": policy,
                     "dataset": dataset,
+                    "stage": effective_stage,
                     "only_4_2_4": only_4_2_4,
+                    "proposition_ids": picked_ids,
                     "max_connections": conc,
                 },
             )
@@ -135,6 +173,7 @@ def run_batch(
                         "target_model": canonical,
                         "policy": policy,
                         "dataset": dataset,
+                        "stage": effective_stage,
                         "status": str(elog.status),
                         "samples": len(elog.samples or []),
                         "max_connections": conc,
@@ -149,17 +188,36 @@ def run_batch(
                         f"{canonical}/{policy}: {getattr(elog, 'error', None)}"
                     )
 
-    payload: dict[str, Any] = {"runs": run_summaries}
-    if export_dir is not None and log_paths:
-        export_dir.mkdir(parents=True, exist_ok=True)
-        out_jsonl = export_dir / "pipeline_results.jsonl"
-        rewrite_jsonl = export_dir / "neutral_for_rewrite.jsonl"
-        rows, agg = export_eval_logs(log_paths, out_jsonl=out_jsonl, rewrite_jsonl=rewrite_jsonl)
-        summary_path = export_dir / "summary.json"
-        summary_path.write_text(json.dumps({"runs": run_summaries, "aggregate": agg}, indent=2), encoding="utf-8")
+    payload: dict[str, Any] = {
+        "stage": effective_stage,
+        "proposition_ids": picked_ids,
+        "pilot_slice_path": str(slice_file) if slice_file else None,
+        "runs": run_summaries,
+    }
+    if resolved_export_dir is not None and log_paths:
+        resolved_export_dir.mkdir(parents=True, exist_ok=True)
+        out_jsonl = resolved_export_dir / "pipeline_results.jsonl"
+        rewrite_jsonl = resolved_export_dir / "neutral_for_rewrite.jsonl"
+        rewritten_jsonl = resolved_export_dir / "neutral_rewritten.jsonl"
+        rows, agg = export_eval_logs(
+            log_paths,
+            out_jsonl=out_jsonl,
+            rewrite_jsonl=rewrite_jsonl,
+            rewritten_jsonl=rewritten_jsonl,
+        )
+        summary_path = resolved_export_dir / "summary.json"
+        summary_data = {
+            "stage": effective_stage,
+            "proposition_ids": picked_ids,
+            "runs": run_summaries,
+            "aggregate": agg,
+        }
+        summary_path.write_text(json.dumps(summary_data, indent=2), encoding="utf-8")
         payload["exported_rows"] = len(rows)
         payload["export_jsonl"] = str(out_jsonl)
         payload["rewrite_jsonl"] = str(rewrite_jsonl)
+        if rewritten_jsonl.exists():
+            payload["rewritten_jsonl"] = str(rewritten_jsonl)
         payload["aggregate"] = agg
     elif log_paths:
         rows = []
@@ -196,18 +254,36 @@ def main(argv: list[str] | None = None) -> int:
         help="Dataset slice ('smoke' runs 2 subset + 2 known items per model/policy).",
     )
     parser.add_argument(
-        "--only-4-2-4",
-        action="store_true",
-        help="Restrict Pander subset to the Stage A in_4_2_4 slice.",
-    )
-    parser.add_argument("--limit", type=int, default=None, help="Cap samples per dataset.")
-    parser.add_argument(
         "--subset-path",
         type=Path,
         default=None,
         help="Pander prompts JSONL to use instead of data/subset/selected_prompts.jsonl "
         "(pilot: data/pilot/pilot_prompts.jsonl).",
     )
+    parser.add_argument(
+        "--known-path",
+        type=Path,
+        default=None,
+        help="Custom known-items JSONL path (defaults to data/known_items/known_items.jsonl).",
+    )
+    parser.add_argument(
+        "--props",
+        type=int,
+        default=None,
+        help="Draw N domain-spread propositions matching run_api_pilot.pilot_slice (seed 20261114).",
+    )
+    parser.add_argument(
+        "--proposition-ids",
+        nargs="+",
+        default=None,
+        help="Filter subset to exact proposition IDs (space- or comma-separated).",
+    )
+    parser.add_argument(
+        "--only-4-2-4",
+        action="store_true",
+        help="Restrict Pander subset to the Stage A in_4_2_4 slice.",
+    )
+    parser.add_argument("--limit", type=int, default=None, help="Cap samples per dataset.")
     parser.add_argument(
         "--max-connections",
         type=int,
@@ -239,19 +315,24 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--log-dir",
         type=Path,
-        default=ROOT / "logs",
-        help="Directory for Inspect .eval logs (gitignored by default).",
+        default=None,
+        help="Directory for Inspect .eval logs (defaults to logs/pilot_local for pilot runs, else logs).",
     )
     parser.add_argument(
         "--export-dir",
         type=Path,
-        default=ROOT / "outputs" / "local_batch",
-        help="Directory for exported JSONL, neutral rewrite input, and summary JSON.",
+        default=None,
+        help="Directory for exported JSONL, rewrites, and summary JSON (defaults to outputs/pilot_local for pilot runs).",
     )
     parser.add_argument(
         "--no-export",
         action="store_true",
         help="Skip exporting JSONL files after evaluation.",
+    )
+    parser.add_argument(
+        "--stage",
+        default=None,
+        help="Optional stage tag stored in Inspect eval metadata (e.g. 'pilot', 'batch').",
     )
     parser.add_argument(
         "--fail-on-error",
@@ -271,16 +352,21 @@ def main(argv: list[str] | None = None) -> int:
         models=_expand_models(args.model),
         policies=_expand_policies(args.policy),
         dataset=args.dataset,
-        only_4_2_4=args.only_4_2_4,
-        limit=args.limit,
         subset_path=args.subset_path,
+        known_path=args.known_path,
+        only_4_2_4=args.only_4_2_4,
+        props=args.props,
+        proposition_ids=args.proposition_ids,
+        limit=args.limit,
         max_connections=args.max_connections,
         max_tokens=args.max_tokens,
         fc_max_tokens=args.fc_max_tokens,
         with_judges=args.with_judges,
         use_base=args.use_base,
         log_dir=args.log_dir,
-        export_dir=None if args.no_export else args.export_dir,
+        export_dir=args.export_dir,
+        no_export=args.no_export,
+        stage=args.stage,
         fail_on_error=args.fail_on_error,
         display=args.display,
     )
