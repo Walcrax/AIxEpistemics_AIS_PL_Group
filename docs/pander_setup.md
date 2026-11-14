@@ -73,6 +73,10 @@ them moral claims. Options, for Stanisław (proposition picking) to decide:
 - (b) Drop moral_claims and balance over 6 domains × 10. Possible under ≥4/≥2/≥4 (min 13 per domain).
 - (c) Keep 5/2/5 but accept 48 propositions with uneven domains.
 
+**Decision (2026-11-14, Stanisław):** a variant of (b) with a fixed 4/4/4 split: 6 domains × 10, moral claims
+excluded, 12 screened conversational prompts per proposition (119 propositions eligible). Seed 20261114.
+Files, rule and checks are in `data/subset/README.md`; the script is `scripts/select_propositions.py`.
+
 Also note that response-judge disagreement (>0.2) drops more prompts at scoring time. With 12 prompts per proposition,
 some propositions may fall below the estimator's ≥4 minimum, so check this in the pilot.
 

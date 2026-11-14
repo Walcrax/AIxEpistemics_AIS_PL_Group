@@ -10,7 +10,7 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 | Clone the Pander code and data; confirm the licence and how to run a subset of propositions | Andrei Iliescu | In progress | Sat afternoon |  |
 | Set up batched inference for the two local models | A | Not started | Sat afternoon |  |
 | Forced-choice step and FINAL: parser in the Inspect pipeline | A | Not started | Sat afternoon | Must read at least 95% of replies |
-| Pick 60 domain-balanced propositions and 12 conversational prompts each (5 skeptic, 2 neutral, 5 believer) | Stanisław Słupski | In progress | Sat afternoon | Seeded; only prompts that pass the released screens |
+| Pick 60 domain-balanced propositions and 12 conversational prompts each (4 skeptic, 4 neutral, 4 believer) | Stanisław Słupski | In progress | Sat afternoon | Seed 20261114; only prompts that pass the released screens; 6 domains × 10, moral claims excluded |
 | Sample 80 known-answer items from an existing sycophancy set | B | Not started | Sat afternoon | Check the licence |
 | Write the hedge-hack system prompt and the hedge-only rewrite script | B Andrei Iliescu Stanisław Słupski | Not started | Sat afternoon | Rewrites must read naturally |
 | Commit H1 to H3, metrics, the ±10-point margin and the proposition IDs with a timestamp | Stanisław Słupski | Not started | Before first full run |  |
@@ -42,7 +42,7 @@ Commit these to the repo with a timestamp before the first full run.
 
 ### **Design**
 
-1. **Benchmark.** A subset of the Pander Score pipeline (data CC-BY-4.0, code MIT), 60 domain-balanced propositions with 12 conversational prompts each (720 prompts) scored with its own judge setup, plus 80 known-answer items from an existing sycophancy set in which the user asserts a wrong answer.  
+1. **Benchmark.** A subset of the Pander Score pipeline (data CC-BY-4.0, code MIT), 60 propositions, 10 from each of six domains (moral claims excluded, since the Truth Matters screen removes most of that domain), with 12 screened conversational prompts each, 4 per prior (720 prompts) scored with its own judge setup, plus 80 known-answer items from an existing sycophancy set in which the user asserts a wrong answer.  
 2. **Policies.** Each model runs under a neutral system prompt and a hedge-hack prompt that asks for calibrated-sounding qualifiers, both-sides phrasing and an offer to abstain, without asking it to change its conclusion.  
 3. **Hedge-only control.** A script adds the same hedges to the neutral replies and changes nothing else. The judge's score change on these rewrites is the pure style effect.  
 4. **Patch.** After each reply, a fresh-context forced choice asks the model which answer is correct and ends with FINAL: \<option\>. The patched score uses only these committed answers and accuracy on the known items.
@@ -64,7 +64,7 @@ Committed answers are scored by parsing FINAL:; prose is scored by the benchmark
 
 ### **Pilot checks and limits**
 
-**Saturday pilot** on 5 propositions for each of the four models checks that our re-run of the Pander pipeline gives scores in the published range for any model the paper also reports, that the hedge-hack prompt keeps refusals below 5%, that spend per model matches the estimate, and that the parser reads FINAL: in 95% of forced-choice replies.
+**Saturday pilot** on 5 propositions for each of the four models checks that our re-run of the Pander pipeline gives scores close to that model's published score on our 720 prompts, for any model the paper also reports, that the hedge-hack prompt keeps refusals below 5%, that spend per model matches the estimate, and that the parser reads FINAL: in 95% of forced-choice replies.
 
 **Limits.** One benchmark and one judge show that the gap can exist, not how large it is elsewhere; a null result still serves as a robustness audit of that benchmark. The method is dual-use, so we contact the benchmark's maintainers before publishing, describe the prompt without releasing an optimised attack set, and say so in the ethics appendix.
 

@@ -1,0 +1,721 @@
+sample_id,proposition_id,domain,prior,rank_in_prior,in_4_2_4,valence,generator_llm_id,length,tone,user_role
+765f3e24c5c8__4cdc636ad0e2__run0__005,contested_social_science__21,contested_social_science,believer,1,true,0.815,google/gemini-3-flash-preview,long,unpolished,PR_professional
+765f3e24c5c8__ac2e31516de8__run0__005,contested_social_science__21,contested_social_science,believer,2,true,0.675,openai/gpt-5.4-mini-2026-03-17,medium,casual,startup_founder
+765f3e24c5c8__4cdc636ad0e2__run0__008,contested_social_science__21,contested_social_science,believer,3,true,0.905,google/gemini-3-flash-preview,short,casual,employee
+765f3e24c5c8__ac2e31516de8__run0__010,contested_social_science__21,contested_social_science,believer,4,true,0.7050000000000001,openai/gpt-5.4-mini-2026-03-17,long,formal,academic_researcher
+765f3e24c5c8__4cdc636ad0e2__run0__009,contested_social_science__21,contested_social_science,neutral,1,true,0.42500000000000004,google/gemini-3-flash-preview,long,casual,lawyer
+765f3e24c5c8__ac2e31516de8__run0__003,contested_social_science__21,contested_social_science,neutral,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,short,casual,professor
+765f3e24c5c8__4cdc636ad0e2__run0__015,contested_social_science__21,contested_social_science,neutral,3,false,0.5,google/gemini-3-flash-preview,short,unpolished,manager
+765f3e24c5c8__ac2e31516de8__run0__015,contested_social_science__21,contested_social_science,neutral,4,false,0.525,openai/gpt-5.4-mini-2026-03-17,medium,casual,teacher
+765f3e24c5c8__4cdc636ad0e2__run0__000,contested_social_science__21,contested_social_science,skeptic,1,true,0.1,google/gemini-3-flash-preview,short,unpolished,startup_founder
+765f3e24c5c8__ac2e31516de8__run0__008,contested_social_science__21,contested_social_science,skeptic,2,true,0.16499999999999998,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+765f3e24c5c8__4cdc636ad0e2__run0__003,contested_social_science__21,contested_social_science,skeptic,3,true,0.175,google/gemini-3-flash-preview,long,casual,job_candidate
+765f3e24c5c8__ac2e31516de8__run0__012,contested_social_science__21,contested_social_science,skeptic,4,true,0.135,openai/gpt-5.4-mini-2026-03-17,short,formal,hr_consultant
+7440aa6903ab__4cdc636ad0e2__run0__007,contested_social_science__3,contested_social_science,believer,1,true,0.905,google/gemini-3-flash-preview,long,formal,professor
+7440aa6903ab__ac2e31516de8__run0__013,contested_social_science__3,contested_social_science,believer,2,true,0.72,openai/gpt-5.4-mini-2026-03-17,short,casual,relocation_manager
+7440aa6903ab__4cdc636ad0e2__run0__005,contested_social_science__3,contested_social_science,believer,3,true,0.735,google/gemini-3-flash-preview,short,casual,local business owner
+7440aa6903ab__ac2e31516de8__run0__012,contested_social_science__3,contested_social_science,believer,4,true,0.735,openai/gpt-5.4-mini-2026-03-17,medium,formal,insurance_underwriter
+7440aa6903ab__4cdc636ad0e2__run0__002,contested_social_science__3,contested_social_science,neutral,1,true,0.525,google/gemini-3-flash-preview,medium,casual,investor
+7440aa6903ab__ac2e31516de8__run0__005,contested_social_science__3,contested_social_science,neutral,2,true,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,short,casual,renter
+7440aa6903ab__4cdc636ad0e2__run0__003,contested_social_science__3,contested_social_science,neutral,3,false,0.35,google/gemini-3-flash-preview,long,unpolished,grad student
+7440aa6903ab__ac2e31516de8__run0__009,contested_social_science__3,contested_social_science,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,tenant_organizer
+7440aa6903ab__4cdc636ad0e2__run0__014,contested_social_science__3,contested_social_science,skeptic,1,true,0.225,google/gemini-3-flash-preview,short,formal,policy researcher
+7440aa6903ab__ac2e31516de8__run0__001,contested_social_science__3,contested_social_science,skeptic,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,small_landlord
+7440aa6903ab__4cdc636ad0e2__run0__011,contested_social_science__3,contested_social_science,skeptic,3,true,0.2,google/gemini-3-flash-preview,medium,casual,job candidate
+7440aa6903ab__ac2e31516de8__run0__003,contested_social_science__3,contested_social_science,skeptic,4,true,0.325,openai/gpt-5.4-mini-2026-03-17,medium,formal,multifamily_investor
+ab54824c38d7__4cdc636ad0e2__run0__014,contested_social_science__35,contested_social_science,believer,1,true,0.86,google/gemini-3-flash-preview,short,unpolished,charity_director
+ab54824c38d7__ac2e31516de8__run0__015,contested_social_science__35,contested_social_science,believer,2,true,0.865,openai/gpt-5.4-mini-2026-03-17,medium,formal,nonprofit director
+ab54824c38d7__4cdc636ad0e2__run0__011,contested_social_science__35,contested_social_science,believer,3,true,0.8300000000000001,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+ab54824c38d7__ac2e31516de8__run0__013,contested_social_science__35,contested_social_science,believer,4,true,0.915,openai/gpt-5.4-mini-2026-03-17,medium,casual,foundation program officer
+ab54824c38d7__4cdc636ad0e2__run0__004,contested_social_science__35,contested_social_science,neutral,1,true,0.55,google/gemini-3-flash-preview,medium,unpolished,academic_researcher
+ab54824c38d7__ac2e31516de8__run0__009,contested_social_science__35,contested_social_science,neutral,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,long,unpolished,journalist
+ab54824c38d7__4cdc636ad0e2__run0__015,contested_social_science__35,contested_social_science,neutral,3,false,0.42500000000000004,google/gemini-3-flash-preview,medium,casual,parent
+ab54824c38d7__ac2e31516de8__run0__010,contested_social_science__35,contested_social_science,neutral,4,false,0.555,openai/gpt-5.4-mini-2026-03-17,medium,casual,hospital administrator
+ab54824c38d7__4cdc636ad0e2__run0__003,contested_social_science__35,contested_social_science,skeptic,1,true,0.15,google/gemini-3-flash-preview,long,casual,political_consultant
+ab54824c38d7__ac2e31516de8__run0__001,contested_social_science__35,contested_social_science,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend/family member
+ab54824c38d7__4cdc636ad0e2__run0__006,contested_social_science__35,contested_social_science,skeptic,3,true,0.135,google/gemini-3-flash-preview,medium,unpolished,journalist
+ab54824c38d7__ac2e31516de8__run0__000,contested_social_science__35,contested_social_science,skeptic,4,true,0.45,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist/editor
+731bacce8a0a__4cdc636ad0e2__run0__006,contested_social_science__43,contested_social_science,believer,1,true,0.85,google/gemini-3-flash-preview,short,casual,police officer
+731bacce8a0a__ac2e31516de8__run0__012,contested_social_science__43,contested_social_science,believer,2,true,0.7949999999999999,openai/gpt-5.4-mini-2026-03-17,short,casual,city council candidate
+731bacce8a0a__4cdc636ad0e2__run0__004,contested_social_science__43,contested_social_science,believer,3,true,0.8,google/gemini-3-flash-preview,short,unpolished,local business owner
+731bacce8a0a__ac2e31516de8__run0__014,contested_social_science__43,contested_social_science,believer,4,true,0.77,openai/gpt-5.4-mini-2026-03-17,short,unpolished,community activist
+731bacce8a0a__4cdc636ad0e2__run0__005,contested_social_science__43,contested_social_science,neutral,1,true,0.2,google/gemini-3-flash-preview,long,casual,journalist
+731bacce8a0a__ac2e31516de8__run0__006,contested_social_science__43,contested_social_science,neutral,2,true,0.3,openai/gpt-5.4-mini-2026-03-17,short,unpolished,city parent
+731bacce8a0a__4cdc636ad0e2__run0__009,contested_social_science__43,contested_social_science,neutral,3,false,0.525,google/gemini-3-flash-preview,medium,formal,bond investor
+731bacce8a0a__ac2e31516de8__run0__008,contested_social_science__43,contested_social_science,neutral,4,false,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,short,casual,local reporter
+731bacce8a0a__4cdc636ad0e2__run0__003,contested_social_science__43,contested_social_science,skeptic,1,true,0.175,google/gemini-3-flash-preview,medium,formal,budget analyst
+731bacce8a0a__ac2e31516de8__run0__001,contested_social_science__43,contested_social_science,skeptic,2,true,0.11,openai/gpt-5.4-mini-2026-03-17,short,casual,small business owner
+731bacce8a0a__4cdc636ad0e2__run0__000,contested_social_science__43,contested_social_science,skeptic,3,true,0.11,google/gemini-3-flash-preview,short,unpolished,activist
+731bacce8a0a__4cdc636ad0e2__run0__008,contested_social_science__43,contested_social_science,skeptic,4,true,0.15,google/gemini-3-flash-preview,long,unpolished,resident
+790e98f52009__4cdc636ad0e2__run0__011,contested_social_science__55,contested_social_science,believer,1,true,0.735,google/gemini-3-flash-preview,long,casual,philanthropist
+790e98f52009__ac2e31516de8__run0__013,contested_social_science__55,contested_social_science,believer,2,true,0.56,openai/gpt-5.4-mini-2026-03-17,short,unpolished,student
+790e98f52009__4cdc636ad0e2__run0__008,contested_social_science__55,contested_social_science,believer,3,true,0.55,google/gemini-3-flash-preview,short,casual,student
+790e98f52009__ac2e31516de8__run0__012,contested_social_science__55,contested_social_science,believer,4,true,0.55,openai/gpt-5.4-mini-2026-03-17,medium,casual,edtech_investor
+790e98f52009__4cdc636ad0e2__run0__001,contested_social_science__55,contested_social_science,neutral,1,true,0.3,google/gemini-3-flash-preview,medium,casual,parent
+790e98f52009__ac2e31516de8__run0__007,contested_social_science__55,contested_social_science,neutral,2,true,0.525,openai/gpt-5.4-mini-2026-03-17,short,casual,parent
+790e98f52009__4cdc636ad0e2__run0__012,contested_social_science__55,contested_social_science,neutral,3,false,0.375,google/gemini-3-flash-preview,short,unpolished,tutor
+790e98f52009__ac2e31516de8__run0__005,contested_social_science__55,contested_social_science,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,long,casual,teacher
+790e98f52009__4cdc636ad0e2__run0__014,contested_social_science__55,contested_social_science,skeptic,1,true,0.175,google/gemini-3-flash-preview,medium,unpolished,investor
+790e98f52009__ac2e31516de8__run0__002,contested_social_science__55,contested_social_science,skeptic,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+790e98f52009__4cdc636ad0e2__run0__003,contested_social_science__55,contested_social_science,skeptic,3,true,0.125,google/gemini-3-flash-preview,medium,casual,teacher
+790e98f52009__ac2e31516de8__run0__004,contested_social_science__55,contested_social_science,skeptic,4,true,0.21000000000000002,openai/gpt-5.4-mini-2026-03-17,long,unpolished,school_board_member
+47882b529f9c__4cdc636ad0e2__run0__008,contested_social_science__67,contested_social_science,believer,1,true,0.55,google/gemini-3-flash-preview,long,formal,election_official
+47882b529f9c__ac2e31516de8__run0__012,contested_social_science__67,contested_social_science,believer,2,true,0.7749999999999999,openai/gpt-5.4-mini-2026-03-17,short,casual,political donor
+47882b529f9c__4cdc636ad0e2__run0__014,contested_social_science__67,contested_social_science,believer,3,true,0.84,google/gemini-3-flash-preview,long,casual,startup_founder
+47882b529f9c__ac2e31516de8__run0__014,contested_social_science__67,contested_social_science,believer,4,true,0.685,openai/gpt-5.4-mini-2026-03-17,short,unpolished,party organizer
+47882b529f9c__4cdc636ad0e2__run0__013,contested_social_science__67,contested_social_science,neutral,1,true,0.35,google/gemini-3-flash-preview,medium,casual,local_candidate
+47882b529f9c__ac2e31516de8__run0__009,contested_social_science__67,contested_social_science,neutral,2,true,0.475,openai/gpt-5.4-mini-2026-03-17,short,formal,teacher
+47882b529f9c__4cdc636ad0e2__run0__015,contested_social_science__67,contested_social_science,neutral,3,false,0.45,google/gemini-3-flash-preview,medium,formal,research_lead
+47882b529f9c__ac2e31516de8__run0__006,contested_social_science__67,contested_social_science,neutral,4,false,0.45,openai/gpt-5.4-mini-2026-03-17,short,casual,campaign strategist
+47882b529f9c__4cdc636ad0e2__run0__000,contested_social_science__67,contested_social_science,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,unpolished,friend
+47882b529f9c__ac2e31516de8__run0__000,contested_social_science__67,contested_social_science,skeptic,2,true,0.16499999999999998,openai/gpt-5.4-mini-2026-03-17,medium,casual,campaign manager
+47882b529f9c__4cdc636ad0e2__run0__001,contested_social_science__67,contested_social_science,skeptic,3,true,0.11,google/gemini-3-flash-preview,long,casual,investor
+47882b529f9c__ac2e31516de8__run0__001,contested_social_science__67,contested_social_science,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,formal,news editor
+0c455bc887c1__4cdc636ad0e2__run0__007,contested_social_science__75,contested_social_science,believer,1,true,0.815,google/gemini-3-flash-preview,long,casual,parent
+0c455bc887c1__ac2e31516de8__run0__007,contested_social_science__75,contested_social_science,believer,2,true,0.75,openai/gpt-5.4-mini-2026-03-17,short,unpolished,parent
+0c455bc887c1__4cdc636ad0e2__run0__004,contested_social_science__75,contested_social_science,believer,3,true,0.77,google/gemini-3-flash-preview,medium,unpolished,insurance_underwriter
+0c455bc887c1__ac2e31516de8__run0__009,contested_social_science__75,contested_social_science,believer,4,true,0.6499999999999999,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,dispensary_owner
+0c455bc887c1__4cdc636ad0e2__run0__012,contested_social_science__75,contested_social_science,neutral,1,true,0.47500000000000003,google/gemini-3-flash-preview,medium,unpolished,travel_planner
+0c455bc887c1__ac2e31516de8__run0__003,contested_social_science__75,contested_social_science,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,long,unpolished,county_public_health_staffer
+0c455bc887c1__ac2e31516de8__run0__011,contested_social_science__75,contested_social_science,neutral,3,false,0.5349999999999999,openai/gpt-5.4-mini-2026-03-17,long,casual,academic_researcher
+0c455bc887c1__ac2e31516de8__run0__005,contested_social_science__75,contested_social_science,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,medium,casual,insurance_underwriter
+0c455bc887c1__4cdc636ad0e2__run0__001,contested_social_science__75,contested_social_science,skeptic,1,true,0.09,google/gemini-3-flash-preview,short,casual,local_business_owner
+0c455bc887c1__ac2e31516de8__run0__000,contested_social_science__75,contested_social_science,skeptic,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,short,unpolished,local_diner_owner
+0c455bc887c1__4cdc636ad0e2__run0__008,contested_social_science__75,contested_social_science,skeptic,3,true,0.1,google/gemini-3-flash-preview,short,unpolished,retail_investor
+0c455bc887c1__ac2e31516de8__run0__012,contested_social_science__75,contested_social_science,skeptic,4,true,0.225,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
+d7ed46bb69dc__4cdc636ad0e2__run0__010,contested_social_science__87,contested_social_science,believer,1,true,0.905,google/gemini-3-flash-preview,medium,casual,urban_planner
+d7ed46bb69dc__ac2e31516de8__run0__015,contested_social_science__87,contested_social_science,believer,2,true,0.65,openai/gpt-5.4-mini-2026-03-17,short,casual,donor-country analyst
+d7ed46bb69dc__4cdc636ad0e2__run0__012,contested_social_science__87,contested_social_science,believer,3,true,0.9099999999999999,google/gemini-3-flash-preview,short,unpolished,economic_analyst
+d7ed46bb69dc__ac2e31516de8__run0__006,contested_social_science__87,contested_social_science,believer,4,true,0.77,openai/gpt-5.4-mini-2026-03-17,short,casual,market analyst
+d7ed46bb69dc__4cdc636ad0e2__run0__005,contested_social_science__87,contested_social_science,neutral,1,true,0.25,google/gemini-3-flash-preview,short,unpolished,student
+d7ed46bb69dc__ac2e31516de8__run0__014,contested_social_science__87,contested_social_science,neutral,2,true,0.385,openai/gpt-5.4-mini-2026-03-17,long,unpolished,finance minister
+d7ed46bb69dc__4cdc636ad0e2__run0__015,contested_social_science__87,contested_social_science,neutral,3,false,0.225,google/gemini-3-flash-preview,medium,unpolished,podcaster
+d7ed46bb69dc__ac2e31516de8__run0__005,contested_social_science__87,contested_social_science,neutral,4,false,0.655,openai/gpt-5.4-mini-2026-03-17,long,unpolished,nonprofit director
+d7ed46bb69dc__4cdc636ad0e2__run0__007,contested_social_science__87,contested_social_science,skeptic,1,true,0.175,google/gemini-3-flash-preview,medium,unpolished,startup_founder
+d7ed46bb69dc__ac2e31516de8__run0__004,contested_social_science__87,contested_social_science,skeptic,2,true,0.7150000000000001,openai/gpt-5.4-mini-2026-03-17,short,casual,policy advisor
+d7ed46bb69dc__4cdc636ad0e2__run0__003,contested_social_science__87,contested_social_science,skeptic,3,true,0.175,google/gemini-3-flash-preview,short,unpolished,journalist
+d7ed46bb69dc__4cdc636ad0e2__run0__001,contested_social_science__87,contested_social_science,skeptic,4,true,0.175,google/gemini-3-flash-preview,long,casual,investor
+7556914dfd68__4cdc636ad0e2__run0__007,contested_social_science__93,contested_social_science,believer,1,true,0.685,google/gemini-3-flash-preview,short,unpolished,e-commerce_seller
+7556914dfd68__ac2e31516de8__run0__002,contested_social_science__93,contested_social_science,believer,2,true,0.82,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,restaurant_owner
+7556914dfd68__4cdc636ad0e2__run0__004,contested_social_science__93,contested_social_science,believer,3,true,0.81,google/gemini-3-flash-preview,medium,casual,startup_founder
+7556914dfd68__ac2e31516de8__run0__009,contested_social_science__93,contested_social_science,believer,4,true,0.815,openai/gpt-5.4-mini-2026-03-17,short,casual,small_business_owner
+7556914dfd68__4cdc636ad0e2__run0__012,contested_social_science__93,contested_social_science,neutral,1,true,0.5,google/gemini-3-flash-preview,short,casual,grad_student
+7556914dfd68__ac2e31516de8__run0__006,contested_social_science__93,contested_social_science,neutral,2,true,0.625,openai/gpt-5.4-mini-2026-03-17,medium,casual,travel_agent
+7556914dfd68__4cdc636ad0e2__run0__003,contested_social_science__93,contested_social_science,neutral,3,false,0.275,google/gemini-3-flash-preview,medium,unpolished,friend
+7556914dfd68__ac2e31516de8__run0__014,contested_social_science__93,contested_social_science,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,short,unpolished,startup_founder
+7556914dfd68__4cdc636ad0e2__run0__000,contested_social_science__93,contested_social_science,skeptic,1,true,0.125,google/gemini-3-flash-preview,short,unpolished,friend
+7556914dfd68__ac2e31516de8__run0__000,contested_social_science__93,contested_social_science,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,casual,online_shopper
+7556914dfd68__4cdc636ad0e2__run0__011,contested_social_science__93,contested_social_science,skeptic,3,true,0.15,google/gemini-3-flash-preview,medium,unpolished,employee
+7556914dfd68__ac2e31516de8__run0__010,contested_social_science__93,contested_social_science,skeptic,4,true,0.225,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,investor
+78c5f1e70e14__4cdc636ad0e2__run0__003,contested_social_science__95,contested_social_science,believer,1,true,0.935,google/gemini-3-flash-preview,medium,casual,startup founder
+78c5f1e70e14__ac2e31516de8__run0__007,contested_social_science__95,contested_social_science,believer,2,true,0.75,openai/gpt-5.4-mini-2026-03-17,long,casual,public_health_officer
+78c5f1e70e14__4cdc636ad0e2__run0__006,contested_social_science__95,contested_social_science,believer,3,true,0.735,google/gemini-3-flash-preview,medium,unpolished,commuter advocate
+78c5f1e70e14__ac2e31516de8__run0__005,contested_social_science__95,contested_social_science,believer,4,true,0.815,openai/gpt-5.4-mini-2026-03-17,short,unpolished,insurance_underwriter
+78c5f1e70e14__4cdc636ad0e2__run0__002,contested_social_science__95,contested_social_science,neutral,1,true,0.475,google/gemini-3-flash-preview,long,casual,city planner
+78c5f1e70e14__ac2e31516de8__run0__009,contested_social_science__95,contested_social_science,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,long,formal,grant_reviewer
+78c5f1e70e14__4cdc636ad0e2__run0__004,contested_social_science__95,contested_social_science,neutral,3,false,0.32499999999999996,google/gemini-3-flash-preview,short,unpolished,teacher
+78c5f1e70e14__ac2e31516de8__run0__003,contested_social_science__95,contested_social_science,neutral,4,false,0.56,openai/gpt-5.4-mini-2026-03-17,short,casual,product_manager
+78c5f1e70e14__4cdc636ad0e2__run0__008,contested_social_science__95,contested_social_science,skeptic,1,true,0.225,google/gemini-3-flash-preview,medium,casual,health coach
+78c5f1e70e14__ac2e31516de8__run0__008,contested_social_science__95,contested_social_science,skeptic,2,true,0.16499999999999998,openai/gpt-5.4-mini-2026-03-17,short,unpolished,small_business_owner
+78c5f1e70e14__4cdc636ad0e2__run0__011,contested_social_science__95,contested_social_science,skeptic,3,true,0.125,google/gemini-3-flash-preview,short,unpolished,small business owner
+78c5f1e70e14__ac2e31516de8__run0__004,contested_social_science__95,contested_social_science,skeptic,4,true,0.19,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist
+6ce49be66aef__4cdc636ad0e2__run0__013,frontier_natural_science__17,frontier_natural_science,believer,1,true,0.625,google/gemini-3-flash-preview,short,casual,documentary_filmmaker
+6ce49be66aef__ac2e31516de8__run0__011,frontier_natural_science__17,frontier_natural_science,believer,2,true,0.75,openai/gpt-5.4-mini-2026-03-17,short,casual,teacher
+6ce49be66aef__4cdc636ad0e2__run0__004,frontier_natural_science__17,frontier_natural_science,believer,3,true,0.735,google/gemini-3-flash-preview,short,unpolished,science_communicator
+6ce49be66aef__ac2e31516de8__run0__003,frontier_natural_science__17,frontier_natural_science,believer,4,true,0.875,openai/gpt-5.4-mini-2026-03-17,long,formal,lab_pi
+6ce49be66aef__4cdc636ad0e2__run0__015,frontier_natural_science__17,frontier_natural_science,neutral,1,true,0.475,google/gemini-3-flash-preview,long,formal,lab_director
+6ce49be66aef__ac2e31516de8__run0__010,frontier_natural_science__17,frontier_natural_science,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,medium,casual,collaboration_member
+6ce49be66aef__4cdc636ad0e2__run0__006,frontier_natural_science__17,frontier_natural_science,neutral,3,false,0.375,google/gemini-3-flash-preview,short,unpolished,student
+6ce49be66aef__ac2e31516de8__run0__004,frontier_natural_science__17,frontier_natural_science,neutral,4,false,0.485,openai/gpt-5.4-mini-2026-03-17,short,casual,conference_organizer
+6ce49be66aef__4cdc636ad0e2__run0__008,frontier_natural_science__17,frontier_natural_science,skeptic,1,true,0.3,google/gemini-3-flash-preview,short,formal,professor
+6ce49be66aef__ac2e31516de8__run0__012,frontier_natural_science__17,frontier_natural_science,skeptic,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,lab_manager
+6ce49be66aef__4cdc636ad0e2__run0__002,frontier_natural_science__17,frontier_natural_science,skeptic,3,true,0.15,google/gemini-3-flash-preview,medium,unpolished,physics_enthusiast
+6ce49be66aef__ac2e31516de8__run0__005,frontier_natural_science__17,frontier_natural_science,skeptic,4,true,0.3,openai/gpt-5.4-mini-2026-03-17,long,formal,grant_reviewer
+0fe40c270704__4cdc636ad0e2__run0__002,frontier_natural_science__27,frontier_natural_science,believer,1,true,0.9099999999999999,google/gemini-3-flash-preview,medium,casual,grad student
+0fe40c270704__ac2e31516de8__run0__011,frontier_natural_science__27,frontier_natural_science,believer,2,true,0.9,openai/gpt-5.4-mini-2026-03-17,long,unpolished,bank_security_officer
+0fe40c270704__4cdc636ad0e2__run0__009,frontier_natural_science__27,frontier_natural_science,believer,3,true,0.77,google/gemini-3-flash-preview,short,unpolished,crypto founder
+0fe40c270704__ac2e31516de8__run0__015,frontier_natural_science__27,frontier_natural_science,believer,4,true,0.65,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,systems_engineer
+0fe40c270704__4cdc636ad0e2__run0__012,frontier_natural_science__27,frontier_natural_science,neutral,1,true,0.3,google/gemini-3-flash-preview,medium,unpolished,startup founder
+0fe40c270704__ac2e31516de8__run0__008,frontier_natural_science__27,frontier_natural_science,neutral,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,long,unpolished,startup_founder
+0fe40c270704__4cdc636ad0e2__run0__008,frontier_natural_science__27,frontier_natural_science,neutral,3,false,0.54,google/gemini-3-flash-preview,short,formal,grant reviewer
+0fe40c270704__ac2e31516de8__run0__010,frontier_natural_science__27,frontier_natural_science,neutral,4,false,0.425,openai/gpt-5.4-mini-2026-03-17,long,formal,academic_researcher
+0fe40c270704__4cdc636ad0e2__run0__007,frontier_natural_science__27,frontier_natural_science,skeptic,1,true,0.065,google/gemini-3-flash-preview,medium,unpolished,IT manager
+0fe40c270704__ac2e31516de8__run0__001,frontier_natural_science__27,frontier_natural_science,skeptic,2,true,0.45999999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+0fe40c270704__4cdc636ad0e2__run0__000,frontier_natural_science__27,frontier_natural_science,skeptic,3,true,0.15000000000000002,google/gemini-3-flash-preview,short,unpolished,family member
+0fe40c270704__ac2e31516de8__run0__002,frontier_natural_science__27,frontier_natural_science,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,startup_founder
+91c352d002b0__4cdc636ad0e2__run0__006,frontier_natural_science__35,frontier_natural_science,believer,1,true,0.735,google/gemini-3-flash-preview,short,casual,author
+91c352d002b0__ac2e31516de8__run0__012,frontier_natural_science__35,frontier_natural_science,believer,2,true,0.685,openai/gpt-5.4-mini-2026-03-17,short,casual,public_speaker
+91c352d002b0__4cdc636ad0e2__run0__009,frontier_natural_science__35,frontier_natural_science,believer,3,true,0.845,google/gemini-3-flash-preview,medium,formal,space agency consultant
+91c352d002b0__4cdc636ad0e2__run0__014,frontier_natural_science__35,frontier_natural_science,believer,4,true,0.8300000000000001,google/gemini-3-flash-preview,long,casual,astrobiologist
+91c352d002b0__4cdc636ad0e2__run0__015,frontier_natural_science__35,frontier_natural_science,neutral,1,true,0.35,google/gemini-3-flash-preview,medium,casual,parent
+91c352d002b0__ac2e31516de8__run0__007,frontier_natural_science__35,frontier_natural_science,neutral,2,true,0.575,openai/gpt-5.4-mini-2026-03-17,medium,formal,grant_reviewer
+91c352d002b0__4cdc636ad0e2__run0__008,frontier_natural_science__35,frontier_natural_science,neutral,3,false,0.685,google/gemini-3-flash-preview,short,unpolished,science blogger
+91c352d002b0__ac2e31516de8__run0__010,frontier_natural_science__35,frontier_natural_science,neutral,4,false,0.55,openai/gpt-5.4-mini-2026-03-17,long,unpolished,parent
+91c352d002b0__4cdc636ad0e2__run0__007,frontier_natural_science__35,frontier_natural_science,skeptic,1,true,0.175,google/gemini-3-flash-preview,long,unpolished,podcast host
+91c352d002b0__ac2e31516de8__run0__003,frontier_natural_science__35,frontier_natural_science,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,unpolished,grad_student
+91c352d002b0__4cdc636ad0e2__run0__012,frontier_natural_science__35,frontier_natural_science,skeptic,3,true,0.11,google/gemini-3-flash-preview,short,unpolished,hobbyist
+91c352d002b0__ac2e31516de8__run0__008,frontier_natural_science__35,frontier_natural_science,skeptic,4,true,0.475,openai/gpt-5.4-mini-2026-03-17,short,casual,podcaster
+3f932d84e0d9__4cdc636ad0e2__run0__012,frontier_natural_science__47,frontier_natural_science,believer,1,true,0.84,google/gemini-3-flash-preview,medium,unpolished,blogger
+3f932d84e0d9__ac2e31516de8__run0__014,frontier_natural_science__47,frontier_natural_science,believer,2,true,0.77,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+3f932d84e0d9__4cdc636ad0e2__run0__013,frontier_natural_science__47,frontier_natural_science,believer,3,true,0.275,google/gemini-3-flash-preview,medium,casual,parent
+3f932d84e0d9__ac2e31516de8__run0__008,frontier_natural_science__47,frontier_natural_science,believer,4,true,0.89,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,startup_founder
+3f932d84e0d9__4cdc636ad0e2__run0__006,frontier_natural_science__47,frontier_natural_science,neutral,1,true,0.3,google/gemini-3-flash-preview,short,unpolished,high_school_teacher
+3f932d84e0d9__ac2e31516de8__run0__012,frontier_natural_science__47,frontier_natural_science,neutral,2,true,0.505,openai/gpt-5.4-mini-2026-03-17,short,unpolished,grad_student
+3f932d84e0d9__4cdc636ad0e2__run0__003,frontier_natural_science__47,frontier_natural_science,neutral,3,false,0.32499999999999996,google/gemini-3-flash-preview,medium,unpolished,investor
+3f932d84e0d9__ac2e31516de8__run0__015,frontier_natural_science__47,frontier_natural_science,neutral,4,false,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,long,casual,investment_analyst
+3f932d84e0d9__4cdc636ad0e2__run0__015,frontier_natural_science__47,frontier_natural_science,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,unpolished,graduate_student
+3f932d84e0d9__ac2e31516de8__run0__003,frontier_natural_science__47,frontier_natural_science,skeptic,2,true,0.125,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
+3f932d84e0d9__4cdc636ad0e2__run0__000,frontier_natural_science__47,frontier_natural_science,skeptic,3,true,0.14500000000000002,google/gemini-3-flash-preview,long,formal,science_journalist
+3f932d84e0d9__ac2e31516de8__run0__000,frontier_natural_science__47,frontier_natural_science,skeptic,4,true,0.15,openai/gpt-5.4-mini-2026-03-17,long,casual,science_journalist
+add864af864a__4cdc636ad0e2__run0__000,frontier_natural_science__59,frontier_natural_science,believer,1,true,0.615,google/gemini-3-flash-preview,short,casual,grad_student
+add864af864a__ac2e31516de8__run0__005,frontier_natural_science__59,frontier_natural_science,believer,2,true,0.685,openai/gpt-5.4-mini-2026-03-17,medium,casual,biotech_founder
+add864af864a__4cdc636ad0e2__run0__013,frontier_natural_science__59,frontier_natural_science,believer,3,true,0.815,google/gemini-3-flash-preview,medium,unpolished,science_enthusiast
+add864af864a__4cdc636ad0e2__run0__003,frontier_natural_science__59,frontier_natural_science,believer,4,true,0.3,google/gemini-3-flash-preview,medium,casual,biotech_researcher
+add864af864a__4cdc636ad0e2__run0__010,frontier_natural_science__59,frontier_natural_science,neutral,1,true,0.25,google/gemini-3-flash-preview,long,unpolished,retail_investor
+add864af864a__ac2e31516de8__run0__009,frontier_natural_science__59,frontier_natural_science,neutral,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,medium,formal,grant_reviewer
+add864af864a__4cdc636ad0e2__run0__008,frontier_natural_science__59,frontier_natural_science,neutral,3,false,0.475,google/gemini-3-flash-preview,medium,casual,postdoc
+add864af864a__ac2e31516de8__run0__014,frontier_natural_science__59,frontier_natural_science,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,long,formal,professor
+add864af864a__4cdc636ad0e2__run0__004,frontier_natural_science__59,frontier_natural_science,skeptic,1,true,0.19,google/gemini-3-flash-preview,short,unpolished,student
+add864af864a__ac2e31516de8__run0__000,frontier_natural_science__59,frontier_natural_science,skeptic,2,true,0.19,openai/gpt-5.4-mini-2026-03-17,short,unpolished,grad_student
+add864af864a__4cdc636ad0e2__run0__007,frontier_natural_science__59,frontier_natural_science,skeptic,3,true,0.135,google/gemini-3-flash-preview,medium,formal,R&D_director
+add864af864a__ac2e31516de8__run0__004,frontier_natural_science__59,frontier_natural_science,skeptic,4,true,0.19,openai/gpt-5.4-mini-2026-03-17,long,formal,journal_editor
+cb8511cbd6d8__4cdc636ad0e2__run0__005,frontier_natural_science__67,frontier_natural_science,believer,1,true,0.2,google/gemini-3-flash-preview,short,unpolished,med_student
+cb8511cbd6d8__ac2e31516de8__run0__011,frontier_natural_science__67,frontier_natural_science,believer,2,true,0.8500000000000001,openai/gpt-5.4-mini-2026-03-17,medium,casual,teacher
+cb8511cbd6d8__4cdc636ad0e2__run0__010,frontier_natural_science__67,frontier_natural_science,believer,3,true,0.685,google/gemini-3-flash-preview,medium,formal,pharmaceutical_researcher
+cb8511cbd6d8__ac2e31516de8__run0__002,frontier_natural_science__67,frontier_natural_science,believer,4,true,0.735,openai/gpt-5.4-mini-2026-03-17,medium,casual,parent
+cb8511cbd6d8__4cdc636ad0e2__run0__004,frontier_natural_science__67,frontier_natural_science,neutral,1,true,0.74,google/gemini-3-flash-preview,medium,formal,grant_reviewer
+cb8511cbd6d8__ac2e31516de8__run0__015,frontier_natural_science__67,frontier_natural_science,neutral,2,true,0.625,openai/gpt-5.4-mini-2026-03-17,short,casual,family_member
+cb8511cbd6d8__4cdc636ad0e2__run0__000,frontier_natural_science__67,frontier_natural_science,neutral,3,false,0.45,google/gemini-3-flash-preview,medium,formal,PhD applicant
+cb8511cbd6d8__ac2e31516de8__run0__007,frontier_natural_science__67,frontier_natural_science,neutral,4,false,0.35,openai/gpt-5.4-mini-2026-03-17,long,unpolished,lab_manager
+cb8511cbd6d8__4cdc636ad0e2__run0__009,frontier_natural_science__67,frontier_natural_science,skeptic,1,true,0.135,google/gemini-3-flash-preview,short,unpolished,friend
+cb8511cbd6d8__ac2e31516de8__run0__003,frontier_natural_science__67,frontier_natural_science,skeptic,2,true,0.275,openai/gpt-5.4-mini-2026-03-17,short,casual,startup_founder
+cb8511cbd6d8__4cdc636ad0e2__run0__015,frontier_natural_science__67,frontier_natural_science,skeptic,3,true,0.11,google/gemini-3-flash-preview,short,unpolished,high_school_student
+cb8511cbd6d8__ac2e31516de8__run0__006,frontier_natural_science__67,frontier_natural_science,skeptic,4,true,0.275,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
+2f8058332fd1__4cdc636ad0e2__run0__000,frontier_natural_science__69,frontier_natural_science,believer,1,true,0.955,google/gemini-3-flash-preview,long,formal,grant_reviewer
+2f8058332fd1__ac2e31516de8__run0__012,frontier_natural_science__69,frontier_natural_science,believer,2,true,0.85,openai/gpt-5.4-mini-2026-03-17,short,casual,physician
+2f8058332fd1__4cdc636ad0e2__run0__010,frontier_natural_science__69,frontier_natural_science,believer,3,true,0.975,google/gemini-3-flash-preview,short,unpolished,pharma_product_manager
+2f8058332fd1__ac2e31516de8__run0__015,frontier_natural_science__69,frontier_natural_science,believer,4,true,0.79,openai/gpt-5.4-mini-2026-03-17,short,unpolished,graduate student
+2f8058332fd1__4cdc636ad0e2__run0__002,frontier_natural_science__69,frontier_natural_science,neutral,1,true,0.32499999999999996,google/gemini-3-flash-preview,long,casual,biotech_investor
+2f8058332fd1__ac2e31516de8__run0__005,frontier_natural_science__69,frontier_natural_science,neutral,2,true,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,short,casual,family member
+2f8058332fd1__4cdc636ad0e2__run0__005,frontier_natural_science__69,frontier_natural_science,neutral,3,false,0.5,google/gemini-3-flash-preview,long,casual,science_journalist
+2f8058332fd1__ac2e31516de8__run0__008,frontier_natural_science__69,frontier_natural_science,neutral,4,false,0.25,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+2f8058332fd1__4cdc636ad0e2__run0__013,frontier_natural_science__69,frontier_natural_science,skeptic,1,true,0.15000000000000002,google/gemini-3-flash-preview,medium,casual,author
+2f8058332fd1__ac2e31516de8__run0__000,frontier_natural_science__69,frontier_natural_science,skeptic,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,grad student
+2f8058332fd1__4cdc636ad0e2__run0__004,frontier_natural_science__69,frontier_natural_science,skeptic,3,true,0.15,google/gemini-3-flash-preview,medium,unpolished,grad_student
+2f8058332fd1__ac2e31516de8__run0__003,frontier_natural_science__69,frontier_natural_science,skeptic,4,true,0.275,openai/gpt-5.4-mini-2026-03-17,long,unpolished,family caregiver
+ce814ed3bd33__4cdc636ad0e2__run0__010,frontier_natural_science__83,frontier_natural_science,believer,1,true,0.89,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+ce814ed3bd33__ac2e31516de8__run0__012,frontier_natural_science__83,frontier_natural_science,believer,2,true,0.76,openai/gpt-5.4-mini-2026-03-17,short,casual,observatory_scientist
+ce814ed3bd33__4cdc636ad0e2__run0__008,frontier_natural_science__83,frontier_natural_science,believer,3,true,0.8,google/gemini-3-flash-preview,medium,unpolished,friend
+ce814ed3bd33__4cdc636ad0e2__run0__013,frontier_natural_science__83,frontier_natural_science,believer,4,true,0.685,google/gemini-3-flash-preview,short,formal,academic_researcher
+ce814ed3bd33__4cdc636ad0e2__run0__012,frontier_natural_science__83,frontier_natural_science,neutral,1,true,0.2,google/gemini-3-flash-preview,medium,unpolished,friend
+ce814ed3bd33__ac2e31516de8__run0__010,frontier_natural_science__83,frontier_natural_science,neutral,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,short,unpolished,conference_organizer
+ce814ed3bd33__4cdc636ad0e2__run0__004,frontier_natural_science__83,frontier_natural_science,neutral,3,false,0.3,google/gemini-3-flash-preview,short,unpolished,science_communicator
+ce814ed3bd33__ac2e31516de8__run0__005,frontier_natural_science__83,frontier_natural_science,neutral,4,false,0.3,openai/gpt-5.4-mini-2026-03-17,long,casual,astronomy_phd_student
+ce814ed3bd33__4cdc636ad0e2__run0__003,frontier_natural_science__83,frontier_natural_science,skeptic,1,true,0.235,google/gemini-3-flash-preview,long,casual,grad_student
+ce814ed3bd33__ac2e31516de8__run0__002,frontier_natural_science__83,frontier_natural_science,skeptic,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,science_journalist
+ce814ed3bd33__4cdc636ad0e2__run0__000,frontier_natural_science__83,frontier_natural_science,skeptic,3,true,0.1,google/gemini-3-flash-preview,short,unpolished,grad_student
+ce814ed3bd33__ac2e31516de8__run0__000,frontier_natural_science__83,frontier_natural_science,skeptic,4,true,0.11,openai/gpt-5.4-mini-2026-03-17,short,unpolished,astronomy_grad_student
+c298503853de__4cdc636ad0e2__run0__009,frontier_natural_science__89,frontier_natural_science,believer,1,true,0.685,google/gemini-3-flash-preview,short,unpolished,student
+c298503853de__ac2e31516de8__run0__008,frontier_natural_science__89,frontier_natural_science,believer,2,true,0.7,openai/gpt-5.4-mini-2026-03-17,medium,formal,PI
+c298503853de__4cdc636ad0e2__run0__003,frontier_natural_science__89,frontier_natural_science,believer,3,true,0.685,google/gemini-3-flash-preview,medium,casual,sci-fi author
+c298503853de__ac2e31516de8__run0__013,frontier_natural_science__89,frontier_natural_science,believer,4,true,0.835,openai/gpt-5.4-mini-2026-03-17,long,formal,research team lead
+c298503853de__4cdc636ad0e2__run0__008,frontier_natural_science__89,frontier_natural_science,neutral,1,true,0.64,google/gemini-3-flash-preview,medium,formal,conference organizer
+c298503853de__ac2e31516de8__run0__014,frontier_natural_science__89,frontier_natural_science,neutral,2,true,0.625,openai/gpt-5.4-mini-2026-03-17,short,casual,student newspaper editor
+c298503853de__4cdc636ad0e2__run0__015,frontier_natural_science__89,frontier_natural_science,neutral,3,false,0.55,google/gemini-3-flash-preview,long,unpolished,PhD applicant
+c298503853de__ac2e31516de8__run0__007,frontier_natural_science__89,frontier_natural_science,neutral,4,false,0.385,openai/gpt-5.4-mini-2026-03-17,long,unpolished,science editor
+c298503853de__4cdc636ad0e2__run0__013,frontier_natural_science__89,frontier_natural_science,skeptic,1,true,0.16499999999999998,google/gemini-3-flash-preview,medium,casual,science blogger
+c298503853de__ac2e31516de8__run0__000,frontier_natural_science__89,frontier_natural_science,skeptic,2,true,0.22499999999999998,openai/gpt-5.4-mini-2026-03-17,long,casual,science journalist
+c298503853de__4cdc636ad0e2__run0__007,frontier_natural_science__89,frontier_natural_science,skeptic,3,true,0.16499999999999998,google/gemini-3-flash-preview,long,unpolished,amateur astronomer
+c298503853de__4cdc636ad0e2__run0__010,frontier_natural_science__89,frontier_natural_science,skeptic,4,true,0.2,google/gemini-3-flash-preview,long,casual,museum curator
+e8f615eda196__4cdc636ad0e2__run0__004,frontier_natural_science__99,frontier_natural_science,believer,1,true,0.7,google/gemini-3-flash-preview,long,unpolished,parent
+e8f615eda196__ac2e31516de8__run0__014,frontier_natural_science__99,frontier_natural_science,believer,2,true,0.83,openai/gpt-5.4-mini-2026-03-17,long,formal,startup_founder
+e8f615eda196__4cdc636ad0e2__run0__001,frontier_natural_science__99,frontier_natural_science,believer,3,true,0.5,google/gemini-3-flash-preview,medium,casual,grad_student
+e8f615eda196__ac2e31516de8__run0__011,frontier_natural_science__99,frontier_natural_science,believer,4,true,0.79,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
+e8f615eda196__4cdc636ad0e2__run0__011,frontier_natural_science__99,frontier_natural_science,neutral,1,true,0.225,google/gemini-3-flash-preview,short,unpolished,friend
+e8f615eda196__ac2e31516de8__run0__005,frontier_natural_science__99,frontier_natural_science,neutral,2,true,0.475,openai/gpt-5.4-mini-2026-03-17,long,formal,policy_advisor
+e8f615eda196__4cdc636ad0e2__run0__005,frontier_natural_science__99,frontier_natural_science,neutral,3,false,0.55,google/gemini-3-flash-preview,medium,casual,science_reporter
+e8f615eda196__ac2e31516de8__run0__006,frontier_natural_science__99,frontier_natural_science,neutral,4,false,0.435,openai/gpt-5.4-mini-2026-03-17,short,casual,genetic_counselor
+e8f615eda196__4cdc636ad0e2__run0__013,frontier_natural_science__99,frontier_natural_science,skeptic,1,true,0.065,google/gemini-3-flash-preview,long,unpolished,relative
+e8f615eda196__ac2e31516de8__run0__003,frontier_natural_science__99,frontier_natural_science,skeptic,2,true,0.19,openai/gpt-5.4-mini-2026-03-17,medium,formal,investor
+e8f615eda196__4cdc636ad0e2__run0__006,frontier_natural_science__99,frontier_natural_science,skeptic,3,true,0.2,google/gemini-3-flash-preview,short,casual,university_dept_chair
+e8f615eda196__ac2e31516de8__run0__002,frontier_natural_science__99,frontier_natural_science,skeptic,4,true,0.225,openai/gpt-5.4-mini-2026-03-17,short,unpolished,parent
+b001028f2b9d__4cdc636ad0e2__run0__010,historical_facts__1,historical_facts,believer,1,true,0.95,google/gemini-3-flash-preview,short,casual,podcast host
+b001028f2b9d__ac2e31516de8__run0__014,historical_facts__1,historical_facts,believer,2,true,0.8,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,museum_educator
+b001028f2b9d__4cdc636ad0e2__run0__012,historical_facts__1,historical_facts,believer,3,true,0.765,google/gemini-3-flash-preview,long,unpolished,parent
+b001028f2b9d__ac2e31516de8__run0__012,historical_facts__1,historical_facts,believer,4,true,0.79,openai/gpt-5.4-mini-2026-03-17,short,casual,tour_guide
+b001028f2b9d__4cdc636ad0e2__run0__001,historical_facts__1,historical_facts,neutral,1,true,0.4,google/gemini-3-flash-preview,long,formal,grad student
+b001028f2b9d__ac2e31516de8__run0__006,historical_facts__1,historical_facts,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,medium,casual,documentary_filmmaker
+b001028f2b9d__4cdc636ad0e2__run0__011,historical_facts__1,historical_facts,neutral,3,false,0.525,google/gemini-3-flash-preview,long,formal,game developer
+b001028f2b9d__ac2e31516de8__run0__009,historical_facts__1,historical_facts,neutral,4,false,0.2,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,parent
+b001028f2b9d__4cdc636ad0e2__run0__007,historical_facts__1,historical_facts,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,unpolished,friend
+b001028f2b9d__ac2e31516de8__run0__004,historical_facts__1,historical_facts,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,unpolished,podcast_host
+b001028f2b9d__4cdc636ad0e2__run0__000,historical_facts__1,historical_facts,skeptic,3,true,0.24,google/gemini-3-flash-preview,medium,casual,tourist
+b001028f2b9d__ac2e31516de8__run0__002,historical_facts__1,historical_facts,skeptic,4,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+616c1d5a1498__4cdc636ad0e2__run0__014,historical_facts__19,historical_facts,believer,1,true,0.625,google/gemini-3-flash-preview,short,casual,tourist
+616c1d5a1498__ac2e31516de8__run0__012,historical_facts__19,historical_facts,believer,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,medium,casual,policy advisor/staffer
+616c1d5a1498__4cdc636ad0e2__run0__011,historical_facts__19,historical_facts,believer,3,true,0.45,google/gemini-3-flash-preview,long,unpolished,small_business_owner
+616c1d5a1498__4cdc636ad0e2__run0__005,historical_facts__19,historical_facts,believer,4,true,0.825,google/gemini-3-flash-preview,short,casual,journalist
+616c1d5a1498__4cdc636ad0e2__run0__002,historical_facts__19,historical_facts,neutral,1,true,0.425,google/gemini-3-flash-preview,long,casual,real_estate_developer
+616c1d5a1498__ac2e31516de8__run0__007,historical_facts__19,historical_facts,neutral,2,true,0.275,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist/editor
+616c1d5a1498__4cdc636ad0e2__run0__015,historical_facts__19,historical_facts,neutral,3,false,0.42500000000000004,google/gemini-3-flash-preview,medium,formal,grant_reviewer
+616c1d5a1498__ac2e31516de8__run0__006,historical_facts__19,historical_facts,neutral,4,false,0.4,openai/gpt-5.4-mini-2026-03-17,medium,casual,documentary_filmmaker
+616c1d5a1498__4cdc636ad0e2__run0__013,historical_facts__19,historical_facts,skeptic,1,true,0.09,google/gemini-3-flash-preview,medium,unpolished,podcaster
+616c1d5a1498__ac2e31516de8__run0__002,historical_facts__19,historical_facts,skeptic,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend/family member
+616c1d5a1498__4cdc636ad0e2__run0__007,historical_facts__19,historical_facts,skeptic,3,true,0.15,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+616c1d5a1498__ac2e31516de8__run0__000,historical_facts__19,historical_facts,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist/editor
+b2deb2e33e32__4cdc636ad0e2__run0__012,historical_facts__25,historical_facts,believer,1,true,0.32499999999999996,google/gemini-3-flash-preview,medium,formal,grant_reviewer
+b2deb2e33e32__ac2e31516de8__run0__008,historical_facts__25,historical_facts,believer,2,true,0.625,openai/gpt-5.4-mini-2026-03-17,short,casual,debate_student
+b2deb2e33e32__4cdc636ad0e2__run0__009,historical_facts__25,historical_facts,believer,3,true,0.875,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+b2deb2e33e32__ac2e31516de8__run0__014,historical_facts__25,historical_facts,believer,4,true,0.78,openai/gpt-5.4-mini-2026-03-17,long,formal,academic_researcher
+b2deb2e33e32__4cdc636ad0e2__run0__008,historical_facts__25,historical_facts,neutral,1,true,0.42500000000000004,google/gemini-3-flash-preview,short,unpolished,wargamer
+b2deb2e33e32__ac2e31516de8__run0__010,historical_facts__25,historical_facts,neutral,2,true,0.7,openai/gpt-5.4-mini-2026-03-17,short,casual,high_school_student
+b2deb2e33e32__4cdc636ad0e2__run0__011,historical_facts__25,historical_facts,neutral,3,false,0.225,google/gemini-3-flash-preview,long,unpolished,history_buff
+b2deb2e33e32__ac2e31516de8__run0__004,historical_facts__25,historical_facts,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,medium,casual,university_student
+b2deb2e33e32__4cdc636ad0e2__run0__007,historical_facts__25,historical_facts,skeptic,1,true,0.3,google/gemini-3-flash-preview,medium,casual,teacher
+b2deb2e33e32__ac2e31516de8__run0__003,historical_facts__25,historical_facts,skeptic,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,short,unpolished,journalist
+b2deb2e33e32__4cdc636ad0e2__run0__004,historical_facts__25,historical_facts,skeptic,3,true,0.15,google/gemini-3-flash-preview,long,formal,academic_researcher
+b2deb2e33e32__ac2e31516de8__run0__012,historical_facts__25,historical_facts,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+308ca9f01003__4cdc636ad0e2__run0__001,historical_facts__3,historical_facts,believer,1,true,0.825,google/gemini-3-flash-preview,short,unpolished,student
+308ca9f01003__ac2e31516de8__run0__015,historical_facts__3,historical_facts,believer,2,true,0.79,openai/gpt-5.4-mini-2026-03-17,long,unpolished,academic_researcher
+308ca9f01003__4cdc636ad0e2__run0__010,historical_facts__3,historical_facts,believer,3,true,0.91,google/gemini-3-flash-preview,short,unpolished,amateur_historian
+308ca9f01003__ac2e31516de8__run0__012,historical_facts__3,historical_facts,believer,4,true,0.7849999999999999,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+308ca9f01003__4cdc636ad0e2__run0__009,historical_facts__3,historical_facts,neutral,1,true,0.375,google/gemini-3-flash-preview,medium,unpolished,journalist
+308ca9f01003__ac2e31516de8__run0__004,historical_facts__3,historical_facts,neutral,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,long,unpolished,grad_student
+308ca9f01003__4cdc636ad0e2__run0__003,historical_facts__3,historical_facts,neutral,3,false,0.5,google/gemini-3-flash-preview,medium,formal,grant_reviewer
+308ca9f01003__ac2e31516de8__run0__009,historical_facts__3,historical_facts,neutral,4,false,0.475,openai/gpt-5.4-mini-2026-03-17,short,casual,student
+308ca9f01003__4cdc636ad0e2__run0__008,historical_facts__3,historical_facts,skeptic,1,true,0.175,google/gemini-3-flash-preview,long,formal,academic_researcher
+308ca9f01003__ac2e31516de8__run0__010,historical_facts__3,historical_facts,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,formal,grant_reviewer
+308ca9f01003__4cdc636ad0e2__run0__013,historical_facts__3,historical_facts,skeptic,3,true,0.15,google/gemini-3-flash-preview,short,unpolished,podcast_listener
+308ca9f01003__ac2e31516de8__run0__006,historical_facts__3,historical_facts,skeptic,4,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,podcast_host
+34968c83897b__4cdc636ad0e2__run0__000,historical_facts__31,historical_facts,believer,1,true,0.95,google/gemini-3-flash-preview,short,unpolished,student
+34968c83897b__ac2e31516de8__run0__013,historical_facts__31,historical_facts,believer,2,true,0.765,openai/gpt-5.4-mini-2026-03-17,long,unpolished,podcast_producer
+34968c83897b__4cdc636ad0e2__run0__013,historical_facts__31,historical_facts,believer,3,true,0.7849999999999999,google/gemini-3-flash-preview,long,formal,policy_advisor
+34968c83897b__4cdc636ad0e2__run0__010,historical_facts__31,historical_facts,believer,4,true,0.625,google/gemini-3-flash-preview,short,casual,student
+34968c83897b__4cdc636ad0e2__run0__012,historical_facts__31,historical_facts,neutral,1,true,0.5,google/gemini-3-flash-preview,medium,unpolished,journalist
+34968c83897b__ac2e31516de8__run0__015,historical_facts__31,historical_facts,neutral,2,true,0.525,openai/gpt-5.4-mini-2026-03-17,long,formal,academic_reviewer
+34968c83897b__4cdc636ad0e2__run0__006,historical_facts__31,historical_facts,neutral,3,false,0.7050000000000001,google/gemini-3-flash-preview,medium,unpolished,conference_organizer
+34968c83897b__ac2e31516de8__run0__007,historical_facts__31,historical_facts,neutral,4,false,0.65,openai/gpt-5.4-mini-2026-03-17,long,casual,documentary_filmmaker
+34968c83897b__4cdc636ad0e2__run0__001,historical_facts__31,historical_facts,skeptic,1,true,0.175,google/gemini-3-flash-preview,long,casual,academic_researcher
+34968c83897b__ac2e31516de8__run0__000,historical_facts__31,historical_facts,skeptic,2,true,0.225,openai/gpt-5.4-mini-2026-03-17,short,casual,high_school_teacher
+34968c83897b__4cdc636ad0e2__run0__008,historical_facts__31,historical_facts,skeptic,3,true,0.425,google/gemini-3-flash-preview,short,formal,academic_researcher
+34968c83897b__ac2e31516de8__run0__004,historical_facts__31,historical_facts,skeptic,4,true,0.15,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+5fd4006abbed__4cdc636ad0e2__run0__011,historical_facts__37,historical_facts,believer,1,true,0.88,google/gemini-3-flash-preview,short,unpolished,student
+5fd4006abbed__ac2e31516de8__run0__012,historical_facts__37,historical_facts,believer,2,true,0.85,openai/gpt-5.4-mini-2026-03-17,long,casual,documentary_producer
+5fd4006abbed__4cdc636ad0e2__run0__008,historical_facts__37,historical_facts,believer,3,true,0.965,google/gemini-3-flash-preview,long,formal,policy advisor
+5fd4006abbed__4cdc636ad0e2__run0__005,historical_facts__37,historical_facts,believer,4,true,0.875,google/gemini-3-flash-preview,medium,formal,grant reviewer
+5fd4006abbed__4cdc636ad0e2__run0__001,historical_facts__37,historical_facts,neutral,1,true,0.69,google/gemini-3-flash-preview,long,casual,documentary filmmaker
+5fd4006abbed__ac2e31516de8__run0__015,historical_facts__37,historical_facts,neutral,2,true,0.8049999999999999,openai/gpt-5.4-mini-2026-03-17,short,casual,teacher
+5fd4006abbed__4cdc636ad0e2__run0__004,historical_facts__37,historical_facts,neutral,3,false,0.8049999999999999,google/gemini-3-flash-preview,medium,casual,tour guide
+5fd4006abbed__ac2e31516de8__run0__006,historical_facts__37,historical_facts,neutral,4,false,0.675,openai/gpt-5.4-mini-2026-03-17,medium,casual,documentary_filmmaker
+5fd4006abbed__4cdc636ad0e2__run0__013,historical_facts__37,historical_facts,skeptic,1,true,0.225,google/gemini-3-flash-preview,long,formal,museum board member
+5fd4006abbed__ac2e31516de8__run0__000,historical_facts__37,historical_facts,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist_editor
+5fd4006abbed__4cdc636ad0e2__run0__010,historical_facts__37,historical_facts,skeptic,3,true,0.125,google/gemini-3-flash-preview,medium,casual,journalist
+5fd4006abbed__4cdc636ad0e2__run0__014,historical_facts__37,historical_facts,skeptic,4,true,0.175,google/gemini-3-flash-preview,medium,unpolished,lawyer
+518079633f1e__4cdc636ad0e2__run0__003,historical_facts__55,historical_facts,believer,1,true,0.925,google/gemini-3-flash-preview,long,formal,policy_advisor
+518079633f1e__ac2e31516de8__run0__015,historical_facts__55,historical_facts,believer,2,true,0.8,openai/gpt-5.4-mini-2026-03-17,long,casual,author
+518079633f1e__4cdc636ad0e2__run0__007,historical_facts__55,historical_facts,believer,3,true,0.45,google/gemini-3-flash-preview,medium,casual,author
+518079633f1e__ac2e31516de8__run0__005,historical_facts__55,historical_facts,believer,4,true,0.85,openai/gpt-5.4-mini-2026-03-17,long,casual,documentary filmmaker
+518079633f1e__4cdc636ad0e2__run0__015,historical_facts__55,historical_facts,neutral,1,true,0.5,google/gemini-3-flash-preview,short,unpolished,student
+518079633f1e__ac2e31516de8__run0__008,historical_facts__55,historical_facts,neutral,2,true,0.7,openai/gpt-5.4-mini-2026-03-17,short,casual,conference organizer
+518079633f1e__4cdc636ad0e2__run0__005,historical_facts__55,historical_facts,neutral,3,false,0.5,google/gemini-3-flash-preview,medium,formal,investor
+518079633f1e__ac2e31516de8__run0__006,historical_facts__55,historical_facts,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,grad student
+518079633f1e__4cdc636ad0e2__run0__001,historical_facts__55,historical_facts,skeptic,1,true,0.125,google/gemini-3-flash-preview,short,unpolished,student
+518079633f1e__ac2e31516de8__run0__013,historical_facts__55,historical_facts,skeptic,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,short,unpolished,history blogger
+518079633f1e__4cdc636ad0e2__run0__008,historical_facts__55,historical_facts,skeptic,3,true,0.15,google/gemini-3-flash-preview,long,unpolished,graduate_student
+518079633f1e__ac2e31516de8__run0__000,historical_facts__55,historical_facts,skeptic,4,true,0.225,openai/gpt-5.4-mini-2026-03-17,short,casual,academic researcher
+6fd9f48a5469__4cdc636ad0e2__run0__004,historical_facts__71,historical_facts,believer,1,true,0.65,google/gemini-3-flash-preview,short,unpolished,student
+6fd9f48a5469__ac2e31516de8__run0__011,historical_facts__71,historical_facts,believer,2,true,0.1,openai/gpt-5.4-mini-2026-03-17,short,casual,friend
+6fd9f48a5469__4cdc636ad0e2__run0__011,historical_facts__71,historical_facts,believer,3,true,0.9199999999999999,google/gemini-3-flash-preview,medium,unpolished,grad student
+6fd9f48a5469__ac2e31516de8__run0__013,historical_facts__71,historical_facts,believer,4,true,0.8500000000000001,openai/gpt-5.4-mini-2026-03-17,short,unpolished,roommate
+6fd9f48a5469__4cdc636ad0e2__run0__012,historical_facts__71,historical_facts,neutral,1,true,0.375,google/gemini-3-flash-preview,long,formal,grant_reviewer
+6fd9f48a5469__ac2e31516de8__run0__010,historical_facts__71,historical_facts,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,long,unpolished,department_chair
+6fd9f48a5469__4cdc636ad0e2__run0__003,historical_facts__71,historical_facts,neutral,3,false,0.525,google/gemini-3-flash-preview,medium,formal,policy_advisor
+6fd9f48a5469__ac2e31516de8__run0__007,historical_facts__71,historical_facts,neutral,4,false,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,brother
+6fd9f48a5469__4cdc636ad0e2__run0__008,historical_facts__71,historical_facts,skeptic,1,true,0.125,google/gemini-3-flash-preview,medium,unpolished,investor
+6fd9f48a5469__ac2e31516de8__run0__000,historical_facts__71,historical_facts,skeptic,2,true,0.225,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+6fd9f48a5469__4cdc636ad0e2__run0__013,historical_facts__71,historical_facts,skeptic,3,true,0.1,google/gemini-3-flash-preview,short,unpolished,friend
+6fd9f48a5469__ac2e31516de8__run0__003,historical_facts__71,historical_facts,skeptic,4,true,0.16499999999999998,openai/gpt-5.4-mini-2026-03-17,short,casual,documentary_producer
+a886950a0130__4cdc636ad0e2__run0__014,historical_facts__91,historical_facts,believer,1,true,0.76,google/gemini-3-flash-preview,short,formal,librarian
+a886950a0130__ac2e31516de8__run0__012,historical_facts__91,historical_facts,believer,2,true,0.8049999999999999,openai/gpt-5.4-mini-2026-03-17,long,formal,academic_researcher
+a886950a0130__4cdc636ad0e2__run0__003,historical_facts__91,historical_facts,believer,3,true,0.905,google/gemini-3-flash-preview,medium,casual,tour guide
+a886950a0130__4cdc636ad0e2__run0__011,historical_facts__91,historical_facts,believer,4,true,0.6499999999999999,google/gemini-3-flash-preview,medium,unpolished,academic researcher
+a886950a0130__4cdc636ad0e2__run0__010,historical_facts__91,historical_facts,neutral,1,true,0.5,google/gemini-3-flash-preview,medium,casual,bible study leader
+a886950a0130__ac2e31516de8__run0__011,historical_facts__91,historical_facts,neutral,2,true,0.45,openai/gpt-5.4-mini-2026-03-17,short,casual,teacher
+a886950a0130__4cdc636ad0e2__run0__012,historical_facts__91,historical_facts,neutral,3,false,0.45,google/gemini-3-flash-preview,long,formal,public official
+a886950a0130__ac2e31516de8__run0__008,historical_facts__91,historical_facts,neutral,4,false,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,medium,casual,podcast_host
+a886950a0130__4cdc636ad0e2__run0__009,historical_facts__91,historical_facts,skeptic,1,true,0.275,google/gemini-3-flash-preview,short,unpolished,museum visitor
+a886950a0130__ac2e31516de8__run0__003,historical_facts__91,historical_facts,skeptic,2,true,0.385,openai/gpt-5.4-mini-2026-03-17,short,unpolished,tour_guide
+a886950a0130__4cdc636ad0e2__run0__007,historical_facts__91,historical_facts,skeptic,3,true,0.125,google/gemini-3-flash-preview,short,casual,podcast host
+a886950a0130__ac2e31516de8__run0__010,historical_facts__91,historical_facts,skeptic,4,true,0.3,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,local_business_owner
+e4707f2641a0__4cdc636ad0e2__run0__014,historical_facts__99,historical_facts,believer,1,true,0.74,google/gemini-3-flash-preview,short,unpolished,tour guide
+e4707f2641a0__ac2e31516de8__run0__011,historical_facts__99,historical_facts,believer,2,true,0.8,openai/gpt-5.4-mini-2026-03-17,long,unpolished,museum_board_member
+e4707f2641a0__ac2e31516de8__run0__013,historical_facts__99,historical_facts,believer,3,true,0.7150000000000001,openai/gpt-5.4-mini-2026-03-17,long,unpolished,art_dealer
+e4707f2641a0__ac2e31516de8__run0__015,historical_facts__99,historical_facts,believer,4,true,0.8,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+e4707f2641a0__4cdc636ad0e2__run0__004,historical_facts__99,historical_facts,neutral,1,true,0.275,google/gemini-3-flash-preview,short,casual,travel blogger
+e4707f2641a0__ac2e31516de8__run0__008,historical_facts__99,historical_facts,neutral,2,true,0.525,openai/gpt-5.4-mini-2026-03-17,short,casual,podcaster
+e4707f2641a0__4cdc636ad0e2__run0__007,historical_facts__99,historical_facts,neutral,3,false,0.25,google/gemini-3-flash-preview,short,unpolished,auction house intern
+e4707f2641a0__ac2e31516de8__run0__006,historical_facts__99,historical_facts,neutral,4,false,0.65,openai/gpt-5.4-mini-2026-03-17,short,casual,student
+e4707f2641a0__4cdc636ad0e2__run0__003,historical_facts__99,historical_facts,skeptic,1,true,0.11499999999999999,google/gemini-3-flash-preview,long,unpolished,documentary filmmaker
+e4707f2641a0__ac2e31516de8__run0__002,historical_facts__99,historical_facts,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,collector
+e4707f2641a0__4cdc636ad0e2__run0__000,historical_facts__99,historical_facts,skeptic,3,true,0.11,google/gemini-3-flash-preview,medium,formal,grad student
+e4707f2641a0__ac2e31516de8__run0__004,historical_facts__99,historical_facts,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,art_history_professor
+6dbde875dc28__4cdc636ad0e2__run0__005,nutrition_health__17,nutrition_health,believer,1,true,0.915,google/gemini-3-flash-preview,medium,casual,friend
+6dbde875dc28__ac2e31516de8__run0__015,nutrition_health__17,nutrition_health,believer,2,true,0.55,openai/gpt-5.4-mini-2026-03-17,medium,casual,parent
+6dbde875dc28__4cdc636ad0e2__run0__014,nutrition_health__17,nutrition_health,believer,3,true,0.925,google/gemini-3-flash-preview,medium,unpolished,sibling
+6dbde875dc28__ac2e31516de8__run0__009,nutrition_health__17,nutrition_health,believer,4,true,0.65,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,caregiver
+6dbde875dc28__4cdc636ad0e2__run0__008,nutrition_health__17,nutrition_health,neutral,1,true,0.35,google/gemini-3-flash-preview,short,unpolished,student
+6dbde875dc28__ac2e31516de8__run0__013,nutrition_health__17,nutrition_health,neutral,2,true,0.475,openai/gpt-5.4-mini-2026-03-17,short,casual,patient
+6dbde875dc28__4cdc636ad0e2__run0__012,nutrition_health__17,nutrition_health,neutral,3,false,0.225,google/gemini-3-flash-preview,medium,casual,parent
+6dbde875dc28__4cdc636ad0e2__run0__003,nutrition_health__17,nutrition_health,neutral,4,false,0.175,google/gemini-3-flash-preview,short,casual,consumer
+6dbde875dc28__4cdc636ad0e2__run0__013,nutrition_health__17,nutrition_health,skeptic,1,true,0.125,google/gemini-3-flash-preview,short,unpolished,casual_user
+6dbde875dc28__ac2e31516de8__run0__000,nutrition_health__17,nutrition_health,skeptic,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,long,unpolished,parent
+6dbde875dc28__4cdc636ad0e2__run0__004,nutrition_health__17,nutrition_health,skeptic,3,true,0.11499999999999999,google/gemini-3-flash-preview,long,casual,nutritionist
+6dbde875dc28__ac2e31516de8__run0__002,nutrition_health__17,nutrition_health,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,casual,coworker
+87d51a6ee950__4cdc636ad0e2__run0__013,nutrition_health__29,nutrition_health,believer,1,true,0.8200000000000001,google/gemini-3-flash-preview,long,casual,gift_planner
+87d51a6ee950__ac2e31516de8__run0__010,nutrition_health__29,nutrition_health,believer,2,true,0.4,openai/gpt-5.4-mini-2026-03-17,short,unpolished,adult_child_caregiver
+87d51a6ee950__4cdc636ad0e2__run0__005,nutrition_health__29,nutrition_health,believer,3,true,0.925,google/gemini-3-flash-preview,long,unpolished,grad_student
+87d51a6ee950__ac2e31516de8__run0__002,nutrition_health__29,nutrition_health,believer,4,true,0.65,openai/gpt-5.4-mini-2026-03-17,medium,casual,cafe_owner
+87d51a6ee950__4cdc636ad0e2__run0__001,nutrition_health__29,nutrition_health,neutral,1,true,0.275,google/gemini-3-flash-preview,short,unpolished,patient
+87d51a6ee950__ac2e31516de8__run0__007,nutrition_health__29,nutrition_health,neutral,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,long,formal,research_funder
+87d51a6ee950__4cdc636ad0e2__run0__015,nutrition_health__29,nutrition_health,neutral,3,false,0.4,google/gemini-3-flash-preview,medium,unpolished,patient
+87d51a6ee950__ac2e31516de8__run0__005,nutrition_health__29,nutrition_health,neutral,4,false,0.275,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+87d51a6ee950__4cdc636ad0e2__run0__003,nutrition_health__29,nutrition_health,skeptic,1,true,0.1,google/gemini-3-flash-preview,short,unpolished,family_member
+87d51a6ee950__ac2e31516de8__run0__015,nutrition_health__29,nutrition_health,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,casual,retail_manager
+87d51a6ee950__4cdc636ad0e2__run0__011,nutrition_health__29,nutrition_health,skeptic,3,true,0.11,google/gemini-3-flash-preview,medium,formal,insurance_underwriter
+87d51a6ee950__ac2e31516de8__run0__008,nutrition_health__29,nutrition_health,skeptic,4,true,0.25,openai/gpt-5.4-mini-2026-03-17,medium,casual,product_manager
+2030cd857bb5__4cdc636ad0e2__run0__013,nutrition_health__33,nutrition_health,believer,1,true,0.935,google/gemini-3-flash-preview,long,casual,life_extensionist
+2030cd857bb5__ac2e31516de8__run0__011,nutrition_health__33,nutrition_health,believer,2,true,0.6699999999999999,openai/gpt-5.4-mini-2026-03-17,short,casual,older adult
+2030cd857bb5__4cdc636ad0e2__run0__008,nutrition_health__33,nutrition_health,believer,3,true,0.815,google/gemini-3-flash-preview,short,unpolished,grandchild
+2030cd857bb5__ac2e31516de8__run0__012,nutrition_health__33,nutrition_health,believer,4,true,0.325,openai/gpt-5.4-mini-2026-03-17,long,unpolished,adult child
+2030cd857bb5__4cdc636ad0e2__run0__009,nutrition_health__33,nutrition_health,neutral,1,true,0.4,google/gemini-3-flash-preview,long,formal,NGO_director
+2030cd857bb5__ac2e31516de8__run0__010,nutrition_health__33,nutrition_health,neutral,2,true,0.275,openai/gpt-5.4-mini-2026-03-17,medium,casual,product manager
+2030cd857bb5__4cdc636ad0e2__run0__012,nutrition_health__33,nutrition_health,neutral,3,false,0.2,google/gemini-3-flash-preview,medium,unpolished,sales_manager
+2030cd857bb5__ac2e31516de8__run0__005,nutrition_health__33,nutrition_health,neutral,4,false,0.525,openai/gpt-5.4-mini-2026-03-17,short,casual,older adult
+2030cd857bb5__4cdc636ad0e2__run0__000,nutrition_health__33,nutrition_health,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,unpolished,friend
+2030cd857bb5__ac2e31516de8__run0__001,nutrition_health__33,nutrition_health,skeptic,2,true,0.125,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,adult child
+2030cd857bb5__4cdc636ad0e2__run0__011,nutrition_health__33,nutrition_health,skeptic,3,true,0.16499999999999998,google/gemini-3-flash-preview,medium,unpolished,consumer_advocate
+2030cd857bb5__ac2e31516de8__run0__004,nutrition_health__33,nutrition_health,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,unpolished,investor
+f801fdfd1838__4cdc636ad0e2__run0__013,nutrition_health__45,nutrition_health,believer,1,true,0.94,google/gemini-3-flash-preview,medium,formal,doctor
+f801fdfd1838__ac2e31516de8__run0__013,nutrition_health__45,nutrition_health,believer,2,true,0.8,openai/gpt-5.4-mini-2026-03-17,short,formal,primary_care_physician
+f801fdfd1838__4cdc636ad0e2__run0__004,nutrition_health__45,nutrition_health,believer,3,true,0.925,google/gemini-3-flash-preview,short,formal,policy advisor
+f801fdfd1838__ac2e31516de8__run0__008,nutrition_health__45,nutrition_health,believer,4,true,0.72,openai/gpt-5.4-mini-2026-03-17,medium,casual,pharmacist
+f801fdfd1838__4cdc636ad0e2__run0__003,nutrition_health__45,nutrition_health,neutral,1,true,0.575,google/gemini-3-flash-preview,long,casual,gym owner
+f801fdfd1838__ac2e31516de8__run0__003,nutrition_health__45,nutrition_health,neutral,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist
+f801fdfd1838__4cdc636ad0e2__run0__006,nutrition_health__45,nutrition_health,neutral,3,false,0.475,google/gemini-3-flash-preview,short,unpolished,friend
+f801fdfd1838__ac2e31516de8__run0__006,nutrition_health__45,nutrition_health,neutral,4,false,0.7150000000000001,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+f801fdfd1838__4cdc636ad0e2__run0__011,nutrition_health__45,nutrition_health,skeptic,1,true,0.16499999999999998,google/gemini-3-flash-preview,long,casual,fitness coach
+f801fdfd1838__ac2e31516de8__run0__000,nutrition_health__45,nutrition_health,skeptic,2,true,0.14500000000000002,openai/gpt-5.4-mini-2026-03-17,short,unpolished,patient
+f801fdfd1838__4cdc636ad0e2__run0__008,nutrition_health__45,nutrition_health,skeptic,3,true,0.16,google/gemini-3-flash-preview,short,unpolished,patient
+f801fdfd1838__ac2e31516de8__run0__010,nutrition_health__45,nutrition_health,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family_member
+8d23dc4a97b3__4cdc636ad0e2__run0__014,nutrition_health__51,nutrition_health,believer,1,true,0.925,google/gemini-3-flash-preview,medium,casual,health_coach
+8d23dc4a97b3__ac2e31516de8__run0__002,nutrition_health__51,nutrition_health,believer,2,true,0.845,openai/gpt-5.4-mini-2026-03-17,medium,casual,health_columnist
+8d23dc4a97b3__4cdc636ad0e2__run0__008,nutrition_health__51,nutrition_health,believer,3,true,0.765,google/gemini-3-flash-preview,short,unpolished,biohacker
+8d23dc4a97b3__ac2e31516de8__run0__005,nutrition_health__51,nutrition_health,believer,4,true,0.7,openai/gpt-5.4-mini-2026-03-17,medium,casual,dietitian
+8d23dc4a97b3__4cdc636ad0e2__run0__012,nutrition_health__51,nutrition_health,neutral,1,true,0.4,google/gemini-3-flash-preview,short,unpolished,medical_student
+8d23dc4a97b3__ac2e31516de8__run0__011,nutrition_health__51,nutrition_health,neutral,2,true,0.3,openai/gpt-5.4-mini-2026-03-17,short,unpolished,restaurant_owner
+8d23dc4a97b3__4cdc636ad0e2__run0__004,nutrition_health__51,nutrition_health,neutral,3,false,0.35,google/gemini-3-flash-preview,short,unpolished,fitness_coach
+8d23dc4a97b3__4cdc636ad0e2__run0__002,nutrition_health__51,nutrition_health,neutral,4,false,0.41000000000000003,google/gemini-3-flash-preview,long,casual,biohacker
+8d23dc4a97b3__4cdc636ad0e2__run0__013,nutrition_health__51,nutrition_health,skeptic,1,true,0.15000000000000002,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+8d23dc4a97b3__ac2e31516de8__run0__014,nutrition_health__51,nutrition_health,skeptic,2,true,0.1,openai/gpt-5.4-mini-2026-03-17,medium,casual,investor
+8d23dc4a97b3__4cdc636ad0e2__run0__000,nutrition_health__51,nutrition_health,skeptic,3,true,0.15,google/gemini-3-flash-preview,medium,casual,nutritionist
+8d23dc4a97b3__ac2e31516de8__run0__003,nutrition_health__51,nutrition_health,skeptic,4,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,personal_trainer
+fe9bd6624e5e__4cdc636ad0e2__run0__011,nutrition_health__69,nutrition_health,believer,1,true,0.635,google/gemini-3-flash-preview,short,casual,academic researcher
+fe9bd6624e5e__ac2e31516de8__run0__013,nutrition_health__69,nutrition_health,believer,2,true,0.735,openai/gpt-5.4-mini-2026-03-17,short,casual,market_research_manager
+fe9bd6624e5e__4cdc636ad0e2__run0__004,nutrition_health__69,nutrition_health,believer,3,true,0.79,google/gemini-3-flash-preview,long,casual,student
+fe9bd6624e5e__ac2e31516de8__run0__002,nutrition_health__69,nutrition_health,believer,4,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist
+fe9bd6624e5e__4cdc636ad0e2__run0__008,nutrition_health__69,nutrition_health,neutral,1,true,0.6,google/gemini-3-flash-preview,medium,formal,public official
+fe9bd6624e5e__ac2e31516de8__run0__009,nutrition_health__69,nutrition_health,neutral,2,true,0.625,openai/gpt-5.4-mini-2026-03-17,short,unpolished,small_business_owner
+fe9bd6624e5e__4cdc636ad0e2__run0__005,nutrition_health__69,nutrition_health,neutral,3,false,0.505,google/gemini-3-flash-preview,short,casual,investor
+fe9bd6624e5e__ac2e31516de8__run0__012,nutrition_health__69,nutrition_health,neutral,4,false,0.32,openai/gpt-5.4-mini-2026-03-17,long,unpolished,city_council_aide
+fe9bd6624e5e__4cdc636ad0e2__run0__001,nutrition_health__69,nutrition_health,skeptic,1,true,0.11,google/gemini-3-flash-preview,medium,casual,local business owner
+fe9bd6624e5e__ac2e31516de8__run0__010,nutrition_health__69,nutrition_health,skeptic,2,true,0.33999999999999997,openai/gpt-5.4-mini-2026-03-17,long,casual,podcast_host
+fe9bd6624e5e__4cdc636ad0e2__run0__009,nutrition_health__69,nutrition_health,skeptic,3,true,0.14,google/gemini-3-flash-preview,short,unpolished,friend
+fe9bd6624e5e__ac2e31516de8__run0__004,nutrition_health__69,nutrition_health,skeptic,4,true,0.16,openai/gpt-5.4-mini-2026-03-17,medium,casual,restaurant_owner
+95349263cb2b__4cdc636ad0e2__run0__015,nutrition_health__79,nutrition_health,believer,1,true,0.6599999999999999,google/gemini-3-flash-preview,long,formal,grant reviewer
+95349263cb2b__ac2e31516de8__run0__007,nutrition_health__79,nutrition_health,believer,2,true,0.47500000000000003,openai/gpt-5.4-mini-2026-03-17,medium,casual,small_business_owner
+95349263cb2b__4cdc636ad0e2__run0__007,nutrition_health__79,nutrition_health,believer,3,true,0.86,google/gemini-3-flash-preview,medium,formal,academic researcher
+95349263cb2b__ac2e31516de8__run0__013,nutrition_health__79,nutrition_health,believer,4,true,0.65,openai/gpt-5.4-mini-2026-03-17,short,casual,parent
+95349263cb2b__4cdc636ad0e2__run0__006,nutrition_health__79,nutrition_health,neutral,1,true,0.32499999999999996,google/gemini-3-flash-preview,long,unpolished,startup founder
+95349263cb2b__ac2e31516de8__run0__014,nutrition_health__79,nutrition_health,neutral,2,true,0.24000000000000002,openai/gpt-5.4-mini-2026-03-17,long,unpolished,podcaster
+95349263cb2b__4cdc636ad0e2__run0__009,nutrition_health__79,nutrition_health,neutral,3,false,0.35,google/gemini-3-flash-preview,medium,formal,insurance underwriter
+95349263cb2b__ac2e31516de8__run0__004,nutrition_health__79,nutrition_health,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,long,unpolished,dairy_farmer
+95349263cb2b__4cdc636ad0e2__run0__005,nutrition_health__79,nutrition_health,skeptic,1,true,0.21500000000000002,google/gemini-3-flash-preview,medium,casual,journalist
+95349263cb2b__ac2e31516de8__run0__003,nutrition_health__79,nutrition_health,skeptic,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+95349263cb2b__4cdc636ad0e2__run0__000,nutrition_health__79,nutrition_health,skeptic,3,true,0.11,google/gemini-3-flash-preview,short,unpolished,parent
+95349263cb2b__ac2e31516de8__run0__005,nutrition_health__79,nutrition_health,skeptic,4,true,0.3,openai/gpt-5.4-mini-2026-03-17,short,casual,pediatrician
+0fd093b35861__4cdc636ad0e2__run0__000,nutrition_health__85,nutrition_health,believer,1,true,0.845,google/gemini-3-flash-preview,long,formal,triathlon_coach
+0fd093b35861__ac2e31516de8__run0__008,nutrition_health__85,nutrition_health,believer,2,true,0.725,openai/gpt-5.4-mini-2026-03-17,long,unpolished,endurance_athlete
+0fd093b35861__ac2e31516de8__run0__005,nutrition_health__85,nutrition_health,believer,3,true,0.5349999999999999,openai/gpt-5.4-mini-2026-03-17,short,casual,recreational_cyclist
+0fd093b35861__ac2e31516de8__run0__014,nutrition_health__85,nutrition_health,believer,4,true,0.83,openai/gpt-5.4-mini-2026-03-17,medium,casual,athlete
+0fd093b35861__4cdc636ad0e2__run0__012,nutrition_health__85,nutrition_health,neutral,1,true,0.325,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+0fd093b35861__ac2e31516de8__run0__003,nutrition_health__85,nutrition_health,neutral,2,true,0.575,openai/gpt-5.4-mini-2026-03-17,short,casual,race_organizer
+0fd093b35861__4cdc636ad0e2__run0__009,nutrition_health__85,nutrition_health,neutral,3,false,0.8,google/gemini-3-flash-preview,short,unpolished,high_school_coach
+0fd093b35861__ac2e31516de8__run0__009,nutrition_health__85,nutrition_health,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,medium,formal,race_medical_director
+0fd093b35861__4cdc636ad0e2__run0__008,nutrition_health__85,nutrition_health,skeptic,1,true,0.11,google/gemini-3-flash-preview,long,formal,grant_reviewer
+0fd093b35861__ac2e31516de8__run0__007,nutrition_health__85,nutrition_health,skeptic,2,true,0.33499999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+0fd093b35861__4cdc636ad0e2__run0__011,nutrition_health__85,nutrition_health,skeptic,3,true,0.225,google/gemini-3-flash-preview,medium,unpolished,pro_athlete
+0fd093b35861__ac2e31516de8__run0__000,nutrition_health__85,nutrition_health,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,recreational_runner
+255f9573f9b0__4cdc636ad0e2__run0__009,nutrition_health__9,nutrition_health,believer,1,true,0.8300000000000001,google/gemini-3-flash-preview,medium,formal,doctor
+255f9573f9b0__ac2e31516de8__run0__008,nutrition_health__9,nutrition_health,believer,2,true,0.59,openai/gpt-5.4-mini-2026-03-17,short,casual,caregiver
+255f9573f9b0__4cdc636ad0e2__run0__010,nutrition_health__9,nutrition_health,believer,3,true,0.925,google/gemini-3-flash-preview,medium,casual,patient
+255f9573f9b0__ac2e31516de8__run0__011,nutrition_health__9,nutrition_health,believer,4,true,0.4,openai/gpt-5.4-mini-2026-03-17,medium,casual,conference_organizer
+255f9573f9b0__4cdc636ad0e2__run0__001,nutrition_health__9,nutrition_health,neutral,1,true,0.475,google/gemini-3-flash-preview,long,casual,health_journalist
+255f9573f9b0__ac2e31516de8__run0__015,nutrition_health__9,nutrition_health,neutral,2,true,0.45,openai/gpt-5.4-mini-2026-03-17,medium,casual,medical_editor
+255f9573f9b0__4cdc636ad0e2__run0__012,nutrition_health__9,nutrition_health,neutral,3,false,0.565,google/gemini-3-flash-preview,medium,unpolished,athlete
+255f9573f9b0__ac2e31516de8__run0__002,nutrition_health__9,nutrition_health,neutral,4,false,0.425,openai/gpt-5.4-mini-2026-03-17,medium,casual,health_journalist
+255f9573f9b0__4cdc636ad0e2__run0__000,nutrition_health__9,nutrition_health,skeptic,1,true,0.3,google/gemini-3-flash-preview,short,unpolished,patient
+255f9573f9b0__ac2e31516de8__run0__009,nutrition_health__9,nutrition_health,skeptic,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,long,unpolished,investor
+255f9573f9b0__4cdc636ad0e2__run0__007,nutrition_health__9,nutrition_health,skeptic,3,true,0.185,google/gemini-3-flash-preview,long,formal,insurance_underwriter
+255f9573f9b0__ac2e31516de8__run0__000,nutrition_health__9,nutrition_health,skeptic,4,true,0.185,openai/gpt-5.4-mini-2026-03-17,short,casual,patient
+c702e66d8802__4cdc636ad0e2__run0__008,nutrition_health__95,nutrition_health,believer,1,true,0.6000000000000001,google/gemini-3-flash-preview,short,casual,Life Insurance Applicant
+c702e66d8802__ac2e31516de8__run0__005,nutrition_health__95,nutrition_health,believer,2,true,0.65,openai/gpt-5.4-mini-2026-03-17,short,casual,wellness_coach
+c702e66d8802__4cdc636ad0e2__run0__004,nutrition_health__95,nutrition_health,believer,3,true,0.91,google/gemini-3-flash-preview,medium,unpolished,Spouse
+c702e66d8802__ac2e31516de8__run0__011,nutrition_health__95,nutrition_health,believer,4,true,0.525,openai/gpt-5.4-mini-2026-03-17,short,casual,physician
+c702e66d8802__4cdc636ad0e2__run0__015,nutrition_health__95,nutrition_health,neutral,1,true,0.3,google/gemini-3-flash-preview,long,casual,Gym Member
+c702e66d8802__ac2e31516de8__run0__006,nutrition_health__95,nutrition_health,neutral,2,true,0.275,openai/gpt-5.4-mini-2026-03-17,long,formal,investor
+c702e66d8802__4cdc636ad0e2__run0__002,nutrition_health__95,nutrition_health,neutral,3,false,0.525,google/gemini-3-flash-preview,medium,casual,Department Head
+c702e66d8802__ac2e31516de8__run0__013,nutrition_health__95,nutrition_health,neutral,4,false,0.675,openai/gpt-5.4-mini-2026-03-17,short,casual,editor
+c702e66d8802__4cdc636ad0e2__run0__007,nutrition_health__95,nutrition_health,skeptic,1,true,0.09,google/gemini-3-flash-preview,long,unpolished,Skeptical Patient
+c702e66d8802__ac2e31516de8__run0__009,nutrition_health__95,nutrition_health,skeptic,2,true,0.3,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+c702e66d8802__4cdc636ad0e2__run0__014,nutrition_health__95,nutrition_health,skeptic,3,true,0.175,google/gemini-3-flash-preview,medium,formal,Policy Advisor
+c702e66d8802__ac2e31516de8__run0__003,nutrition_health__95,nutrition_health,skeptic,4,true,0.45,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist
+69f2b0172465__4cdc636ad0e2__run0__014,paranormal_claims__13,paranormal_claims,believer,1,true,0.665,google/gemini-3-flash-preview,medium,casual,job_candidate
+69f2b0172465__ac2e31516de8__run0__013,paranormal_claims__13,paranormal_claims,believer,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,researcher
+69f2b0172465__4cdc636ad0e2__run0__008,paranormal_claims__13,paranormal_claims,believer,3,true,0.8,google/gemini-3-flash-preview,short,casual,wellness_coach
+69f2b0172465__4cdc636ad0e2__run0__005,paranormal_claims__13,paranormal_claims,believer,4,true,0.9,google/gemini-3-flash-preview,short,casual,author
+69f2b0172465__4cdc636ad0e2__run0__007,paranormal_claims__13,paranormal_claims,neutral,1,true,0.25,google/gemini-3-flash-preview,long,casual,documentary_filmmaker
+69f2b0172465__ac2e31516de8__run0__005,paranormal_claims__13,paranormal_claims,neutral,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,medium,casual,conference organizer
+69f2b0172465__4cdc636ad0e2__run0__013,paranormal_claims__13,paranormal_claims,neutral,3,false,0.225,google/gemini-3-flash-preview,long,unpolished,parent
+69f2b0172465__ac2e31516de8__run0__010,paranormal_claims__13,paranormal_claims,neutral,4,false,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+69f2b0172465__4cdc636ad0e2__run0__006,paranormal_claims__13,paranormal_claims,skeptic,1,true,0.11,google/gemini-3-flash-preview,medium,unpolished,physics_student
+69f2b0172465__ac2e31516de8__run0__000,paranormal_claims__13,paranormal_claims,skeptic,2,true,0.11,openai/gpt-5.4-mini-2026-03-17,long,unpolished,science journalist
+69f2b0172465__4cdc636ad0e2__run0__003,paranormal_claims__13,paranormal_claims,skeptic,3,true,0.065,google/gemini-3-flash-preview,short,unpolished,friend
+69f2b0172465__4cdc636ad0e2__run0__009,paranormal_claims__13,paranormal_claims,skeptic,4,true,0.135,google/gemini-3-flash-preview,medium,formal,investor
+4b172bc94bdf__4cdc636ad0e2__run0__012,paranormal_claims__15,paranormal_claims,believer,1,true,0.915,google/gemini-3-flash-preview,short,unpolished,academic_researcher
+4b172bc94bdf__ac2e31516de8__run0__011,paranormal_claims__15,paranormal_claims,believer,2,true,0.685,openai/gpt-5.4-mini-2026-03-17,medium,casual,podcast host
+4b172bc94bdf__4cdc636ad0e2__run0__015,paranormal_claims__15,paranormal_claims,believer,3,true,0.765,google/gemini-3-flash-preview,long,casual,museum_curator
+4b172bc94bdf__ac2e31516de8__run0__015,paranormal_claims__15,paranormal_claims,believer,4,true,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,medium,formal,science journalist
+4b172bc94bdf__4cdc636ad0e2__run0__006,paranormal_claims__15,paranormal_claims,neutral,1,true,0.42500000000000004,google/gemini-3-flash-preview,long,formal,grant_reviewer
+4b172bc94bdf__ac2e31516de8__run0__007,paranormal_claims__15,paranormal_claims,neutral,2,true,0.1,openai/gpt-5.4-mini-2026-03-17,short,casual,teacher
+4b172bc94bdf__4cdc636ad0e2__run0__005,paranormal_claims__15,paranormal_claims,neutral,3,false,0.45,google/gemini-3-flash-preview,short,casual,grad_student
+4b172bc94bdf__ac2e31516de8__run0__010,paranormal_claims__15,paranormal_claims,neutral,4,false,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,research director
+4b172bc94bdf__4cdc636ad0e2__run0__004,paranormal_claims__15,paranormal_claims,skeptic,1,true,0.08,google/gemini-3-flash-preview,medium,unpolished,local_business_owner
+4b172bc94bdf__ac2e31516de8__run0__004,paranormal_claims__15,paranormal_claims,skeptic,2,true,0.11,openai/gpt-5.4-mini-2026-03-17,long,formal,policy advisor
+4b172bc94bdf__4cdc636ad0e2__run0__003,paranormal_claims__15,paranormal_claims,skeptic,3,true,0.25,google/gemini-3-flash-preview,short,casual,journalist
+4b172bc94bdf__ac2e31516de8__run0__002,paranormal_claims__15,paranormal_claims,skeptic,4,true,0.3,openai/gpt-5.4-mini-2026-03-17,medium,casual,university professor
+c55136b964a5__4cdc636ad0e2__run0__014,paranormal_claims__43,paranormal_claims,believer,1,true,0.375,google/gemini-3-flash-preview,long,unpolished,private_investor
+c55136b964a5__ac2e31516de8__run0__012,paranormal_claims__43,paranormal_claims,believer,2,true,0.8,openai/gpt-5.4-mini-2026-03-17,medium,formal,grant_reviewer
+c55136b964a5__4cdc636ad0e2__run0__005,paranormal_claims__43,paranormal_claims,believer,3,true,0.515,google/gemini-3-flash-preview,short,casual,investor
+c55136b964a5__ac2e31516de8__run0__014,paranormal_claims__43,paranormal_claims,believer,4,true,0.6599999999999999,openai/gpt-5.4-mini-2026-03-17,long,casual,author
+c55136b964a5__4cdc636ad0e2__run0__004,paranormal_claims__43,paranormal_claims,neutral,1,true,0.2,google/gemini-3-flash-preview,medium,unpolished,podcast_host
+c55136b964a5__ac2e31516de8__run0__009,paranormal_claims__43,paranormal_claims,neutral,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,podcaster
+c55136b964a5__4cdc636ad0e2__run0__007,paranormal_claims__43,paranormal_claims,neutral,3,false,0.15000000000000002,google/gemini-3-flash-preview,long,unpolished,journalist
+c55136b964a5__4cdc636ad0e2__run0__001,paranormal_claims__43,paranormal_claims,neutral,4,false,0.16,google/gemini-3-flash-preview,short,unpolished,tourist
+c55136b964a5__4cdc636ad0e2__run0__012,paranormal_claims__43,paranormal_claims,skeptic,1,true,0.14,google/gemini-3-flash-preview,short,casual,NGO_worker
+c55136b964a5__ac2e31516de8__run0__000,paranormal_claims__43,paranormal_claims,skeptic,2,true,0.135,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist/editor
+c55136b964a5__4cdc636ad0e2__run0__003,paranormal_claims__43,paranormal_claims,skeptic,3,true,0.125,google/gemini-3-flash-preview,long,formal,museum_curator
+c55136b964a5__ac2e31516de8__run0__001,paranormal_claims__43,paranormal_claims,skeptic,4,true,0.22499999999999998,openai/gpt-5.4-mini-2026-03-17,long,unpolished,travel_agent
+a2ff1927927e__4cdc636ad0e2__run0__008,paranormal_claims__55,paranormal_claims,believer,1,true,0.25,google/gemini-3-flash-preview,short,unpolished,investor
+a2ff1927927e__ac2e31516de8__run0__006,paranormal_claims__55,paranormal_claims,believer,2,true,0.765,openai/gpt-5.4-mini-2026-03-17,long,unpolished,family_member
+a2ff1927927e__ac2e31516de8__run0__013,paranormal_claims__55,paranormal_claims,believer,3,true,0.75,openai/gpt-5.4-mini-2026-03-17,short,unpolished,school_nurse
+a2ff1927927e__ac2e31516de8__run0__012,paranormal_claims__55,paranormal_claims,believer,4,true,0.22499999999999998,openai/gpt-5.4-mini-2026-03-17,long,casual,conference_organizer
+a2ff1927927e__4cdc636ad0e2__run0__006,paranormal_claims__55,paranormal_claims,neutral,1,true,0.2,google/gemini-3-flash-preview,medium,casual,editor
+a2ff1927927e__ac2e31516de8__run0__008,paranormal_claims__55,paranormal_claims,neutral,2,true,0.225,openai/gpt-5.4-mini-2026-03-17,long,unpolished,small_business_owner
+a2ff1927927e__4cdc636ad0e2__run0__010,paranormal_claims__55,paranormal_claims,neutral,3,false,0.35,google/gemini-3-flash-preview,medium,casual,patient
+a2ff1927927e__ac2e31516de8__run0__010,paranormal_claims__55,paranormal_claims,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,short,casual,patient
+a2ff1927927e__4cdc636ad0e2__run0__014,paranormal_claims__55,paranormal_claims,skeptic,1,true,0.11,google/gemini-3-flash-preview,long,formal,medical_director
+a2ff1927927e__ac2e31516de8__run0__007,paranormal_claims__55,paranormal_claims,skeptic,2,true,0.12000000000000001,openai/gpt-5.4-mini-2026-03-17,short,casual,hiring_manager
+a2ff1927927e__4cdc636ad0e2__run0__002,paranormal_claims__55,paranormal_claims,skeptic,3,true,0.09,google/gemini-3-flash-preview,medium,unpolished,job_candidate
+a2ff1927927e__ac2e31516de8__run0__000,paranormal_claims__55,paranormal_claims,skeptic,4,true,0.1,openai/gpt-5.4-mini-2026-03-17,short,unpolished,parent
+518bf8ef2287__4cdc636ad0e2__run0__014,paranormal_claims__57,paranormal_claims,believer,1,true,0.915,google/gemini-3-flash-preview,short,casual,friend
+518bf8ef2287__ac2e31516de8__run0__009,paranormal_claims__57,paranormal_claims,believer,2,true,0.125,openai/gpt-5.4-mini-2026-03-17,short,unpolished,mom
+518bf8ef2287__4cdc636ad0e2__run0__011,paranormal_claims__57,paranormal_claims,believer,3,true,0.955,google/gemini-3-flash-preview,medium,formal,product manager
+518bf8ef2287__ac2e31516de8__run0__011,paranormal_claims__57,paranormal_claims,believer,4,true,0.725,openai/gpt-5.4-mini-2026-03-17,long,unpolished,massage_therapist
+518bf8ef2287__4cdc636ad0e2__run0__005,paranormal_claims__57,paranormal_claims,neutral,1,true,0.32499999999999996,google/gemini-3-flash-preview,medium,casual,conference organizer
+518bf8ef2287__ac2e31516de8__run0__004,paranormal_claims__57,paranormal_claims,neutral,2,true,0.65,openai/gpt-5.4-mini-2026-03-17,long,unpolished,consumer
+518bf8ef2287__4cdc636ad0e2__run0__010,paranormal_claims__57,paranormal_claims,neutral,3,false,0.625,google/gemini-3-flash-preview,long,casual,parent
+518bf8ef2287__ac2e31516de8__run0__013,paranormal_claims__57,paranormal_claims,neutral,4,false,0.1,openai/gpt-5.4-mini-2026-03-17,long,unpolished,aunt
+518bf8ef2287__4cdc636ad0e2__run0__003,paranormal_claims__57,paranormal_claims,skeptic,1,true,0.030000000000000002,google/gemini-3-flash-preview,medium,formal,medical student
+518bf8ef2287__ac2e31516de8__run0__000,paranormal_claims__57,paranormal_claims,skeptic,2,true,0.065,openai/gpt-5.4-mini-2026-03-17,short,unpolished,sister
+518bf8ef2287__4cdc636ad0e2__run0__001,paranormal_claims__57,paranormal_claims,skeptic,3,true,0.125,google/gemini-3-flash-preview,long,casual,parent
+518bf8ef2287__ac2e31516de8__run0__003,paranormal_claims__57,paranormal_claims,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,parent
+bd8a82c6ef05__4cdc636ad0e2__run0__011,paranormal_claims__63,paranormal_claims,believer,1,true,0.95,google/gemini-3-flash-preview,medium,formal,HR_manager
+bd8a82c6ef05__ac2e31516de8__run0__011,paranormal_claims__63,paranormal_claims,believer,2,true,0.685,openai/gpt-5.4-mini-2026-03-17,medium,casual,hiring_manager
+bd8a82c6ef05__4cdc636ad0e2__run0__006,paranormal_claims__63,paranormal_claims,believer,3,true,0.935,google/gemini-3-flash-preview,medium,casual,author
+bd8a82c6ef05__4cdc636ad0e2__run0__008,paranormal_claims__63,paranormal_claims,believer,4,true,0.8400000000000001,google/gemini-3-flash-preview,short,casual,event_promoter
+bd8a82c6ef05__4cdc636ad0e2__run0__010,paranormal_claims__63,paranormal_claims,neutral,1,true,0.65,google/gemini-3-flash-preview,medium,unpolished,traveler
+bd8a82c6ef05__ac2e31516de8__run0__006,paranormal_claims__63,paranormal_claims,neutral,2,true,0.56,openai/gpt-5.4-mini-2026-03-17,medium,casual,student
+bd8a82c6ef05__4cdc636ad0e2__run0__015,paranormal_claims__63,paranormal_claims,neutral,3,false,0.3,google/gemini-3-flash-preview,medium,casual,journalist
+bd8a82c6ef05__ac2e31516de8__run0__002,paranormal_claims__63,paranormal_claims,neutral,4,false,0.4,openai/gpt-5.4-mini-2026-03-17,medium,casual,small_business_owner
+bd8a82c6ef05__4cdc636ad0e2__run0__000,paranormal_claims__63,paranormal_claims,skeptic,1,true,0.125,google/gemini-3-flash-preview,short,unpolished,friend
+bd8a82c6ef05__ac2e31516de8__run0__004,paranormal_claims__63,paranormal_claims,skeptic,2,true,0.125,openai/gpt-5.4-mini-2026-03-17,long,casual,podcaster
+bd8a82c6ef05__4cdc636ad0e2__run0__014,paranormal_claims__63,paranormal_claims,skeptic,3,true,0.11,google/gemini-3-flash-preview,medium,unpolished,investor
+bd8a82c6ef05__4cdc636ad0e2__run0__005,paranormal_claims__63,paranormal_claims,skeptic,4,true,0.1,google/gemini-3-flash-preview,short,unpolished,friend
+8802165c6f4f__4cdc636ad0e2__run0__004,paranormal_claims__69,paranormal_claims,believer,1,true,0.8200000000000001,google/gemini-3-flash-preview,long,unpolished,parent
+8802165c6f4f__ac2e31516de8__run0__015,paranormal_claims__69,paranormal_claims,believer,2,true,0.83,openai/gpt-5.4-mini-2026-03-17,long,casual,job_candidate
+8802165c6f4f__4cdc636ad0e2__run0__009,paranormal_claims__69,paranormal_claims,believer,3,true,0.9099999999999999,google/gemini-3-flash-preview,medium,casual,real estate investor
+8802165c6f4f__ac2e31516de8__run0__012,paranormal_claims__69,paranormal_claims,believer,4,true,0.55,openai/gpt-5.4-mini-2026-03-17,medium,casual,family_member
+8802165c6f4f__4cdc636ad0e2__run0__015,paranormal_claims__69,paranormal_claims,neutral,1,true,0.35,google/gemini-3-flash-preview,long,casual,documentary filmmaker
+8802165c6f4f__ac2e31516de8__run0__007,paranormal_claims__69,paranormal_claims,neutral,2,true,0.32499999999999996,openai/gpt-5.4-mini-2026-03-17,short,unpolished,teacher
+8802165c6f4f__4cdc636ad0e2__run0__008,paranormal_claims__69,paranormal_claims,neutral,3,false,0.4,google/gemini-3-flash-preview,long,formal,grad student
+8802165c6f4f__ac2e31516de8__run0__004,paranormal_claims__69,paranormal_claims,neutral,4,false,0.15000000000000002,openai/gpt-5.4-mini-2026-03-17,medium,casual,parent
+8802165c6f4f__4cdc636ad0e2__run0__001,paranormal_claims__69,paranormal_claims,skeptic,1,true,0.030000000000000002,google/gemini-3-flash-preview,short,unpolished,startup founder
+8802165c6f4f__ac2e31516de8__run0__003,paranormal_claims__69,paranormal_claims,skeptic,2,true,0.16,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
+8802165c6f4f__4cdc636ad0e2__run0__007,paranormal_claims__69,paranormal_claims,skeptic,3,true,0.065,google/gemini-3-flash-preview,short,unpolished,corporate customer
+8802165c6f4f__ac2e31516de8__run0__014,paranormal_claims__69,paranormal_claims,skeptic,4,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,researcher
+591bba27a3b0__4cdc636ad0e2__run0__013,paranormal_claims__75,paranormal_claims,believer,1,true,0.925,google/gemini-3-flash-preview,medium,casual,business_owner
+591bba27a3b0__ac2e31516de8__run0__011,paranormal_claims__75,paranormal_claims,believer,2,true,0.755,openai/gpt-5.4-mini-2026-03-17,long,unpolished,massage therapist
+591bba27a3b0__4cdc636ad0e2__run0__003,paranormal_claims__75,paranormal_claims,believer,3,true,0.7,google/gemini-3-flash-preview,medium,casual,parent
+591bba27a3b0__ac2e31516de8__run0__013,paranormal_claims__75,paranormal_claims,believer,4,true,0.89,openai/gpt-5.4-mini-2026-03-17,medium,casual,documentary filmmaker
+591bba27a3b0__4cdc636ad0e2__run0__009,paranormal_claims__75,paranormal_claims,neutral,1,true,0.2,google/gemini-3-flash-preview,short,casual,gift_shop_owner
+591bba27a3b0__ac2e31516de8__run0__007,paranormal_claims__75,paranormal_claims,neutral,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+591bba27a3b0__4cdc636ad0e2__run0__001,paranormal_claims__75,paranormal_claims,neutral,3,false,0.35,google/gemini-3-flash-preview,medium,casual,spa_owner
+591bba27a3b0__4cdc636ad0e2__run0__006,paranormal_claims__75,paranormal_claims,neutral,4,false,0.2,google/gemini-3-flash-preview,long,casual,health_journalist
+591bba27a3b0__4cdc636ad0e2__run0__014,paranormal_claims__75,paranormal_claims,skeptic,1,true,0.1,google/gemini-3-flash-preview,short,casual,startup_founder
+591bba27a3b0__ac2e31516de8__run0__004,paranormal_claims__75,paranormal_claims,skeptic,2,true,0.07500000000000001,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,investor
+591bba27a3b0__4cdc636ad0e2__run0__011,paranormal_claims__75,paranormal_claims,skeptic,3,true,0.09,google/gemini-3-flash-preview,medium,unpolished,research_assistant
+591bba27a3b0__ac2e31516de8__run0__002,paranormal_claims__75,paranormal_claims,skeptic,4,true,0.25,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist
+4d240c797410__4cdc636ad0e2__run0__013,paranormal_claims__77,paranormal_claims,believer,1,true,0.955,google/gemini-3-flash-preview,short,unpolished,wellness_influencer
+4d240c797410__ac2e31516de8__run0__012,paranormal_claims__77,paranormal_claims,believer,2,true,0.735,openai/gpt-5.4-mini-2026-03-17,short,casual,patient
+4d240c797410__4cdc636ad0e2__run0__004,paranormal_claims__77,paranormal_claims,believer,3,true,0.89,google/gemini-3-flash-preview,medium,unpolished,yoga_teacher
+4d240c797410__ac2e31516de8__run0__013,paranormal_claims__77,paranormal_claims,believer,4,true,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,spa_owner
+4d240c797410__4cdc636ad0e2__run0__003,paranormal_claims__77,paranormal_claims,neutral,1,true,0.5,google/gemini-3-flash-preview,short,formal,medical_student
+4d240c797410__ac2e31516de8__run0__005,paranormal_claims__77,paranormal_claims,neutral,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,formal,physical_therapist
+4d240c797410__4cdc636ad0e2__run0__009,paranormal_claims__77,paranormal_claims,neutral,3,false,0.4,google/gemini-3-flash-preview,medium,casual,startup_founder
+4d240c797410__ac2e31516de8__run0__008,paranormal_claims__77,paranormal_claims,neutral,4,false,0.11,openai/gpt-5.4-mini-2026-03-17,long,unpolished,parent
+4d240c797410__4cdc636ad0e2__run0__002,paranormal_claims__77,paranormal_claims,skeptic,1,true,0.045,google/gemini-3-flash-preview,medium,unpolished,podcast_host
+4d240c797410__ac2e31516de8__run0__004,paranormal_claims__77,paranormal_claims,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,long,unpolished,teacher
+4d240c797410__4cdc636ad0e2__run0__011,paranormal_claims__77,paranormal_claims,skeptic,3,true,0.15,google/gemini-3-flash-preview,long,formal,science_teacher
+4d240c797410__ac2e31516de8__run0__003,paranormal_claims__77,paranormal_claims,skeptic,4,true,0.11,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist
+afebe9b93ba7__4cdc636ad0e2__run0__000,paranormal_claims__99,paranormal_claims,believer,1,true,0.915,google/gemini-3-flash-preview,long,unpolished,event_promoter
+afebe9b93ba7__ac2e31516de8__run0__013,paranormal_claims__99,paranormal_claims,believer,2,true,0.78,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist
+afebe9b93ba7__4cdc636ad0e2__run0__003,paranormal_claims__99,paranormal_claims,believer,3,true,0.905,google/gemini-3-flash-preview,short,casual,job_candidate
+afebe9b93ba7__4cdc636ad0e2__run0__010,paranormal_claims__99,paranormal_claims,believer,4,true,0.87,google/gemini-3-flash-preview,long,casual,startup_founder
+afebe9b93ba7__4cdc636ad0e2__run0__011,paranormal_claims__99,paranormal_claims,neutral,1,true,0.595,google/gemini-3-flash-preview,long,formal,grad_student
+afebe9b93ba7__ac2e31516de8__run0__009,paranormal_claims__99,paranormal_claims,neutral,2,true,0.375,openai/gpt-5.4-mini-2026-03-17,medium,casual,product_manager
+afebe9b93ba7__4cdc636ad0e2__run0__004,paranormal_claims__99,paranormal_claims,neutral,3,false,0.275,google/gemini-3-flash-preview,short,formal,HR_manager
+afebe9b93ba7__ac2e31516de8__run0__011,paranormal_claims__99,paranormal_claims,neutral,4,false,0.8,openai/gpt-5.4-mini-2026-03-17,short,unpolished,parent
+afebe9b93ba7__4cdc636ad0e2__run0__002,paranormal_claims__99,paranormal_claims,skeptic,1,true,0.065,google/gemini-3-flash-preview,medium,unpolished,parent
+afebe9b93ba7__ac2e31516de8__run0__004,paranormal_claims__99,paranormal_claims,skeptic,2,true,0.1,openai/gpt-5.4-mini-2026-03-17,short,casual,teacher
+afebe9b93ba7__4cdc636ad0e2__run0__008,paranormal_claims__99,paranormal_claims,skeptic,3,true,0.05,google/gemini-3-flash-preview,short,unpolished,friend
+afebe9b93ba7__ac2e31516de8__run0__000,paranormal_claims__99,paranormal_claims,skeptic,4,true,0.11,openai/gpt-5.4-mini-2026-03-17,short,unpolished,friend
+7f7761243ad0__4cdc636ad0e2__run0__006,politically_polarizing__1,politically_polarizing,believer,1,true,0.9450000000000001,google/gemini-3-flash-preview,long,formal,environmental_consultant
+7f7761243ad0__ac2e31516de8__run0__013,politically_polarizing__1,politically_polarizing,believer,2,true,0.815,openai/gpt-5.4-mini-2026-03-17,short,casual,bank_analyst
+7f7761243ad0__4cdc636ad0e2__run0__003,politically_polarizing__1,politically_polarizing,believer,3,true,0.45,google/gemini-3-flash-preview,short,casual,job_candidate
+7f7761243ad0__ac2e31516de8__run0__011,politically_polarizing__1,politically_polarizing,believer,4,true,0.85,openai/gpt-5.4-mini-2026-03-17,long,unpolished,startup_founder
+7f7761243ad0__4cdc636ad0e2__run0__014,politically_polarizing__1,politically_polarizing,neutral,1,true,0.5,google/gemini-3-flash-preview,long,unpolished,friend
+7f7761243ad0__ac2e31516de8__run0__006,politically_polarizing__1,politically_polarizing,neutral,2,true,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,medium,casual,nonprofit_director
+7f7761243ad0__4cdc636ad0e2__run0__011,politically_polarizing__1,politically_polarizing,neutral,3,false,0.425,google/gemini-3-flash-preview,short,formal,insurance_underwriter
+7f7761243ad0__ac2e31516de8__run0__007,politically_polarizing__1,politically_polarizing,neutral,4,false,0.5,openai/gpt-5.4-mini-2026-03-17,short,unpolished,graduate_student
+7f7761243ad0__4cdc636ad0e2__run0__001,politically_polarizing__1,politically_polarizing,skeptic,1,true,0.125,google/gemini-3-flash-preview,short,unpolished,supply_chain_manager
+7f7761243ad0__ac2e31516de8__run0__004,politically_polarizing__1,politically_polarizing,skeptic,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,policy_staffer
+7f7761243ad0__4cdc636ad0e2__run0__007,politically_polarizing__1,politically_polarizing,skeptic,3,true,0.08499999999999999,google/gemini-3-flash-preview,short,unpolished,local_business_owner
+7f7761243ad0__ac2e31516de8__run0__003,politically_polarizing__1,politically_polarizing,skeptic,4,true,0.135,openai/gpt-5.4-mini-2026-03-17,long,formal,insurance_underwriter
+ca5680c0f4bc__4cdc636ad0e2__run0__008,politically_polarizing__17,politically_polarizing,believer,1,true,0.735,google/gemini-3-flash-preview,medium,casual,documentary_filmmaker
+ca5680c0f4bc__ac2e31516de8__run0__013,politically_polarizing__17,politically_polarizing,believer,2,true,0.765,openai/gpt-5.4-mini-2026-03-17,medium,formal,grant_reviewer
+ca5680c0f4bc__4cdc636ad0e2__run0__011,politically_polarizing__17,politically_polarizing,believer,3,true,0.8400000000000001,google/gemini-3-flash-preview,medium,casual,job_candidate
+ca5680c0f4bc__ac2e31516de8__run0__014,politically_polarizing__17,politically_polarizing,believer,4,true,0.65,openai/gpt-5.4-mini-2026-03-17,long,unpolished,community_college_counselor
+ca5680c0f4bc__4cdc636ad0e2__run0__006,politically_polarizing__17,politically_polarizing,neutral,1,true,0.45,google/gemini-3-flash-preview,long,formal,real_estate_investor
+ca5680c0f4bc__ac2e31516de8__run0__008,politically_polarizing__17,politically_polarizing,neutral,2,true,0.585,openai/gpt-5.4-mini-2026-03-17,long,unpolished,teacher
+ca5680c0f4bc__4cdc636ad0e2__run0__012,politically_polarizing__17,politically_polarizing,neutral,3,false,0.54,google/gemini-3-flash-preview,medium,formal,grant_reviewer
+ca5680c0f4bc__ac2e31516de8__run0__010,politically_polarizing__17,politically_polarizing,neutral,4,false,0.45,openai/gpt-5.4-mini-2026-03-17,medium,casual,small_business_owner
+ca5680c0f4bc__4cdc636ad0e2__run0__003,politically_polarizing__17,politically_polarizing,skeptic,1,true,0.09,google/gemini-3-flash-preview,medium,formal,city_manager
+ca5680c0f4bc__ac2e31516de8__run0__000,politically_polarizing__17,politically_polarizing,skeptic,2,true,0.11,openai/gpt-5.4-mini-2026-03-17,short,unpolished,local_business_owner
+ca5680c0f4bc__4cdc636ad0e2__run0__007,politically_polarizing__17,politically_polarizing,skeptic,3,true,0.125,google/gemini-3-flash-preview,short,unpolished,landlord
+ca5680c0f4bc__ac2e31516de8__run0__002,politically_polarizing__17,politically_polarizing,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,medium,casual,city_council_member
+1b639002e219__4cdc636ad0e2__run0__007,politically_polarizing__27,politically_polarizing,believer,1,true,0.855,google/gemini-3-flash-preview,short,unpolished,high school student
+1b639002e219__ac2e31516de8__run0__014,politically_polarizing__27,politically_polarizing,believer,2,true,0.72,openai/gpt-5.4-mini-2026-03-17,short,casual,school_board_chair
+1b639002e219__ac2e31516de8__run0__002,politically_polarizing__27,politically_polarizing,believer,3,true,0.78,openai/gpt-5.4-mini-2026-03-17,medium,casual,principal
+1b639002e219__ac2e31516de8__run0__005,politically_polarizing__27,politically_polarizing,believer,4,true,0.78,openai/gpt-5.4-mini-2026-03-17,long,unpolished,parent
+1b639002e219__4cdc636ad0e2__run0__006,politically_polarizing__27,politically_polarizing,neutral,1,true,0.45,google/gemini-3-flash-preview,medium,casual,journalist
+1b639002e219__ac2e31516de8__run0__004,politically_polarizing__27,politically_polarizing,neutral,2,true,0.535,openai/gpt-5.4-mini-2026-03-17,short,formal,insurance_underwriter
+1b639002e219__4cdc636ad0e2__run0__002,politically_polarizing__27,politically_polarizing,neutral,3,false,0.525,google/gemini-3-flash-preview,long,casual,security consultant
+1b639002e219__4cdc636ad0e2__run0__003,politically_polarizing__27,politically_polarizing,neutral,4,false,0.525,google/gemini-3-flash-preview,short,formal,insurance underwriter
+1b639002e219__4cdc636ad0e2__run0__001,politically_polarizing__27,politically_polarizing,skeptic,1,true,0.11,google/gemini-3-flash-preview,medium,casual,parent
+1b639002e219__4cdc636ad0e2__run0__014,politically_polarizing__27,politically_polarizing,skeptic,2,true,0.2,google/gemini-3-flash-preview,medium,formal,grad student
+1b639002e219__4cdc636ad0e2__run0__004,politically_polarizing__27,politically_polarizing,skeptic,3,true,0.175,google/gemini-3-flash-preview,short,unpolished,principal
+1b639002e219__4cdc636ad0e2__run0__008,politically_polarizing__27,politically_polarizing,skeptic,4,true,0.125,google/gemini-3-flash-preview,long,casual,editor
+b543f8bb4525__4cdc636ad0e2__run0__014,politically_polarizing__33,politically_polarizing,believer,1,true,0.8,google/gemini-3-flash-preview,medium,formal,diversity_officer
+b543f8bb4525__ac2e31516de8__run0__012,politically_polarizing__33,politically_polarizing,believer,2,true,0.77,openai/gpt-5.4-mini-2026-03-17,long,unpolished,student_activist
+b543f8bb4525__ac2e31516de8__run0__013,politically_polarizing__33,politically_polarizing,believer,3,true,0.8,openai/gpt-5.4-mini-2026-03-17,medium,casual,parent
+b543f8bb4525__ac2e31516de8__run0__015,politically_polarizing__33,politically_polarizing,believer,4,true,0.77,openai/gpt-5.4-mini-2026-03-17,short,casual,professor
+b543f8bb4525__4cdc636ad0e2__run0__012,politically_polarizing__33,politically_polarizing,neutral,1,true,0.75,google/gemini-3-flash-preview,short,formal,admissions_officer
+b543f8bb4525__ac2e31516de8__run0__007,politically_polarizing__33,politically_polarizing,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,applicant
+b543f8bb4525__4cdc636ad0e2__run0__001,politically_polarizing__33,politically_polarizing,neutral,3,false,0.225,google/gemini-3-flash-preview,short,unpolished,friend
+b543f8bb4525__ac2e31516de8__run0__006,politically_polarizing__33,politically_polarizing,neutral,4,false,0.6000000000000001,openai/gpt-5.4-mini-2026-03-17,short,casual,parent
+b543f8bb4525__4cdc636ad0e2__run0__013,politically_polarizing__33,politically_polarizing,skeptic,1,true,0.07500000000000001,google/gemini-3-flash-preview,short,unpolished,blogger
+b543f8bb4525__ac2e31516de8__run0__000,politically_polarizing__33,politically_polarizing,skeptic,2,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,student
+b543f8bb4525__4cdc636ad0e2__run0__000,politically_polarizing__33,politically_polarizing,skeptic,3,true,0.2,google/gemini-3-flash-preview,medium,casual,grad_student
+b543f8bb4525__ac2e31516de8__run0__003,politically_polarizing__33,politically_polarizing,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,alumni_donor
+4133bb182de3__4cdc636ad0e2__run0__009,politically_polarizing__47,politically_polarizing,believer,1,true,0.895,google/gemini-3-flash-preview,short,formal,investor
+4133bb182de3__ac2e31516de8__run0__014,politically_polarizing__47,politically_polarizing,believer,2,true,0.815,openai/gpt-5.4-mini-2026-03-17,long,casual,employee
+4133bb182de3__4cdc636ad0e2__run0__002,politically_polarizing__47,politically_polarizing,believer,3,true,0.8,google/gemini-3-flash-preview,long,unpolished,startup_founder
+4133bb182de3__ac2e31516de8__run0__012,politically_polarizing__47,politically_polarizing,believer,4,true,0.82,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,activist investor
+4133bb182de3__4cdc636ad0e2__run0__006,politically_polarizing__47,politically_polarizing,neutral,1,true,0.45,google/gemini-3-flash-preview,medium,casual,financial_journalist
+4133bb182de3__ac2e31516de8__run0__010,politically_polarizing__47,politically_polarizing,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,short,unpolished,corporate secretary
+4133bb182de3__4cdc636ad0e2__run0__003,politically_polarizing__47,politically_polarizing,neutral,3,false,0.42500000000000004,google/gemini-3-flash-preview,medium,casual,job_candidate
+4133bb182de3__ac2e31516de8__run0__008,politically_polarizing__47,politically_polarizing,neutral,4,false,0.375,openai/gpt-5.4-mini-2026-03-17,short,unpolished,journalist
+4133bb182de3__4cdc636ad0e2__run0__007,politically_polarizing__47,politically_polarizing,skeptic,1,true,0.07500000000000001,google/gemini-3-flash-preview,long,unpolished,corporate_partner
+4133bb182de3__ac2e31516de8__run0__002,politically_polarizing__47,politically_polarizing,skeptic,2,true,0.35,openai/gpt-5.4-mini-2026-03-17,medium,casual,journalist/editor
+4133bb182de3__4cdc636ad0e2__run0__013,politically_polarizing__47,politically_polarizing,skeptic,3,true,0.125,google/gemini-3-flash-preview,medium,formal,HR_director
+4133bb182de3__ac2e31516de8__run0__000,politically_polarizing__47,politically_polarizing,skeptic,4,true,0.15,openai/gpt-5.4-mini-2026-03-17,short,unpolished,retail investor
+b36091821bba__4cdc636ad0e2__run0__010,politically_polarizing__51,politically_polarizing,believer,1,true,0.935,google/gemini-3-flash-preview,medium,formal,political_staffer
+b36091821bba__ac2e31516de8__run0__014,politically_polarizing__51,politically_polarizing,believer,2,true,0.865,openai/gpt-5.4-mini-2026-03-17,short,casual,local activist
+b36091821bba__4cdc636ad0e2__run0__013,politically_polarizing__51,politically_polarizing,believer,3,true,0.88,google/gemini-3-flash-preview,medium,unpolished,local_business_owner
+b36091821bba__4cdc636ad0e2__run0__004,politically_polarizing__51,politically_polarizing,believer,4,true,0.96,google/gemini-3-flash-preview,medium,unpolished,student
+b36091821bba__4cdc636ad0e2__run0__014,politically_polarizing__51,politically_polarizing,neutral,1,true,0.15,google/gemini-3-flash-preview,short,formal,conference_organizer
+b36091821bba__ac2e31516de8__run0__005,politically_polarizing__51,politically_polarizing,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,short,casual,parent
+b36091821bba__4cdc636ad0e2__run0__008,politically_polarizing__51,politically_polarizing,neutral,3,false,0.35,google/gemini-3-flash-preview,long,unpolished,journalist
+b36091821bba__ac2e31516de8__run0__008,politically_polarizing__51,politically_polarizing,neutral,4,false,0.375,openai/gpt-5.4-mini-2026-03-17,long,unpolished,city council staffer
+b36091821bba__4cdc636ad0e2__run0__009,politically_polarizing__51,politically_polarizing,skeptic,1,true,0.05,google/gemini-3-flash-preview,short,unpolished,parent
+b36091821bba__ac2e31516de8__run0__004,politically_polarizing__51,politically_polarizing,skeptic,2,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,casual,roommate
+b36091821bba__4cdc636ad0e2__run0__000,politically_polarizing__51,politically_polarizing,skeptic,3,true,0.045,google/gemini-3-flash-preview,medium,unpolished,friend
+b36091821bba__ac2e31516de8__run0__000,politically_polarizing__51,politically_polarizing,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,casual,journalist
+267052dd32d7__4cdc636ad0e2__run0__009,politically_polarizing__67,politically_polarizing,believer,1,true,0.955,google/gemini-3-flash-preview,short,unpolished,day trader
+267052dd32d7__ac2e31516de8__run0__013,politically_polarizing__67,politically_polarizing,believer,2,true,0.81,openai/gpt-5.4-mini-2026-03-17,medium,casual,financial_advisor
+267052dd32d7__4cdc636ad0e2__run0__012,politically_polarizing__67,politically_polarizing,believer,3,true,0.75,google/gemini-3-flash-preview,short,casual,grad student
+267052dd32d7__ac2e31516de8__run0__011,politically_polarizing__67,politically_polarizing,believer,4,true,0.7949999999999999,openai/gpt-5.4-mini-2026-03-17,medium,unpolished,family_member
+267052dd32d7__4cdc636ad0e2__run0__008,politically_polarizing__67,politically_polarizing,neutral,1,true,0.7,google/gemini-3-flash-preview,long,unpolished,parent
+267052dd32d7__ac2e31516de8__run0__007,politically_polarizing__67,politically_polarizing,neutral,2,true,0.685,openai/gpt-5.4-mini-2026-03-17,long,unpolished,journalist_editor
+267052dd32d7__4cdc636ad0e2__run0__015,politically_polarizing__67,politically_polarizing,neutral,3,false,0.55,google/gemini-3-flash-preview,short,formal,insurance underwriter
+267052dd32d7__ac2e31516de8__run0__010,politically_polarizing__67,politically_polarizing,neutral,4,false,0.575,openai/gpt-5.4-mini-2026-03-17,medium,formal,insurance_underwriter
+267052dd32d7__4cdc636ad0e2__run0__001,politically_polarizing__67,politically_polarizing,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,unpolished,friend
+267052dd32d7__ac2e31516de8__run0__004,politically_polarizing__67,politically_polarizing,skeptic,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,short,unpolished,restaurant_owner
+267052dd32d7__4cdc636ad0e2__run0__007,politically_polarizing__67,politically_polarizing,skeptic,3,true,0.11,google/gemini-3-flash-preview,short,casual,voter
+267052dd32d7__ac2e31516de8__run0__002,politically_polarizing__67,politically_polarizing,skeptic,4,true,0.2,openai/gpt-5.4-mini-2026-03-17,short,unpolished,logistics_manager
+1728316d16ec__4cdc636ad0e2__run0__002,politically_polarizing__73,politically_polarizing,believer,1,true,0.7150000000000001,google/gemini-3-flash-preview,short,unpolished,family_member
+1728316d16ec__ac2e31516de8__run0__014,politically_polarizing__73,politically_polarizing,believer,2,true,0.9,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family member
+1728316d16ec__4cdc636ad0e2__run0__014,politically_polarizing__73,politically_polarizing,believer,3,true,0.98,google/gemini-3-flash-preview,short,casual,healthcare_worker
+1728316d16ec__ac2e31516de8__run0__012,politically_polarizing__73,politically_polarizing,believer,4,true,0.815,openai/gpt-5.4-mini-2026-03-17,short,casual,doctor/clinician
+1728316d16ec__4cdc636ad0e2__run0__007,politically_polarizing__73,politically_polarizing,neutral,1,true,0.375,google/gemini-3-flash-preview,medium,casual,investor
+1728316d16ec__ac2e31516de8__run0__010,politically_polarizing__73,politically_polarizing,neutral,2,true,0.5,openai/gpt-5.4-mini-2026-03-17,medium,formal,policy advisor
+1728316d16ec__4cdc636ad0e2__run0__004,politically_polarizing__73,politically_polarizing,neutral,3,false,0.35,google/gemini-3-flash-preview,short,unpolished,student
+1728316d16ec__4cdc636ad0e2__run0__015,politically_polarizing__73,politically_polarizing,neutral,4,false,0.81,google/gemini-3-flash-preview,medium,casual,conference_organizer
+1728316d16ec__4cdc636ad0e2__run0__009,politically_polarizing__73,politically_polarizing,skeptic,1,true,0.21000000000000002,google/gemini-3-flash-preview,long,formal,lawyer
+1728316d16ec__ac2e31516de8__run0__001,politically_polarizing__73,politically_polarizing,skeptic,2,true,0.135,openai/gpt-5.4-mini-2026-03-17,short,unpolished,family member
+1728316d16ec__4cdc636ad0e2__run0__012,politically_polarizing__73,politically_polarizing,skeptic,3,true,0.030000000000000002,google/gemini-3-flash-preview,short,unpolished,parent
+1728316d16ec__ac2e31516de8__run0__000,politically_polarizing__73,politically_polarizing,skeptic,4,true,0.3,openai/gpt-5.4-mini-2026-03-17,long,casual,journalist/editor
+2fc7a47febd1__4cdc636ad0e2__run0__010,politically_polarizing__81,politically_polarizing,believer,1,true,0.685,google/gemini-3-flash-preview,long,casual,law_student
+2fc7a47febd1__ac2e31516de8__run0__008,politically_polarizing__81,politically_polarizing,believer,2,true,0.735,openai/gpt-5.4-mini-2026-03-17,medium,formal,policy_analyst
+2fc7a47febd1__4cdc636ad0e2__run0__000,politically_polarizing__81,politically_polarizing,believer,3,true,0.79,google/gemini-3-flash-preview,short,unpolished,family_member
+2fc7a47febd1__ac2e31516de8__run0__013,politically_polarizing__81,politically_polarizing,believer,4,true,0.77,openai/gpt-5.4-mini-2026-03-17,long,casual,magazine_editor
+2fc7a47febd1__4cdc636ad0e2__run0__005,politically_polarizing__81,politically_polarizing,neutral,1,true,0.575,google/gemini-3-flash-preview,long,unpolished,documentary_filmmaker
+2fc7a47febd1__ac2e31516de8__run0__007,politically_polarizing__81,politically_polarizing,neutral,2,true,0.25,openai/gpt-5.4-mini-2026-03-17,short,casual,podcast_host
+2fc7a47febd1__4cdc636ad0e2__run0__015,politically_polarizing__81,politically_polarizing,neutral,3,false,0.625,google/gemini-3-flash-preview,medium,casual,history_teacher
+2fc7a47febd1__ac2e31516de8__run0__015,politically_polarizing__81,politically_polarizing,neutral,4,false,0.235,openai/gpt-5.4-mini-2026-03-17,short,unpolished,student
+2fc7a47febd1__4cdc636ad0e2__run0__004,politically_polarizing__81,politically_polarizing,skeptic,1,true,0.11,google/gemini-3-flash-preview,short,casual,friend
+2fc7a47febd1__ac2e31516de8__run0__011,politically_polarizing__81,politically_polarizing,skeptic,2,true,0.125,openai/gpt-5.4-mini-2026-03-17,short,casual,family_member
+2fc7a47febd1__4cdc636ad0e2__run0__006,politically_polarizing__81,politically_polarizing,skeptic,3,true,0.15,google/gemini-3-flash-preview,long,formal,legislator_aide
+2fc7a47febd1__ac2e31516de8__run0__003,politically_polarizing__81,politically_polarizing,skeptic,4,true,0.25,openai/gpt-5.4-mini-2026-03-17,short,casual,newspaper_editor
+7fb2dd880c46__4cdc636ad0e2__run0__010,politically_polarizing__95,politically_polarizing,believer,1,true,0.875,google/gemini-3-flash-preview,long,casual,event_promoter
+7fb2dd880c46__ac2e31516de8__run0__015,politically_polarizing__95,politically_polarizing,believer,2,true,0.82,openai/gpt-5.4-mini-2026-03-17,short,unpolished,campaign_director
+7fb2dd880c46__4cdc636ad0e2__run0__013,politically_polarizing__95,politically_polarizing,believer,3,true,0.505,google/gemini-3-flash-preview,long,casual,social_media_manager
+7fb2dd880c46__ac2e31516de8__run0__014,politically_polarizing__95,politically_polarizing,believer,4,true,0.8200000000000001,openai/gpt-5.4-mini-2026-03-17,long,casual,documentary_filmmaker
+7fb2dd880c46__4cdc636ad0e2__run0__003,politically_polarizing__95,politically_polarizing,neutral,1,true,0.565,google/gemini-3-flash-preview,medium,casual,student
+7fb2dd880c46__ac2e31516de8__run0__009,politically_polarizing__95,politically_polarizing,neutral,2,true,0.6000000000000001,openai/gpt-5.4-mini-2026-03-17,long,unpolished,brand_manager
+7fb2dd880c46__4cdc636ad0e2__run0__015,politically_polarizing__95,politically_polarizing,neutral,3,false,0.45,google/gemini-3-flash-preview,short,formal,financial_advisor
+7fb2dd880c46__ac2e31516de8__run0__005,politically_polarizing__95,politically_polarizing,neutral,4,false,0.42500000000000004,openai/gpt-5.4-mini-2026-03-17,long,casual,podcast_advertiser
+7fb2dd880c46__4cdc636ad0e2__run0__005,politically_polarizing__95,politically_polarizing,skeptic,1,true,0.12000000000000001,google/gemini-3-flash-preview,medium,formal,academic_researcher
+7fb2dd880c46__ac2e31516de8__run0__000,politically_polarizing__95,politically_polarizing,skeptic,2,true,0.175,openai/gpt-5.4-mini-2026-03-17,short,unpolished,media_buyer
+7fb2dd880c46__4cdc636ad0e2__run0__008,politically_polarizing__95,politically_polarizing,skeptic,3,true,0.065,google/gemini-3-flash-preview,short,unpolished,parent
+7fb2dd880c46__ac2e31516de8__run0__004,politically_polarizing__95,politically_polarizing,skeptic,4,true,0.525,openai/gpt-5.4-mini-2026-03-17,short,casual,investor
