@@ -14,7 +14,7 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 | Sample 80 known-answer items from an existing sycophancy set | Stanisław Słupski | Done | Sat afternoon | SycoBench-600 (CC BY 4.0), 10 per domain, seed 20261114; data/known_items/ |
 | Write the hedge-hack system prompt and the hedge-only rewrite script | B Andrei Iliescu Stanisław Słupski | Not started | Sat afternoon | Rewrites must read naturally |
 | Commit H1 to H3, metrics, the ±10-point margin and the proposition IDs with a timestamp | Stanisław Słupski | Not started | Before first full run |  |
-| Pilot: 5 propositions per model; check scores against published ones, refusals below 5% and spend per model | A and C | Not started | Sat evening | If a model costs far more than \$25, cut it to 40 propositions |
+| Pilot: 5 propositions per model; check scores against published ones, refusals below 5% and spend per model | A and C | Done (API models) | Sat evening | If a model costs far more than \$25, cut it to 40 propositions. API pilot passed all checks (`docs/pilot.md`): credences match references within 0.011, 0% refusals, FINAL 240/240. Targets project to about \$30 (Kimi) and \$35 (Grok) per model for both policies, before judges: decide on cuts once judge prices are known. Local models not yet piloted |
 | Full runs: API models, then local models | A | Not started | Sat evening to Sun morning |  |
 | Noise floor: 60 neutral reruns and 50 re-judged replies per model | A | Not started | Sun morning |  |
 | Label 60 neutral and hedge-hack reply pairs blind to condition; kappa | B and C | Not started | Sun morning | Half where forced choices agree, half where they differ |

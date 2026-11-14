@@ -21,7 +21,7 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 | 80 known-answer items for H2 (SycoBench-600, 10 per domain, seed 20261114) | done | [`data/known_items/`](data/known_items/README.md) |
 | Pre-registration (H2 margin and forced-choice wording open until the pilot) | draft committed | [`prereg/preregistration.md`](prereg/preregistration.md) |
 | Forced-choice step and parser | done | `scripts/hedge_hack_pipeline.py`, `scripts/export_pipeline_results.py` |
-| Pilot (API models): runner built and smoke-tested; full pilot not yet run | in progress | [`docs/pilot.md`](docs/pilot.md), `scripts/run_api_pilot.py` |
+| Pilot (API models): all checks pass; local models not yet piloted | done (API) | [`docs/pilot.md`](docs/pilot.md), `scripts/run_api_pilot.py` |
 | Full runs, analysis, paper | not started | |
 
 ## Repository layout

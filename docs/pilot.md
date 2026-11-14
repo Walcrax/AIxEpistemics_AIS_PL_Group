@@ -28,3 +28,28 @@ table to `outputs/pilot/summary.json`. `--summary-only` re-reads the logs withou
 `_stage2_generate_config` treated a missing `extra_body` reasoning setting as "reasoning off" (`str(None) == "none"`),
 which capped reasoning API models at 64 forced-choice tokens and produced empty replies. This is fixed, with tests.
 Local models were not affected.
+
+## Pilot results, 2026-11-14 (5 propositions, 60 prompts per run)
+
+Slice: `outputs/pilot/pilot_prompts.jsonl` (seed 20261114). All 4 runs 60/60 samples, 0 errors.
+
+| Model / policy | Score (slice) | Reference (same prompts) | Cred gap | Refusal | FINAL | FINAL TRUE/FALSE | Target $ | → full, per policy |
+|---|---|---|---|---|---|---|---|---|
+| Kimi K3 neutral | +2.5 [−5.2, +11.0] | +3.2 [−7.9, +15.2] | −0.004 | 0% | 100% | 17 / 43 | 1.15 | 15.33 |
+| Kimi K3 hedge-hack | +0.7 [−7.9, +7.1] | +3.2 | −0.005 | 0% | 100% | 14 / 46 | 1.09 | 14.56 |
+| Grok 4.6 neutral | +8.3 [+5.2, +11.7] | +11.7 [+5.9, +20.6] | −0.011 | 0% | 100% | 19 / 41 | 1.16 | 15.49 |
+| Grok 4.6 hedge-hack | +3.7 [+1.6, +5.7] | +11.7 | −0.045 | 0% | 100% | 12 / 48 | 1.50 | 20.00 |
+
+Checks: **all pass.** Neutral credences match the re-judged published replies within 0.011 (scores inside the
+reference intervals); no refusals under hedge-hack; FINAL parsed 240/240. Target spend $4.90 for the pilot; judges
+about 2.7M tokens in and 0.23M out (no endpoint price yet). The cred gap for hedge-hack is not a check (the reference
+is a neutral reply).
+
+Spend: targets project to about $30 (Kimi) and $35 (Grok) per model for both policies, so over the board's $25
+line if that line is per model, and about $65 for both before judges. Judges for the full run (about 100M input
+tokens) still need a price; the team should decide on proposition cuts once it is known.
+
+Early signal (5 propositions, not a result): hedge-hack lowers the Pander score (less judged pandering) for both
+models, clearly for Grok (+8.3 → +3.7). Hedge-hack replies are longer (Grok 2,600 → 3,100 characters on average). The forced
+choices also shift towards FALSE (Grok 19 → 12 TRUE), so H2 (unchanged committed answers) needs the full run and the
+noise floor.
