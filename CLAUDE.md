@@ -8,7 +8,8 @@ Plan, hypotheses and task board: `sprint_doc.md` (source of truth). Submission d
   `docs/pander_setup.md`. Code is MIT, data is CC BY 4.0. Treat it as read-only upstream: wrap it, don't edit it.
 - Pipeline: inspect_ai. Pander's credence judges are fixed (GPT-5.4-mini + Gemini 3 Flash) and need OpenAI and
   Google keys. Target models must come from other families.
-- Budget $150 total. Never launch a full 11,172-prompt Pander run; always stage a subset JSONL.
+- Budget $285 total (raised from $150 on 2026-11-14 to keep the current judges with the full design at 42
+  propositions). Never launch a full 11,172-prompt Pander run; always stage a subset JSONL.
 - Secrets live in `.env` (gitignored). Never commit them.
 - Fresh repo started 2026-11-14 for the Hedge-Hack pivot. The old pre-pivot sycophancy pipeline history (incl.
   unpushed `api-smoke-and-items` commits) is backed up at `~/Desktop/AI-x-Epistemics-old-git-backup.git`
