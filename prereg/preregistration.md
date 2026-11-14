@@ -17,20 +17,18 @@ prose remove that improvement?
 |---|---|---|
 | 60 propositions | `data/subset/selected_propositions.csv` | `4d5060780e47c1b58dbbdea60137444287b9be62e5ffa079f8a248d6c4c56d4e` |
 | 720 prompts | `data/subset/selected_prompts.jsonl` | `019a084293466c0c881edf0e2ee03ecfae0ed822b65cf3ab9cc2663672d7156d` |
-| Full-run set: 40 propositions | `data/full_run/full_run_propositions.csv` | `41072b658a66423389a13bd76cb861ad23b1869929d389ada0cbd9a2b450c150` |
-| Full-run set: 480 prompts | `data/full_run/full_run_prompts.jsonl` | `d2989db6293d52ccd1732a23c5497c3691b4511863fa3dc6173e642328ff6c3d` |
+| Full-run set: 42 propositions | `data/full_run/full_run_propositions.csv` | `6dd2deca9885e3b9ee45509d508f3ba9a822f9d6a0116fdb8df0294e51ecd63f` |
+| Full-run set: 504 prompts | `data/full_run/full_run_prompts.jsonl` | `71bba6483394d18dc2ad29c3e4dba40269df96e66aefd62b733eb1e681625443` |
 | Hedge-hack system prompt | `prompts/hedge_hack_system.txt` | `fa102cfde714adaedc68bf67ac530d30f19c4cfeac657a84422797badf3fc485` |
 | Hedge sentences for the hedge-only control | `prompts/hedge_bank.json` | `3c28c9e4c370ad04e57c80cb455372934df75004a3394a77e16d9527de8e298f` |
 | 80 known-answer items (SycoBench-600) | `data/known_items/known_items.jsonl` | `8ecb442e6f0b4578482567d371ec1a82ae295c878d34852aeb1b3bc76872b58f` |
 
-**Full-run set: 40 of the 60 propositions** (decided 14 November 2026, for budget). It is the 5 pilot
-propositions (`data/pilot/pilot_prompts.jsonl`) plus 35 more from the other 55, fixed on 14 November 2026
-before any full-run result by `scripts/select_full_run.py`. Rule: 40 over 6 domains gives 6 each plus 4; the 4
-domains that get a 7th are drawn with `random.Random(20261114)`, pilot propositions count towards their domain,
-and each domain is filled from its remaining propositions with the same generator. Result: 7 each for contested
-social science, frontier natural science, historical facts and nutrition and health, 6 each for paranormal claims
-and politically polarizing; 480 prompts, 160 per prior.
-Pilot runs are not reused: the full run reruns all 40 propositions, including the 5 pilot ones. The pilot fixed
+**Full-run set: 42 of the 60 propositions, 7 per domain** (decided 14 November 2026, for budget). It is the 5
+pilot propositions (`data/pilot/pilot_prompts.jsonl`) plus 37 more from the other 55, fixed on 14 November 2026
+before any full-run result by `scripts/select_full_run.py`. Rule: each domain gets 7; pilot propositions count
+towards their domain; each domain is filled from its remaining propositions with `random.Random(20261114)`,
+domains in sorted order. Result: 504 prompts, 168 per prior.
+Pilot runs are not reused: the full run reruns all 42 propositions, including the 5 pilot ones. The pilot fixed
 M (H2) and checked the pipeline only, which we report.
 
 The subset is 10 propositions from each of six Pander domains (moral claims excluded) with 4 skeptic, 4 neutral

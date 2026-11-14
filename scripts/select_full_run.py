@@ -1,25 +1,25 @@
-"""Pick the 40-proposition full-run set: the 5 pilot propositions plus 35 more, balanced across domains.
+"""Pick the 42-proposition full-run set: the 5 pilot propositions plus 37 more, 7 per domain.
 
     python3 -I scripts/select_full_run.py
 
 Rule (fixed before any full-run result):
 1. Pool: the 60 propositions of data/subset (6 domains x 10).
-2. Domain quotas: 40 over 6 domains is 6 each plus 4 left over. The 4 domains that get a 7th proposition are
-   drawn with random.Random(20261114).sample(sorted(domains), 4).
+2. Domain quotas: 7 per domain (6 domains x 7 = 42). (If TOTAL is not a multiple of 6, the domains that get one
+   extra are drawn with rng.sample(sorted(domains), remainder); with 42 there is no remainder and no draw.)
 3. The 5 pilot propositions (data/pilot/pilot_prompts.jsonl) are kept and count towards their domain's quota.
 4. Each domain is filled to its quota with rng.sample(sorted(remaining ids in that domain), needed), domains in
-   sorted order, using the same rng.
+   sorted order, rng = random.Random(20261114).
 Every proposition keeps all 12 of its subset prompts (4 skeptic, 4 neutral, 4 believer).
 
-Writes data/full_run/full_run_propositions.csv (40 rows, the subset's columns plus `in_pilot`) and
-data/full_run/full_run_prompts.jsonl (480 subset rows, unchanged), and prints their SHA-256.
+Writes data/full_run/full_run_propositions.csv (42 rows, the subset's columns plus `in_pilot`) and
+data/full_run/full_run_prompts.jsonl (504 subset rows, unchanged), and prints their SHA-256.
 """
 import csv, hashlib, json, random
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SEED, TOTAL = 20261114, 40
+SEED, TOTAL = 20261114, 42
 SUBSET = ROOT / "data" / "subset"
 PILOT = ROOT / "data" / "pilot" / "pilot_prompts.jsonl"
 OUT = ROOT / "data" / "full_run"

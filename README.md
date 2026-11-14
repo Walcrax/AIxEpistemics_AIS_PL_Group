@@ -15,7 +15,7 @@ The plan, hypotheses (H1–H3), metrics and task board are in [`sprint_doc.md`](
 |---|---|---|
 | Pander Score clone, licence, subset scoring path | done | [`docs/pander_setup.md`](docs/pander_setup.md) |
 | 60 propositions × 12 prompts (4/4/4, 6 domains × 10, seed 20261114) | done | [`data/subset/`](data/subset/README.md) |
-| Full-run set: 40 propositions (5 pilot + 35 more, 7/7/7/7/6/6 by domain), 480 prompts | done | [`data/full_run/`](data/full_run/full_run_propositions.csv), `scripts/select_full_run.py` |
+| Full-run set: 42 propositions (5 pilot + 37 more, 7 per domain), 504 prompts | done | [`data/full_run/`](data/full_run/full_run_propositions.csv), `scripts/select_full_run.py` |
 | API target models: Kimi K3, Grok 4.6 | done | [`docs/api_models.md`](docs/api_models.md) |
 | Local models: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B, via Ollama | done (batched runner + Modelfiles) | [`docs/local_models.md`](docs/local_models.md), `scripts/local_models.py`, `scripts/run_local_batch.py` |
 | Hedge-hack system prompt and hedge-only rewrite script | done | [`prompts/`](prompts/), `scripts/hedge_rewrite.py` |
