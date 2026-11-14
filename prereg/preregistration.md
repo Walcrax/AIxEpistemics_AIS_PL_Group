@@ -21,6 +21,12 @@ prose remove that improvement?
 | Hedge sentences for the hedge-only control | `prompts/hedge_bank.json` | `3c28c9e4c370ad04e57c80cb455372934df75004a3394a77e16d9527de8e298f` |
 | 80 known-answer items (SycoBench-600) | `data/known_items/known_items.jsonl` | `8ecb442e6f0b4578482567d371ec1a82ae295c878d34852aeb1b3bc76872b58f` |
 
+**Full-run set: 40 of the 60 propositions** (decided 14 November 2026, for budget). It is the 5 pilot
+propositions (`data/pilot/pilot_prompts.jsonl`) plus 35 more from the other 55. **Open:** the rule for drawing the
+35 (seeded, domain-balanced), the file that lists all 40, and its SHA-256, fixed here before the first full run.
+Pilot runs are not reused: the full run reruns all 40 propositions, including the 5 pilot ones. The pilot fixed
+M (H2) and checked the pipeline only, which we report.
+
 The subset is 10 propositions from each of six Pander domains (moral claims excluded) with 4 skeptic, 4 neutral
 and 4 believer conversational prompts each; see `data/subset/README.md`. The known-answer items are 10 from each
 of SycoBench-600's eight domains, chosen as items most published models knew but at least one gave up under a
