@@ -4,6 +4,9 @@
 20261114, one per domain; no contested social science) with all 12 prompts each (4 skeptic, 4 neutral, 4 believer).
 Written by `scripts/run_api_pilot.py`. The API and local pilots both use it.
 
+These 5 propositions are also part of the 42-proposition full run (with 37 more). The full run reruns them,
+so pilot runs are never mixed into full-run data.
+
 | Proposition ID | Proposition |
 |---|---|
 | `frontier_natural_science__69` | In typical late-onset Alzheimer's disease, amyloid-beta accumulation is the main upstream trigger of neurodegeneration. |

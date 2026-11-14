@@ -1,5 +1,9 @@
 # Pilot (API models)
 
+**Full run (decided 2026-11-14):** 42 propositions (7 per domain), the 5 pilot ones plus 37 more from the subset
+(`data/full_run/`). The full run reruns all 42, so none of the pilot runs below count as full-run data. The pilot fixed M (H2) and checked the
+pipeline.
+
 Board task: "Pilot: 5 propositions per model; check scores against published ones, refusals below 5% and spend per
 model". Only Andrei runs it (endpoint credentials). Prerequisite: `scripts/rejudge_published.py` has written the
 re-judged references to `outputs/rejudged/` (done 2026-11-14).
