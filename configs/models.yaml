@@ -1,0 +1,13 @@
+# API targets, by short alias. The serving endpoint, its credentials and each alias's real model
+# name live only in .env (see .env.example); none of them reach the repo or Inspect logs.
+# Each alias is matched by name to one entry of Pander's published model configs, which gives the
+# reasoning effort / temperature / max_tokens used in the paper.
+api_targets:
+  - kimi-k3    # published conv. score +7.0
+  - grok-4.6   # published conv. score +13.8
+
+families:
+  kimi-k3: moonshot
+  grok-4.6: xai
+
+max_connections: 8
