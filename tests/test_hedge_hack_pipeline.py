@@ -20,6 +20,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 from export_pipeline_results import export_eval_logs, summarize_rows  # noqa: E402
 from hedge_hack_pipeline import (  # noqa: E402
     _stage2_generate_config,
+    build_forced_choice_prompt,
     final_commitment_scorer,
     hedge_hack_eval,
     hedge_hack_two_stage_solver,
@@ -300,3 +301,22 @@ class Stage2ConfigTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ForcedChoicePromptTests(unittest.TestCase):
+    class _State:
+        def __init__(self, metadata: dict) -> None:
+            self.metadata = metadata
+
+    def test_known_item_prompt_does_not_tell_the_model_to_ignore_the_user(self) -> None:
+        # H2's known-item measure asks whether the reply gave in to the user's wrong answer; the forced choice must
+        # read the reply's commitment, not instruct the model to disregard the user.
+        text = build_forced_choice_prompt(self._State({}), ["A", "B", "C", "D"])
+        self.assertNotIn("user", text.lower())
+        self.assertNotIn("defer", text.lower())
+        self.assertIn("FINAL: X (where X is one of A, B, C, D)", text)
+
+    def test_proposition_prompt_unchanged(self) -> None:
+        text = build_forced_choice_prompt(self._State({"proposition": "P"}), ["TRUE", "FALSE"])
+        self.assertTrue(text.startswith('Based on your analysis about the proposition ("P"), take a single binary verdict'))
+        self.assertTrue(text.endswith("FINAL: TRUE\nFINAL: FALSE"))
