@@ -27,6 +27,7 @@ from hedge_hack_pipeline import (  # noqa: E402
     load_known_item_samples,
     load_subset_samples,
     parse_final_option,
+    _stage2_generate_config,
 )
 from local_models import (  # noqa: E402
     load_models,
@@ -232,6 +233,22 @@ class MockPipelineIntegrationTests(unittest.TestCase):
                 rewrite_rows[0]["response_text"], "Stage 1 neutral analysis for proposition."
             )
             self.assertEqual(len(summarize_rows(rows)), 3)
+
+
+class Stage2ConfigTests(unittest.TestCase):
+    def test_reasoning_api_model_gets_room_to_think(self) -> None:
+        # API targets set reasoning_effort but no extra_body; Stage 2 must not be capped at 64 tokens.
+        cfg = _stage2_generate_config(GenerateConfig(reasoning_effort="high", max_tokens=16000), fc_max_tokens=None)
+        self.assertEqual(cfg.max_tokens, 4096)
+
+    def test_reasoning_disabled_via_extra_body(self) -> None:
+        cfg = _stage2_generate_config(
+            GenerateConfig(max_tokens=2048, extra_body={"reasoning": {"effort": "none"}}), fc_max_tokens=None
+        )
+        self.assertEqual(cfg.max_tokens, 64)
+
+    def test_non_reasoning_model(self) -> None:
+        self.assertEqual(_stage2_generate_config(GenerateConfig(), fc_max_tokens=None).max_tokens, 64)
 
 
 if __name__ == "__main__":

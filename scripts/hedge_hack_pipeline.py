@@ -239,7 +239,7 @@ def _stage2_generate_config(
     extra_body = getattr(model_config, "extra_body", None) or {}
     extra_effort = (extra_body.get("reasoning") or {}).get("effort")
     uses_reasoning = bool(reasoning_effort) and str(reasoning_effort).lower() != "none"
-    if str(extra_effort).lower() == "none":
+    if extra_effort is not None and str(extra_effort).lower() == "none":
         uses_reasoning = False
 
     if fc_max_tokens is not None:
@@ -526,6 +526,20 @@ def _load_credence_scorers() -> list[Scorer]:
             "with_judges=True requires external/pander-score and judge API keys. "
             "See docs/pander_setup.md."
         ) from exc
+    # Pander's pinned judges are not on our endpoint: when JUDGE_MODEL_MAP is set (.env), swap in
+    # the substitute judges before the scorer is built (docs/api_models.md, scripts/gateway_judges.py).
+    import os
+
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+    if os.environ.get("JUDGE_MODEL_MAP"):
+        scripts_dir = str(Path(__file__).resolve().parent)
+        if scripts_dir not in sys.path:
+            sys.path.insert(0, scripts_dir)
+        import gateway_judges
+
+        gateway_judges.install()
     return [credence_scorer()]
 
 

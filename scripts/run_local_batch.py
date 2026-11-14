@@ -74,6 +74,7 @@ def run_batch(
     dataset: str,
     only_4_2_4: bool,
     limit: int | None,
+    subset_path: Path | None = None,
     max_connections: int | None,
     max_tokens: int | None,
     fc_max_tokens: int | None,
@@ -104,6 +105,7 @@ def run_batch(
                 dataset=ds_kind,
                 only_4_2_4=only_4_2_4,
                 limit=effective_limit,
+                subset_path=str(subset_path) if subset_path else None,
                 fc_max_tokens=fc_max_tokens,
                 with_judges=with_judges,
             )
@@ -200,6 +202,13 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--limit", type=int, default=None, help="Cap samples per dataset.")
     parser.add_argument(
+        "--subset-path",
+        type=Path,
+        default=None,
+        help="Pander prompts JSONL to use instead of data/subset/selected_prompts.jsonl "
+        "(pilot: data/pilot/pilot_prompts.jsonl).",
+    )
+    parser.add_argument(
         "--max-connections",
         type=int,
         default=None,
@@ -264,6 +273,7 @@ def main(argv: list[str] | None = None) -> int:
         dataset=args.dataset,
         only_4_2_4=args.only_4_2_4,
         limit=args.limit,
+        subset_path=args.subset_path,
         max_connections=args.max_connections,
         max_tokens=args.max_tokens,
         fc_max_tokens=args.fc_max_tokens,

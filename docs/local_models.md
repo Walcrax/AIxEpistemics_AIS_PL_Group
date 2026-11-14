@@ -54,6 +54,12 @@ python -I scripts/run_local_batch.py --dataset subset --policy both
 python -I scripts/run_local_batch.py --dataset known --policy both
 ```
 
+Pilot on the same 5 propositions as the API models (judged afterwards by Andrei, see `docs/pilot.md`):
+
+```powershell
+python -I scripts/run_local_batch.py --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy both --log-dir logs/pilot_local --export-dir outputs/pilot_local
+```
+
 Export `.eval` logs into normalized JSONL and Neutral inputs for `scripts/hedge_rewrite.py`:
 
 ```powershell

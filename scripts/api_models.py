@@ -11,6 +11,7 @@ tracebacks or the console.
   LLM_API_KEY        bearer key
   LLM_EXTRA_HEADERS  optional JSON object of request headers
   LLM_MODEL_MAP      JSON object {alias: real model name}
+  JUDGE_MODEL_MAP    JSON object {judge alias: real model name} for the substitute credence judges
   LLM_DEBUG_ERRORS   optional, "1" prints raw endpoint error bodies to this terminal's stderr
                      (bypasses Inspect, but don't use it when the output is captured or shared)
 """
@@ -116,22 +117,40 @@ class _EndpointTransport(httpx.AsyncBaseTransport):
         await self._inner.aclose()
 
 
-def resolve_model(alias: str, config: GenerateConfig | None = None) -> Model:
-    if alias not in load_models()["api_targets"]:
-        raise KeyError(f"{alias} is not in api_targets of {CONFIG}")
+def _endpoint_env(map_var: str | None = None) -> tuple[str, str, dict, dict]:
     load_dotenv(ROOT / ".env")
-    missing = [v for v in ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL_MAP") if not os.environ.get(v)]
+    missing = [v for v in ("LLM_BASE_URL", "LLM_API_KEY", map_var) if v and not os.environ.get(v)]
     if missing:
         raise RuntimeError(f"set {', '.join(missing)} in .env")
-    model_map = json.loads(os.environ["LLM_MODEL_MAP"])
+    return (os.environ["LLM_BASE_URL"], os.environ["LLM_API_KEY"],
+            json.loads(os.environ.get("LLM_EXTRA_HEADERS") or "{}"), json.loads(os.environ[map_var]) if map_var else {})
+
+
+def endpoint_model(alias: str, model_map: dict, config: GenerateConfig, role: str = "target") -> Model:
+    """An Inspect model for `alias` served by the endpoint, with `model_map` {alias: real name}."""
+    base, key, headers, _ = _endpoint_env()
     if alias not in model_map:
-        raise RuntimeError(f"LLM_MODEL_MAP in .env has no entry for {alias}")
-    transport = _EndpointTransport(os.environ["LLM_BASE_URL"], os.environ["LLM_API_KEY"],
-                                   json.loads(os.environ.get("LLM_EXTRA_HEADERS") or "{}"), model_map)
+        raise RuntimeError(f"no endpoint model name for {alias}")
+    transport = _EndpointTransport(base, key, headers, model_map)
     return get_model(
-        f"openai-api/target/{alias}",
+        f"openai-api/{role}/{alias}",
         base_url=PLACEHOLDER,
         api_key="unused",  # the transport adds the real key; Inspect never logs api_key anyway
         http_client=DefaultAsyncHttpxClient(transport=transport),
-        config=config or generate_config(alias),
+        config=config,
     )
+
+
+def resolve_model(alias: str, config: GenerateConfig | None = None) -> Model:
+    if alias not in load_models()["api_targets"]:
+        raise KeyError(f"{alias} is not in api_targets of {CONFIG}")
+    model_map = _endpoint_env("LLM_MODEL_MAP")[3]
+    return endpoint_model(alias, model_map, config or generate_config(alias))
+
+
+def resolve_judge(alias: str, config: GenerateConfig) -> Model:
+    """A substitute credence judge (configs/models.yaml `judges`), real name from JUDGE_MODEL_MAP."""
+    if alias not in load_models()["judges"]:
+        raise KeyError(f"{alias} is not in judges of {CONFIG}")
+    model_map = _endpoint_env("JUDGE_MODEL_MAP")[3]
+    return endpoint_model(alias, model_map, config, role="judge")
