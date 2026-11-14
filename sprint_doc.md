@@ -6,7 +6,7 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 
 | Task | Assignee | Status | Due | Notes |
 | :---- | :---- | :---- | :---- | :---- |
-| Pick two API models with high published Pander scores (not OpenAI or Google) and two open-weight models; check access | A | Not started | Sat afternoon | Record dated version strings; set a spending cap at each provider |
+| Pick two API models with high published Pander scores (not OpenAI or Google) and two open-weight models; check access | Andrei Iliescu | Done | Sat afternoon | API: Kimi K3, Grok 4.6 (access checked, see `docs/api_models.md`). Local: Qwen 3.8 27B (Q3), Mistral Small 3.1 24B (Kacper, Ollama). No per-provider cap: track spend against the budget |
 | Clone the Pander code and data; confirm the licence and how to run a subset of propositions | Andrei Iliescu | In progress | Sat afternoon |  |
 | Set up batched inference for the two local models | A | Not started | Sat afternoon |  |
 | Forced-choice step and FINAL: parser in the Inspect pipeline | A | Not started | Sat afternoon | Must read at least 95% of replies |
