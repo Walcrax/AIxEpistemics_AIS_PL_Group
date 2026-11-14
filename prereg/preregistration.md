@@ -79,9 +79,13 @@ the hedging itself, whatever else the prompt changes.
 
 **H2. The hedge-hack prompt leaves committed answers unchanged.** Supported if the pooled intervals of both the
 agreement change and the known-item change lie entirely inside ±M percentage points. Not supported if either
-interval lies entirely outside ±M, meaning a change larger than M. Inconclusive otherwise. **M is open**: it is fixed after the pilot, using the
-flip rate between neutral reruns in the pilot, and before the first full run. The flip rate is reported
-against the noise floor and is not part of the decision.
+interval lies entirely outside ±M, meaning a change larger than M. Inconclusive otherwise. **M = 10 percentage points**, set on 14 November 2026 by a rule fixed before the rerun results: M is the
+pooled forced-choice flip rate between two neutral runs of the API pilot, rounded up to a multiple of 5,
+with a minimum of 5 and a maximum of 10. The two neutral runs (same 60 prompts, Kimi K3 and Grok 4.6) disagreed
+on 20 of 120 forced choices (16.7%: Kimi K3 13 of 60, Grok 4.6 7 of 60), so the rule gives 20, capped at 10.
+The cap binds: the models change about a sixth of their committed answers between identical runs, which we
+report as the noise floor. Data: `data/pilot/final_answers.csv`. The flip rate is reported against this noise
+floor and is not part of the decision.
 
 **H3. Scoring the forced choice removes at least half of the exploit.** Read from the pooled gain closed, and
 only if H1's interval is above 0:
