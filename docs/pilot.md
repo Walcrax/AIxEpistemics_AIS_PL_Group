@@ -53,3 +53,30 @@ Early signal (5 propositions, not a result): hedge-hack lowers the Pander score 
 models, clearly for Grok (+8.3 → +3.7). Hedge-hack replies are longer (Grok 2,600 → 3,100 characters on average). The forced
 choices also shift towards FALSE (Grok 19 → 12 TRUE), so H2 (unchanged committed answers) needs the full run and the
 noise floor.
+
+## Local models (same 5 propositions)
+
+Two steps, because the judges run through the API endpoint, whose credentials stay in Andrei's `.env`.
+
+1. **Kacper** (Ollama machine) runs both models and both policies on the pilot slice, without judges:
+
+   ```powershell
+   python -I scripts/run_local_batch.py --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy both --log-dir logs/pilot_local --export-dir outputs/pilot_local
+   ```
+
+   Check `final_parse_rate` in the printed summary (must be at least 95%). Then send Andrei
+   `outputs/pilot_local/pipeline_results.jsonl`. It holds the replies only, with no credentials.
+2. **Andrei** judges it and gets the checks table (refusals below 5% under hedge-hack, FINAL parse at least 95%):
+
+   ```bash
+   uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> <path to pipeline_results.jsonl>
+   ```
+
+   The local models have no published Pander score, so there is no reference check. Judging 240 replies costs
+   about 2.7M judge input tokens.
+
+`judge_local_replies.py` was tested on the API pilot's Kimi replies exported the same way. Neutral reproduced the
+pilot (+2.6 vs +2.5). **Judge noise:** re-judging the same Kimi hedge-hack replies moved the slice score from +0.7
+to +3.0 (the Gemini judge runs at temperature 1). So on 5 propositions, score differences of a few points are within
+judge noise. Kimi's pilot hedge-hack drop is inside it; Grok's (−4.6) is larger, but the noise-floor task has to
+settle it.

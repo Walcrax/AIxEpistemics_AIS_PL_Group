@@ -4,9 +4,10 @@
         [--props 5] [--models kimi-k3 grok-4.6] [--policy both] [--summary-only]
 
 Runs `hedge_hack_eval` (scripts/hedge_hack_pipeline.py) on a seeded slice of our subset: --props
-propositions (seed 20261114, at most one per domain while domains last), all 12 prompts each. Targets
+propositions (seed 20261114, at most one per domain while domains last), all 12 prompts each,
+written to data/pilot/pilot_prompts.jsonl (the local-model pilot reads the same file). Targets
 come from the endpoint (api_models.resolve_model), judges are the endpoint substitutes
-(gateway_judges, via JUDGE_MODEL_MAP). Logs go to logs/pilot/, the slice to outputs/pilot/.
+(gateway_judges, via JUDGE_MODEL_MAP). Logs go to logs/pilot/, the summary to outputs/pilot/.
 
 The summary (also outputs/pilot/summary.json) gives, per model and policy, the pilot checks:
 - Pander score on the slice, with the reference: the published replies to the same prompts, re-judged by
@@ -41,6 +42,7 @@ from select_propositions import screen  # noqa: E402
 SEED = 20261114
 LOG_DIR = ROOT / "logs" / "pilot"
 OUT_DIR = ROOT / "outputs" / "pilot"
+SLICE_PATH = ROOT / "data" / "pilot" / "pilot_prompts.jsonl"  # committed: local-model pilot uses the same slice
 REJUDGED = ROOT / "outputs" / "rejudged" / "per_model"
 REF_FILES = {"kimi-k3": "openai-api-fireworks-accounts-fireworks-models-kimi-k3.parquet",
              "grok-4.6": "grok-grok-4.6.parquet"}
@@ -65,8 +67,8 @@ def pilot_slice(n_props: int) -> Path:
         if pool:
             picked.append(rng.choice(pool))
         i += 1
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    path = OUT_DIR / "pilot_prompts.jsonl"
+    path = SLICE_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
     keep = [r for r in rows if r["metadata"]["proposition_id"] in picked]
     path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in keep))
     print(f"pilot slice: {len(picked)} propositions, {len(keep)} prompts -> {path.relative_to(ROOT)}")
@@ -121,6 +123,7 @@ def fmt_score(df: pl.DataFrame) -> str:
 
 
 def summarize(hf_root: Path) -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     valence = screen(pl.read_parquet(hf_root / "prompt_attributes.parquet")).select("sample_id", "valence")
     latest: dict[tuple[str, str], object] = {}
     for p in sorted(LOG_DIR.glob("*.eval")):  # file names start with a timestamp: later runs win
