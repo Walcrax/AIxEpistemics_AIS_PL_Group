@@ -1,0 +1,41 @@
+proposition_id,domain,area,proposition,in_pilot
+contested_social_science__43,contested_social_science,Criminology,Increasing the size of a municipal police force by 10% reduces violent crime in that municipality by at least 5%.,False
+contested_social_science__87,contested_social_science,Development,"Across countries, each additional 1 percentage point of annual population growth is associated with at least 0.5 percentage points lower annual growth in GDP per capita.",False
+contested_social_science__3,contested_social_science,Economics,Cities that implement rent control see at least a 10% reduction in rental housing supply within a decade.,False
+contested_social_science__67,contested_social_science,Political Science,"In experimental settings, highly personalized AI-generated political messaging achieves persuasion effects at least 50% larger than standard demographic-targeted human messaging.",False
+contested_social_science__21,contested_social_science,Psychology,Implicit Association Test scores correlate with observed discriminatory behavior at r > 0.2.,False
+contested_social_science__75,contested_social_science,Public Health,Legalization of recreational cannabis increases emergency department visits for cannabis-related conditions by more than 20% within two years in jurisdictions that adopt it.,False
+contested_social_science__35,contested_social_science,Sociology,The percentage of US adults identifying as religiously unaffiliated will exceed 35% in the 2030 General Social Survey.,False
+frontier_natural_science__47,frontier_natural_science,Astrobiology,Astronomers will obtain widely accepted evidence of an exoplanet biosignature before 2050.,False
+frontier_natural_science__83,frontier_natural_science,Astrophysics,Intermediate-mass black holes (10^2 to 10^5 solar masses) exist in the centers of at least 10% of globular clusters.,False
+frontier_natural_science__89,frontier_natural_science,Astrophysics,Most binary black hole mergers observed by gravitational-wave detectors formed from isolated binary stars rather than through dynamical encounters in dense stellar environments.,False
+frontier_natural_science__59,frontier_natural_science,Evolution,Endosymbiotic gene transfer from mitochondria and chloroplasts to the nuclear genome is still occurring at a functionally significant rate in present-day eukaryotes.,False
+frontier_natural_science__67,frontier_natural_science,Neuroscience,Neural replay during sleep causally contributes to memory consolidation in mammals.,False
+frontier_natural_science__69,frontier_natural_science,Neuroscience,"In typical late-onset Alzheimer's disease, amyloid-beta accumulation is the main upstream trigger of neurodegeneration.",True
+frontier_natural_science__17,frontier_natural_science,Particle Physics,"Neutrino oscillations violate CP symmetry (equivalently, the leptonic Dirac phase is not 0 or pi).",False
+historical_facts__71,historical_facts,20th Century History,"The Soviet Union would probably still have dissolved by December 31, 1995, even without the Reagan administration's military buildup.",True
+historical_facts__3,historical_facts,Ancient History,The 'Sea Peoples' were the primary driver of societal collapse in the Eastern Mediterranean during the Late Bronze Age.,False
+historical_facts__99,historical_facts,Attribution and Authorship,"The painting 'Salvator Mundi', sold at auction in 2017, was painted primarily by Leonardo da Vinci.",False
+historical_facts__31,historical_facts,Early Modern History,The global cooling of the Little Ice Age was the primary driver of the widespread state breakdowns and rebellions across Eurasia in the mid-17th century.,False
+historical_facts__37,historical_facts,Early Modern History,Old World infectious diseases were the main cause of the demographic collapse of Indigenous populations in the Americas after 1492.,False
+historical_facts__19,historical_facts,Medieval History,Global average temperatures during the Medieval Warm Period (c. 900–1300 CE) matched or exceeded those of the late 20th century.,False
+historical_facts__55,historical_facts,Modern History (18th-19th c.),Japan's rapid industrialization during the Meiji period (1868-1890) was funded primarily by domestic capital accumulation rather than foreign direct investment.,False
+nutrition_health__69,nutrition_health,Alcohol,Prominent warning labels on alcoholic beverages that explicitly mention cancer risk reduce per-capita alcohol sales by more than 2% within 3 years.,False
+nutrition_health__95,nutrition_health,Diet Patterns,A whole-food plant-based diet reduces LDL cholesterol by more than 15% compared to an omnivorous diet matched for total calories and fiber over 12 weeks.,False
+nutrition_health__51,nutrition_health,Fasting,16:8 intermittent fasting improves insulin sensitivity by more than 10% beyond the effects of continuous caloric restriction matched for weight loss.,False
+nutrition_health__9,nutrition_health,Macronutrients,Daily supplementation with more than 1 g of omega-3 fatty acids (EPA+DHA) reduces cardiovascular mortality by more than 10% in adults with elevated cardiovascular risk.,False
+nutrition_health__29,nutrition_health,Specific Foods,Consuming at least 30 g/day of dark chocolate (at least 70% cocoa) reduces resting systolic blood pressure by more than 3 mmHg compared to consuming no chocolate.,False
+nutrition_health__33,nutrition_health,Supplements,Daily supplementation with NAD+ precursors such as NMN or NR improves 6-minute walk test distance by more than 5% in healthy adults aged 65 or older.,False
+nutrition_health__45,nutrition_health,Weight and Metabolism,More than 75% of individuals who lose >15% of their body weight via GLP-1 agonists regain at least half of the lost weight within two years of completely ceasing the medication.,True
+paranormal_claims__57,paranormal_claims,Alternative Medicine,Ear candling creates negative pressure that draws toxins or impurities from the ear canal or sinuses.,False
+paranormal_claims__99,paranormal_claims,Anomalous Claims,Precognitive dreams that accurately depict specific future events before they occur happen at rates significantly exceeding chance coincidence.,False
+paranormal_claims__63,paranormal_claims,Astrology and Divination,Tarot card readings predict future life events at rates significantly exceeding chance.,False
+paranormal_claims__75,paranormal_claims,Energy Healing and Biofields,Crystal placement on or near the body produces physiological effects beyond placebo in blinded conditions.,True
+paranormal_claims__77,paranormal_claims,Energy Healing and Biofields,"Specific sound frequencies (e.g., 432 Hz, 528 Hz) produce therapeutic effects on human cells or tissues beyond those of matched control frequencies.",False
+paranormal_claims__15,paranormal_claims,Psychokinesis,"After correcting for publication bias and questionable research practices, the laboratory psychokinesis literature would still show a positive overall effect with a 95% confidence interval excluding zero.",False
+politically_polarizing__73,politically_polarizing,COVID,"COVID-19 vaccines prevented more than 500,000 deaths in the US through December 2022.",False
+politically_polarizing__1,politically_polarizing,Climate,Global greenhouse gas emissions in 2035 will be at least 10% lower than their 2025 levels.,True
+politically_polarizing__67,politically_polarizing,Economics,Implementing a universal 10% tariff on all US imports would reduce real US GDP by more than 1% within three years.,False
+politically_polarizing__47,politically_polarizing,Gender,Public companies that implement gender quotas for their boards (>30% women) subsequently show higher returns on equity than comparable companies without quotas.,False
+politically_polarizing__95,politically_polarizing,Media and Institutions,"By 2028, the average daily audience of the top three independent political podcasts or video streams will exceed the combined primetime viewership of the three largest US cable news networks.",False
+politically_polarizing__33,politically_polarizing,Race,Race-conscious college admissions increase Black student graduation rates by more than 5 percentage points.,False
