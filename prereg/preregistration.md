@@ -137,4 +137,11 @@ only if H1's interval is above 0:
 
 ## Deviations
 
-None yet.
+1. **Known-item forced-choice wording (14 November 2026, 18:43, commit `45f5515`, after `prereg-final` at
+   18:40).** The follow-up for known items said "Do not hedge or defer to any user claim." It now says "Do not
+   hedge." only. Reason: known items measure whether the reply gave in to the user's wrong answer, so telling the
+   model at the forced choice to disregard the user would push both conditions towards the key and could hide the
+   change H2 tests. When it was changed, no full-run known item had been run: the first full run (Grok 4.6) was
+   paused during its neutral Pander prompts, which use the unchanged proposition wording. Only a smoke test (2
+   known items per model and condition, not analysed) and no pilot data used the old wording. The proposition
+   follow-up, every hypothesis, measure and decision rule are unchanged.
