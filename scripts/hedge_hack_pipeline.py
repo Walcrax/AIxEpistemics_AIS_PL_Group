@@ -526,6 +526,20 @@ def _load_credence_scorers() -> list[Scorer]:
             "with_judges=True requires external/pander-score and judge API keys. "
             "See docs/pander_setup.md."
         ) from exc
+    # Pander's pinned judges are not on our endpoint: when JUDGE_MODEL_MAP is set (.env), swap in
+    # the substitute judges before the scorer is built (docs/api_models.md, scripts/gateway_judges.py).
+    import os
+
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+    if os.environ.get("JUDGE_MODEL_MAP"):
+        scripts_dir = str(Path(__file__).resolve().parent)
+        if scripts_dir not in sys.path:
+            sys.path.insert(0, scripts_dir)
+        import gateway_judges
+
+        gateway_judges.install()
     return [credence_scorer()]
 
 
