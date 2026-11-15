@@ -23,9 +23,9 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 | Figures | A | Done | Sun midday | `scripts/figures.py`, `outputs/analysis/figures/fig1_hypotheses.{pdf,png}` and `fig2_by_prior.{pdf,png}` |
 | Methods and results draft | Stanisław Słupski | Done | Sun midday | Drafted in report |
 | Related work, limitations, dual-use and ethics appendix | B | Done | Sun midday | Appendix is required; drafted in report |
-| Abstract, 150 to 250 words | Stanisław Słupski | In progress | Sun afternoon |  |
+| Abstract, 150 to 250 words | Stanisław Słupski | Done | Sun afternoon |  |
 | Freeze code; README marking any pre-existing code | A | Done | Sun afternoon | `README.md` updated with full status, layout, commands, and pre-existing code/data attributions |
-| Final PDF on the official template, eight pages or fewer; submit | C Stanisław Słupski | In progress | Sun afternoon | Leave a few hours before the cutoff |
+| Final PDF on the official template, eight pages or fewer; submit | C Stanisław Słupski | Done | Sun afternoon | Leave a few hours before the cutoff |
 
 ## **Hedge-Hack one-pager: can writing style alone lower a model's sycophancy score?**
 
