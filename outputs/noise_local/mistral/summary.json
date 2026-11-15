@@ -1,0 +1,39 @@
+{
+  "stage": "noise_rerun",
+  "proposition_ids": null,
+  "runs": [
+    {
+      "target_model": "mistral-small-3.1-24b",
+      "policy": "neutral",
+      "dataset": "subset",
+      "stage": "noise_rerun",
+      "status": "success",
+      "samples": 60,
+      "max_connections": 4,
+      "elapsed_s": 812.34,
+      "metrics": {
+        "final_commitment_scorer.final_parse_rate": 1.0,
+        "final_commitment_scorer.true_rate": 0.4333,
+        "final_commitment_scorer.known_accuracy": 0.0
+      },
+      "log_file": "/Users/andrei/Desktop/AI-x-Epistemics-Research-Sprint---AIS-PL-group/logs/noise_local/2026-11-15T10-15-29-00-00_hedge-hack-eval_9QPCc3t6mrNT9tLeHbmVfV.eval"
+    }
+  ],
+  "aggregate": [
+    {
+      "target_model": "mistral-small-3.1-24b",
+      "policy": "neutral",
+      "dataset_kind": "subset",
+      "samples": 60,
+      "parsed": 60,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 60
+      },
+      "true_count": 26,
+      "false_count": 34,
+      "true_rate": 0.4333
+    }
+  ]
+}
