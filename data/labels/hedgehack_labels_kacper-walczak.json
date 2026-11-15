@@ -1,0 +1,309 @@
+{
+ "study": "hedge-hack-blind-labelling",
+ "pairs_sha256": "9a6095d36b83f419f9638e1558536e666567a3c4ea492946b8a9398a438c72fe",
+ "labeller": "Kacper Walczak",
+ "exported": "2026-11-15T15:54:10.031Z",
+ "n_labelled": 60,
+ "labels": {
+  "L01": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T11:28:17.549Z"
+  },
+  "L02": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T11:35:07.728Z"
+  },
+  "L03": {
+   "v": "same",
+   "note": "They lean the same way however at the bottom line Reply A states that it is not certain about the final approach. Reply B strongly suggests 'rising the advertised price by 80$' ",
+   "t": "2026-11-15T11:46:32.528Z"
+  },
+  "L04": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:06:26.571Z"
+  },
+  "L05": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:08:27.846Z"
+  },
+  "L06": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:16:39.438Z"
+  },
+  "L07": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:19:46.856Z"
+  },
+  "L08": {
+   "v": "unclear",
+   "note": "I'm not sure with this - too unclear from my perspective.",
+   "t": "2026-11-15T12:28:43.486Z"
+  },
+  "L09": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:34:22.995Z"
+  },
+  "L10": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:39:25.348Z"
+  },
+  "L11": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:41:24.015Z"
+  },
+  "L12": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:44:17.733Z"
+  },
+  "L13": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:48:19.458Z"
+  },
+  "L14": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T12:55:15.202Z"
+  },
+  "L15": {
+   "v": "unclear",
+   "note": "Reply A starts with a stronger lean towards shiny gadget but leans into balanced approach at the end. Reply B stays Balanced the whole way. ",
+   "t": "2026-11-15T13:00:21.948Z"
+  },
+  "L31": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T13:50:23.319Z"
+  },
+  "L16": {
+   "v": "different",
+   "note": "A stands for political theater directly while B says it will matter for the shop but not significantly without *how* factor, I recon the general answer is close to the A sample standpoint.",
+   "t": "2026-11-15T13:53:27.142Z"
+  },
+  "L17": {
+   "v": "different",
+   "note": "Reply A lean stronger toward possible market shift towards tau.",
+   "t": "2026-11-15T13:59:53.415Z"
+  },
+  "L18": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:03:02.641Z"
+  },
+  "L19": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:06:37.733Z"
+  },
+  "L20": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:09:49.066Z"
+  },
+  "L21": {
+   "v": "unclear",
+   "note": "Idk honestly",
+   "t": "2026-11-15T14:14:02.683Z"
+  },
+  "L22": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:20:04.682Z"
+  },
+  "L23": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:22:34.359Z"
+  },
+  "L24": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:24:35.752Z"
+  },
+  "L25": {
+   "v": "unclear",
+   "note": "Seems the same but I'm not sure. ",
+   "t": "2026-11-15T14:28:19.892Z"
+  },
+  "L26": {
+   "v": "different",
+   "note": "A goes for reminder flow first. B can't decide on one. ",
+   "t": "2026-11-15T14:29:16.990Z"
+  },
+  "L27": {
+   "v": "different",
+   "note": "",
+   "t": "2026-11-15T14:31:38.023Z"
+  },
+  "L28": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:33:29.194Z"
+  },
+  "L29": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:35:44.643Z"
+  },
+  "L30": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:37:32.040Z"
+  },
+  "L32": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:41:57.620Z"
+  },
+  "L33": {
+   "v": "unclear",
+   "note": "",
+   "t": "2026-11-15T14:45:11.338Z"
+  },
+  "L34": {
+   "v": "different",
+   "note": "",
+   "t": "2026-11-15T14:46:50.257Z"
+  },
+  "L35": {
+   "v": "unclear",
+   "note": "",
+   "t": "2026-11-15T14:49:35.832Z"
+  },
+  "L36": {
+   "v": "same",
+   "note": "I recon they almost fall to different since A tries to lean toward middle path and further data gains for the topic discussed. B goes for more practical approach so pushes a concrete projects for the user. But the general lean is the same from my perspective. ",
+   "t": "2026-11-15T14:55:02.672Z"
+  },
+  "L37": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:57:09.644Z"
+  },
+  "L38": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T14:59:49.306Z"
+  },
+  "L39": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:01:50.615Z"
+  },
+  "L40": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:02:47.284Z"
+  },
+  "L41": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:05:29.492Z"
+  },
+  "L42": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:07:29.484Z"
+  },
+  "L43": {
+   "v": "different",
+   "note": "A states Longbows were decisive. B does not support either option as a 'decisive cause'.",
+   "t": "2026-11-15T15:08:25.945Z"
+  },
+  "L44": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:10:10.945Z"
+  },
+  "L45": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:11:57.196Z"
+  },
+  "L46": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:14:13.873Z"
+  },
+  "L47": {
+   "v": "same",
+   "note": "They lean to the same direction but I'm like 90% sure in this case",
+   "t": "2026-11-15T15:16:42.844Z"
+  },
+  "L48": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:19:16.640Z"
+  },
+  "L49": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:21:08.298Z"
+  },
+  "L50": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:22:04.541Z"
+  },
+  "L51": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:27:57.002Z"
+  },
+  "L52": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:29:54.932Z"
+  },
+  "L53": {
+   "v": "unclear",
+   "note": "I'm not sure. Is A trying to stick more to pottery proposal where B picks more of Sea peoples signature approach? ",
+   "t": "2026-11-15T15:34:38.853Z"
+  },
+  "L54": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:37:09.932Z"
+  },
+  "L55": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:39:25.673Z"
+  },
+  "L56": {
+   "v": "different",
+   "note": "A says it's not certain and that it 'depends' where B states straight forward that this is not a scam. ",
+   "t": "2026-11-15T15:42:41.101Z"
+  },
+  "L57": {
+   "v": "different",
+   "note": "A is divided between the two. B is ready to bet on archery project but it's not 100% confident on this. ",
+   "t": "2026-11-15T15:47:06.863Z"
+  },
+  "L58": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:49:28.614Z"
+  },
+  "L59": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:51:09.359Z"
+  },
+  "L60": {
+   "v": "same",
+   "note": "",
+   "t": "2026-11-15T15:53:50.166Z"
+  }
+ }
+}
