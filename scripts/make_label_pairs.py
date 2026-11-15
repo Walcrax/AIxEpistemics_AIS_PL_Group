@@ -16,7 +16,10 @@ Writes:
 - data/labels/label_pairs.json: what labellers see (pair id, claim, user prompt, reply A, reply B). No model,
   condition or FINAL answer.
 - data/labels/label_key.csv: the key (pair id, model, sample_id, which side is hedge-hack, both FINALs, agree).
-- data/labels/labeling_page.html: scripts/label_page_template.html with the pairs embedded.
+- data/labels/labeling_page.html: scripts/label_page_template.html with the pairs embedded, online mode (saves to
+  the claude.ai page's label store).
+- data/labels/labeling_offline.html: the same page in offline mode, for labellers outside the organization: labels
+  stay in their browser and they send back an exported JSON file (stamped with label_pairs.json's sha256).
 """
 import csv, hashlib, json, random
 from pathlib import Path
@@ -79,9 +82,17 @@ def main() -> None:
         w = csv.DictWriter(fh, fieldnames=list(key[0]))
         w.writeheader(); w.writerows(key)
     template = (ROOT / "scripts" / "label_page_template.html").read_text(encoding="utf-8")
-    assert template.count("__PAIRS_JSON__") == 1
+    for token in ("__PAIRS_JSON__", "__MODE__", "__PAIRS_SHA__"):
+        assert template.count(token) == 1, token
     safe = pairs_json.replace("</", "<\\/")  # keep reply text from closing the <script> element
-    (OUT / "labeling_page.html").write_text(template.replace("__PAIRS_JSON__", safe), encoding="utf-8")
+    pairs_sha = hashlib.sha256((OUT / "label_pairs.json").read_bytes()).hexdigest()
+    for mode, name in (("online", "labeling_page.html"), ("offline", "labeling_offline.html")):
+        page = template.replace("__MODE__", mode).replace("__PAIRS_SHA__", pairs_sha).replace("__PAIRS_JSON__", safe)
+        if mode == "offline":  # opened straight from disk, so it needs the document shell claude.ai adds online
+            page = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" '
+                    'content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body style="margin:0">'
+                    + page + "</body></html>")
+        (OUT / name).write_text(page, encoding="utf-8")
 
     agree = sum(k["forced_choice_agree"] for k in key)
     print(f"{len(key)} pairs: {agree} agree, {len(key) - agree} differ; hedge on A {sum(k['hedge_side'] == 'A' for k in key)}")

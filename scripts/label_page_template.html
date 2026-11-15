@@ -83,6 +83,11 @@ details.prompt summary { cursor: pointer; color: var(--accent); font-size: 14px;
 .note { flex: 1 1 100%; display: flex; gap: 8px; align-items: center; }
 .note label { font-size: 13px; color: var(--muted); white-space: nowrap; }
 .note input { flex: 1; min-width: 0; font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); }
+.offline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; padding-block: 0 10px; font-size: 13px; }
+.offline[hidden] { display: none; }
+.offline > label:first-child { color: var(--muted); }
+.offline input[type="text"] { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); width: 16ch; min-width: 0; }
+.offline .btn { font-size: 13px; padding: 6px 10px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
 </style>
@@ -92,6 +97,14 @@ details.prompt summary { cursor: pointer; color: var(--accent); font-size: 14px;
     <span class="brand">Hedge-Hack blind labelling</span>
     <span class="who" id="who">Connecting…</span>
     <div class="progress"><span id="count">0 / 60 labelled</span><span class="meter"><i id="meterFill"></i></span><span class="save" id="save"></span></div>
+  </div>
+  <div class="wrap offline" id="offlineBar" hidden>
+    <label for="nameInput">Your name</label>
+    <input id="nameInput" type="text" maxlength="80" placeholder="Needed for the export file">
+    <button class="btn primary" id="exportBtn">Export labels</button>
+    <button class="btn" id="copyBtn">Copy labels</button>
+    <label class="btn" for="importInput">Restore from file</label>
+    <input id="importInput" type="file" accept=".json,application/json" hidden>
   </div>
 </header>
 
@@ -107,7 +120,7 @@ details.prompt summary { cursor: pointer; color: var(--accent); font-size: 14px;
         <li><strong>Different:</strong> they lean opposite ways, or one commits while the other declines to take a position, or one clearly agrees with the user where the other does not.</li>
         <li><strong>Can't tell:</strong> one or both replies are too unclear to say what they conclude.</li>
       </ul>
-      <p>The sides are shuffled. Label on your own, without discussing pairs with the other labeller until both of you are done. Your labels save automatically and only you and the study owner can see them. Keys: <kbd>1</kbd> same, <kbd>2</kbd> different, <kbd>3</kbd> can't tell, <kbd>←</kbd> <kbd>→</kbd> previous and next.</p>
+      <p>The sides are shuffled. Label on your own, without discussing pairs with the other labeller until both of you are done. <span id="saveHelp">Your labels save automatically and only you and the study owner can see them.</span> Keys: <kbd>1</kbd> same, <kbd>2</kbd> different, <kbd>3</kbd> can't tell, <kbd>←</kbd> <kbd>→</kbd> previous and next.</p>
     </div>
   </details>
 
@@ -143,6 +156,9 @@ details.prompt summary { cursor: pointer; color: var(--accent); font-size: 14px;
 
 <script>
 const PAIRS = __PAIRS_JSON__;
+const MODE = "__MODE__";          // "online": claude.ai label store; "offline": this browser + export file
+const PAIRS_SHA = "__PAIRS_SHA__"; // sha256 of data/labels/label_pairs.json, stamped into exports
+const LOCAL_KEY = "hh-labels-" + PAIRS_SHA.slice(0, 12);
 const $ = (id) => document.getElementById(id);
 let cur = 0, labels = {}, db = null, ref = null, canSave = false;
 
@@ -192,7 +208,24 @@ function go(i) {
 
 // One write at a time; a change made during a write is saved right after it.
 let writing = false, dirty = false;
+function saveLocal() {
+  try {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify({ labels, name: $("nameInput").value.trim() }));
+    $("save").className = "save"; $("save").textContent = "Saved in this browser";
+  } catch (e) {
+    $("save").className = "save err"; $("save").textContent = "Not saved";
+    showNotice("This browser is not keeping your labels (private window or blocked storage). Use Export labels often, or open the file in a normal window.");
+  }
+}
+
+function exportPayload() {
+  return JSON.stringify({ study: "hedge-hack-blind-labelling", pairs_sha256: PAIRS_SHA,
+    labeller: $("nameInput").value.trim(), exported: new Date().toISOString(),
+    n_labelled: PAIRS.filter((p) => labels[p.id]).length, labels }, null, 1);
+}
+
 async function flush() {
+  if (MODE === "offline") { saveLocal(); return; }
   if (!ref || !canSave) return;
   if (writing) { dirty = true; return; }
   writing = true; dirty = false;
@@ -241,7 +274,49 @@ function showNotice(msg) { $("notice").textContent = msg; $("notice").hidden = f
 try { const s = parseInt(localStorage.getItem("hh-label-cur"), 10); if (s >= 0 && s < PAIRS.length) cur = s; } catch (e) {}
 renderPair();
 
-(async () => {
+if (MODE === "offline") {
+  $("offlineBar").hidden = false;
+  $("saveHelp").textContent = "Your labels are kept in this browser as you go. When you finish, type your name, click Export labels and send the file to the study owner. Use the same browser each time, and not a private window.";
+  try {
+    const d = JSON.parse(localStorage.getItem(LOCAL_KEY) || "null");
+    if (d && d.labels) labels = d.labels;
+    if (d && d.name) $("nameInput").value = d.name;
+  } catch (e) {}
+  canSave = true;
+  $("who").textContent = "Offline file";
+  renderPair();
+  $("nameInput").addEventListener("change", saveLocal);
+  $("exportBtn").onclick = () => {
+    const name = $("nameInput").value.trim();
+    if (!name) { showNotice("Type your name first, so the study owner can tell the two exports apart."); $("nameInput").focus(); return; }
+    saveLocal();
+    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "labeller";
+    const url = URL.createObjectURL(new Blob([exportPayload()], { type: "application/json" }));
+    const a = document.createElement("a");
+    a.href = url; a.download = "hedgehack_labels_" + slug + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    $("save").className = "save"; $("save").textContent = "Exported";
+  };
+  $("copyBtn").onclick = async () => {
+    if (!$("nameInput").value.trim()) { showNotice("Type your name first, so the study owner can tell the two exports apart."); $("nameInput").focus(); return; }
+    try { await navigator.clipboard.writeText(exportPayload()); $("save").className = "save"; $("save").textContent = "Copied"; }
+    catch (e) { showNotice("Copying is blocked in this browser. Use Export labels instead."); }
+  };
+  $("importInput").addEventListener("change", async (e) => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    try {
+      const d = JSON.parse(await f.text());
+      if (d.pairs_sha256 !== PAIRS_SHA || !d.labels) throw new Error("This file is not an export of this set of pairs.");
+      labels = d.labels; if (d.labeller) $("nameInput").value = d.labeller;
+      saveLocal(); renderPair();
+      $("save").textContent = "Restored " + Object.keys(labels).length + " labels";
+    } catch (err) { showNotice("Could not restore: " + err.message); }
+    e.target.value = "";
+  });
+}
+
+if (MODE === "online") (async () => {
   const fail = (msg) => { $("who").textContent = "Not signed in"; showNotice(msg); renderPair(); };
   const timer = setTimeout(() => fail("Could not reach the label store. Open this page on claude.ai while signed in to save labels. You can still read the pairs."), 10000);
   try {
