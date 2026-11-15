@@ -28,7 +28,9 @@ about the claim differs; Cohen's kappa (`prereg/preregistration.md`, "A blind ch
 Limitations: hedge-hack replies are often recognisable by style, so blinding is partial.
 
 **"Often differ" threshold** (the pre-registration gives no number; agreed 2026-11-15, after both label files were in
-but before the two were compared or `label_key.csv` was opened; Andrei had seen his own labels): computed on the 30
+but before the two were compared or `label_key.csv`, which identifies the forced-choice-agree pairs, was opened.
+Andrei's label totals had been shown in chat by the assistant that proposed the rule; the statistic cannot be
+computed from one labeller's labels without the key): computed on the 30
 pairs whose forced choices agree. For each labeller, the share labelled Different among those pairs, Can't tell
 excluded; average the two shares. At 20% or more, conclusions "often differ" and H2 fails as stated. Pairs whose
 forced choices differ are expected to differ in conclusion, so they are reported but do not count toward the
