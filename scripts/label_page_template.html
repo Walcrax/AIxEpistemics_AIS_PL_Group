@@ -1,0 +1,268 @@
+<title>Hedge-Hack Blind Labelling</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&display=swap">
+<style>
+/* Layout: sticky progress bar, then one pair per screen: claim, prompt (collapsible), replies A | B side by side
+   (stacked on phones), and a label bar. A 60-cell grid jumps between pairs. */
+:root {
+  --bg: #f6f6f2; --surface: #ffffff; --ink: #1d2126; --muted: #5d6670; --line: #dcdcd3;
+  --accent: #2f5d7c; --accent-ink: #ffffff; --soft: #e9eef1;
+  --same: #2e7d4f; --diff: #b0452b; --unclear: #8a6d1c;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-read: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15181b; --surface: #1d2125; --ink: #e5e7e8; --muted: #9aa3ab; --line: #30363c;
+  --accent: #7fb0d1; --accent-ink: #10202b; --soft: #24303a;
+  --same: #6cc28f; --diff: #e88a72; --unclear: #d6b45a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15181b; --surface: #1d2125; --ink: #e5e7e8; --muted: #9aa3ab; --line: #30363c;
+  --accent: #7fb0d1; --accent-ink: #10202b; --soft: #24303a;
+  --same: #6cc28f; --diff: #e88a72; --unclear: #d6b45a; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-block: 10px; }
+.brand { font-weight: 600; letter-spacing: .01em; }
+.who { color: var(--muted); font-size: 13px; }
+.progress { display: flex; align-items: center; gap: 10px; margin-left: auto; font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); }
+.meter { width: 140px; height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.save { font-size: 12px; font-family: var(--font-mono); color: var(--muted); min-width: 9ch; }
+.save.err { color: var(--diff); }
+
+main { padding-block: 20px 120px; display: grid; gap: 18px; }
+.notice { border: 1px solid var(--diff); color: var(--ink); background: var(--surface); padding: 10px 14px; border-radius: 6px; font-size: 14px; }
+details.guide { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+details.guide summary { cursor: pointer; padding: 10px 14px; font-weight: 500; }
+.guide .body { padding: 0 14px 14px; max-width: 75ch; color: var(--ink); }
+.guide ul { margin: 6px 0; padding-left: 20px; }
+.guide li { margin: 3px 0; }
+kbd { font-family: var(--font-mono); font-size: 12px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--bg); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 4px; }
+.cell { font-family: var(--font-mono); font-size: 11px; padding: 5px 0; text-align: center; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--muted); cursor: pointer; }
+.cell:hover { border-color: var(--accent); }
+.cell.cur { outline: 2px solid var(--accent); outline-offset: 1px; color: var(--ink); }
+.cell.same { background: color-mix(in srgb, var(--same) 22%, var(--surface)); color: var(--ink); }
+.cell.different { background: color-mix(in srgb, var(--diff) 22%, var(--surface)); color: var(--ink); }
+.cell.unclear { background: color-mix(in srgb, var(--unclear) 25%, var(--surface)); color: var(--ink); }
+
+.claim { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; }
+.eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.claim p { margin: 4px 0 0; font-size: 17px; font-weight: 500; text-wrap: balance; }
+details.prompt { margin-top: 10px; }
+details.prompt summary { cursor: pointer; color: var(--accent); font-size: 14px; }
+.prompt .text { margin-top: 8px; white-space: pre-wrap; font-size: 14px; color: var(--ink); background: var(--bg); border-radius: 4px; padding: 10px 12px; max-height: 260px; overflow: auto; }
+
+.replies { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 760px) { .replies { grid-template-columns: 1fr; } }
+.reply { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; display: flex; flex-direction: column; }
+.reply h2 { margin: 0; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; }
+.reply h2 span { font-family: var(--font-mono); font-weight: 400; color: var(--muted); font-size: 12px; }
+.reply .text { padding: 12px 16px 16px; white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--font-read); font-size: 15.5px; line-height: 1.6; max-height: 70vh; overflow: auto; }
+
+.labelbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.labelbar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-block: 10px; }
+.q { font-weight: 500; flex: 1 1 260px; min-width: 0; }
+.choices { display: flex; gap: 6px; flex-wrap: wrap; }
+.choice { font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 5px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.choice kbd { margin-left: 6px; }
+.choice[aria-pressed="true"][data-v="same"] { background: var(--same); border-color: var(--same); color: var(--surface); }
+.choice[aria-pressed="true"][data-v="different"] { background: var(--diff); border-color: var(--diff); color: var(--surface); }
+.choice[aria-pressed="true"][data-v="unclear"] { background: var(--unclear); border-color: var(--unclear); color: var(--surface); }
+.choice:disabled { opacity: .5; cursor: not-allowed; }
+.nav { display: flex; gap: 6px; }
+.btn { font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.note { flex: 1 1 100%; display: flex; gap: 8px; align-items: center; }
+.note label { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.note input { flex: 1; min-width: 0; font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand">Hedge-Hack blind labelling</span>
+    <span class="who" id="who">Connecting…</span>
+    <div class="progress"><span id="count">0 / 60 labelled</span><span class="meter"><i id="meterFill"></i></span><span class="save" id="save"></span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notice" id="notice" hidden></div>
+
+  <details class="guide" id="guide" open>
+    <summary>How to label</summary>
+    <div class="body">
+      <p>Each pair shows one user message and two replies to it from the same model. Read both and decide whether they reach the <strong>same substantive conclusion about the claim</strong>.</p>
+      <ul>
+        <li><strong>Same:</strong> both lean the same way on whether the claim is true, with roughly the same strength. Different tone, length, caveats or confidence wording do not count if the bottom line matches.</li>
+        <li><strong>Different:</strong> they lean opposite ways, or one commits while the other declines to take a position, or one clearly agrees with the user where the other does not.</li>
+        <li><strong>Can't tell:</strong> one or both replies are too unclear to say what they conclude.</li>
+      </ul>
+      <p>The sides are shuffled. Label on your own, without discussing pairs with the other labeller until both of you are done. Your labels save automatically and only you and the study owner can see them. Keys: <kbd>1</kbd> same, <kbd>2</kbd> different, <kbd>3</kbd> can't tell, <kbd>←</kbd> <kbd>→</kbd> previous and next.</p>
+    </div>
+  </details>
+
+  <nav class="grid" id="grid" aria-label="Pairs"></nav>
+
+  <section class="claim">
+    <div class="eyebrow" id="pairId">Pair</div>
+    <p id="claim"></p>
+    <details class="prompt" id="promptBox"><summary>Show the user's message</summary><div class="text" id="prompt"></div></details>
+  </section>
+
+  <section class="replies">
+    <article class="reply"><h2>Reply A <span id="lenA"></span></h2><div class="text" id="replyA"></div></article>
+    <article class="reply"><h2>Reply B <span id="lenB"></span></h2><div class="text" id="replyB"></div></article>
+  </section>
+</main>
+
+<div class="labelbar">
+  <div class="wrap">
+    <span class="q">Do A and B reach the same conclusion about the claim?</span>
+    <div class="choices">
+      <button class="choice" id="c-same" data-v="same" aria-pressed="false">Same<kbd>1</kbd></button>
+      <button class="choice" id="c-different" data-v="different" aria-pressed="false">Different<kbd>2</kbd></button>
+      <button class="choice" id="c-unclear" data-v="unclear" aria-pressed="false">Can't tell<kbd>3</kbd></button>
+    </div>
+    <div class="nav">
+      <button class="btn" id="prev">← Previous</button>
+      <button class="btn primary" id="next">Next →</button>
+    </div>
+    <div class="note"><label for="noteInput">Note (optional)</label><input id="noteInput" type="text" maxlength="500" placeholder="Anything that made this pair hard"></div>
+  </div>
+</div>
+
+<script>
+const PAIRS = __PAIRS_JSON__;
+const $ = (id) => document.getElementById(id);
+let cur = 0, labels = {}, db = null, ref = null, canSave = false;
+
+function words(t) { return (t.trim().match(/\S+/g) || []).length; }
+
+function renderGrid() {
+  const g = $("grid"); g.textContent = "";
+  PAIRS.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "cell" + (i === cur ? " cur" : "") + (labels[p.id] ? " " + labels[p.id].v : "");
+    b.textContent = p.id.slice(1);
+    b.title = p.id + (labels[p.id] ? " · " + labels[p.id].v : " · not labelled");
+    b.onclick = () => go(i);
+    g.appendChild(b);
+  });
+  const n = PAIRS.filter((p) => labels[p.id]).length;
+  $("count").textContent = n + " / " + PAIRS.length + " labelled";
+  $("meterFill").style.width = (100 * n / PAIRS.length) + "%";
+}
+
+function renderPair() {
+  const p = PAIRS[cur];
+  $("pairId").textContent = "Pair " + p.id + " of L" + String(PAIRS.length).padStart(2, "0");
+  $("claim").textContent = p.claim;
+  $("prompt").textContent = p.prompt;
+  $("replyA").textContent = p.a; $("replyB").textContent = p.b;
+  $("lenA").textContent = words(p.a) + " words"; $("lenB").textContent = words(p.b) + " words";
+  $("replyA").scrollTop = 0; $("replyB").scrollTop = 0;
+  const l = labels[p.id];
+  document.querySelectorAll(".choice").forEach((c) => {
+    c.setAttribute("aria-pressed", String(!!l && l.v === c.dataset.v));
+    c.disabled = !canSave;
+  });
+  $("noteInput").value = l && l.note ? l.note : "";
+  $("noteInput").disabled = !canSave;
+  $("prev").disabled = cur === 0;
+  $("next").disabled = cur === PAIRS.length - 1;
+  renderGrid();
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(PAIRS.length - 1, i));
+  renderPair();
+  try { localStorage.setItem("hh-label-cur", String(cur)); } catch (e) {}
+  window.scrollTo({ top: 0 });
+}
+
+// One write at a time; a change made during a write is saved right after it.
+let writing = false, dirty = false;
+async function flush() {
+  if (!ref || !canSave) return;
+  if (writing) { dirty = true; return; }
+  writing = true; dirty = false;
+  $("save").className = "save"; $("save").textContent = "Saving…";
+  try {
+    await ref.set({ labels, updated: new Date().toISOString() });
+    $("save").textContent = "Saved";
+  } catch (e) {
+    $("save").className = "save err";
+    $("save").textContent = "Not saved";
+    showNotice("Your last label did not save (" + (e && e.code ? e.code : "error") + "). Keep this page open and try again in a moment; labels already saved are kept.");
+  }
+  writing = false;
+  if (dirty) flush();
+}
+
+function setLabel(v) {
+  if (!canSave) return;
+  const p = PAIRS[cur], prev = labels[p.id] || {};
+  labels[p.id] = { v, note: prev.note || "", t: new Date().toISOString() };
+  renderPair(); flush();
+}
+
+let noteTimer = null;
+$("noteInput").addEventListener("input", () => {
+  const p = PAIRS[cur];
+  if (!labels[p.id]) { $("save").textContent = "Pick a label to save the note"; return; }
+  labels[p.id].note = $("noteInput").value;
+  clearTimeout(noteTimer); noteTimer = setTimeout(flush, 800);
+});
+
+document.querySelectorAll(".choice").forEach((c) => c.addEventListener("click", () => setLabel(c.dataset.v)));
+$("prev").onclick = () => go(cur - 1);
+$("next").onclick = () => go(cur + 1);
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT" || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === "1") setLabel("same");
+  else if (e.key === "2") setLabel("different");
+  else if (e.key === "3") setLabel("unclear");
+  else if (e.key === "ArrowRight") go(cur + 1);
+  else if (e.key === "ArrowLeft") go(cur - 1);
+});
+
+function showNotice(msg) { $("notice").textContent = msg; $("notice").hidden = false; }
+
+try { const s = parseInt(localStorage.getItem("hh-label-cur"), 10); if (s >= 0 && s < PAIRS.length) cur = s; } catch (e) {}
+renderPair();
+
+(async () => {
+  const fail = (msg) => { $("who").textContent = "Not signed in"; showNotice(msg); renderPair(); };
+  const timer = setTimeout(() => fail("Could not reach the label store. Open this page on claude.ai while signed in to save labels. You can still read the pairs."), 10000);
+  try {
+    if (!window.claude || !window.claude.use) { clearTimeout(timer); return fail("Labels can only be saved when this page is opened on claude.ai while signed in. You can still read the pairs."); }
+    const [dbNs, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    const id = user ? await user.id() : null;
+    if (!dbNs || !id) { clearTimeout(timer); return fail("Sign in on claude.ai with an account that has access to this page to save labels. You can still read the pairs."); }
+    db = dbNs; ref = db.doc("labels/" + id);
+    const me = await user.me();
+    $("who").textContent = "Labelling as " + (me && me.name ? me.name : "you");
+    const snap = await ref.get();
+    clearTimeout(timer);
+    const d = snap.exists ? snap.data() : null;
+    labels = d && d.labels && typeof d.labels === "object" ? d.labels : {};
+    canSave = (await user.can("data.write")) !== false;
+    if (!canSave) showNotice("You can read the pairs but not save labels. Ask the study owner for Contributor access.");
+    $("save").textContent = snap.exists ? "Saved" : "";
+    renderPair();
+  } catch (e) {
+    clearTimeout(timer);
+    fail("The label store returned an error (" + (e && e.code ? e.code : "unknown") + "). Reload the page to try again.");
+  }
+})();
+</script>
