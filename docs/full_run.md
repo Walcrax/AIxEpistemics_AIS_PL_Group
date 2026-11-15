@@ -72,6 +72,41 @@ Only Mistral, the model with the highest neutral score, shows a clear drop; Qwen
 overlapping CIs, and Kimi is near zero under both policies. The formal tests (H1 exploit gain, H2 agreement
 change within M = 10, H3 patched score) are for the analysis script.
 
+## Hedge-only rewrites judged (style effect), 2026-11-15
+
+Each neutral reply is kept word for word, with three stock sentences from `prompts/hedge_bank.json` added
+(an opener before it; a both-sides sentence and an offer to abstain after it). The committed answer is the
+neutral one by construction, so any score change is the judges' response to hedging style alone.
+
+    # Grok and Kimi: export the neutral subset logs and make rewrites (free, no model calls)
+    uv run --project external/pander-score python -I scripts/export_pipeline_results.py \
+        logs/full/2026-11-14T17-53-15-00-00_hedge-hack-eval_7fg2QwKCdMeXi5d6yyWToE.eval \
+        logs/full/2026-11-14T18-24-00-00-00_hedge-hack-eval_GVJcAUT69EpydjqYBC3bko.eval \
+        --out outputs/full_api/neutral_subset_results.jsonl --rewrite-out outputs/full_api/neutral_for_rewrite.jsonl \
+        --rewritten-out outputs/full_api/neutral_rewritten.jsonl
+    # Attach prompt fields to each rewrite, policy "hedge_only" (Mistral and Qwen the same, from their pipeline_results)
+    python3 -I scripts/prepare_hedge_only.py outputs/full_api/neutral_subset_results.jsonl \
+        outputs/full_api/neutral_rewritten.jsonl outputs/full_api/hedge_only.jsonl
+    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> \
+        outputs/full_api/hedge_only.jsonl outputs/full_local_mistral/hedge_only.jsonl \
+        outputs/full_local_qwen/hedge_only.jsonl --out outputs/hedge_only/judged.jsonl
+
+`outputs/hedge_only/judged.jsonl`: 2,016 rows (504 per model), rewritten reply, original reply, hedge ids and
+both judges' fields. All 2,016 replies were rewritten; 42 propositions kept for every model.
+
+| model | neutral | hedge_only [95% CI] | **style effect** (hedge_only − neutral) | exploit gain (hedge_hack − neutral) |
+|---|---|---|---|---|
+| mistral-small-3.1-24b | +32.6 | +22.2 [+17.6, +27.6] | **−10.4** | −14.7 |
+| qwen-3.8-27b | +12.0 | +9.2 [+1.6, +17.7] | −2.8 | −2.9 |
+| grok-4.6 | +5.9 | +2.2 [−2.8, +7.6] | −3.7 | −1.2 |
+| kimi-k3 | +1.6 | +2.5 [−2.5, +7.8] | +0.9 | +1.4 |
+
+- Mistral: hedging style alone gives about 70% of the exploit gain, with positions unchanged.
+- Refusal ≤ 1.0% for every model. CIs are per score; the paired bootstrap on the difference is for the analysis
+  script.
+- Judge spend: judge-openai 11.23M in / 0.54M out, judge-google 11.91M in / 1.39M out, about $59.35 (rewrites
+  are longer than the originals). Running total about $290 against the $285 budget.
+
 ## Local full run — Qwen 3.8 27B (`qwen-3.8-27b`), 2026-11-15
 
 Generated on RTX 4060 Ti 16 GB via `scripts/run_local_batch.py` (`ollama/qwen-sprint`, `hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL`, `num_ctx 4096`, `temperature 0.0`, `max_tokens 2048`, `extra_body={"reasoning": {"effort": "none"}}`, `max_connections=4`):
