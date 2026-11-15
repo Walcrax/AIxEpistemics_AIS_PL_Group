@@ -25,5 +25,11 @@ about the claim differs; Cohen's kappa (`prereg/preregistration.md`, "A blind ch
   full-run logs with `scripts/export_pipeline_results.py` (neutral: the `7fg2…` and `GVJc…` logs; hedge-hack:
   the `agZT…` and `DpivyB…` logs listed in `docs/full_run.md`).
 
-Limitations: hedge-hack replies are often recognisable by style, so blinding is partial. The pre-registration does
-not define "often differ" as a number; agree a threshold before reading any labels.
+Limitations: hedge-hack replies are often recognisable by style, so blinding is partial.
+
+**"Often differ" threshold** (the pre-registration gives no number; agreed 2026-11-15, after both label files were in
+but before the two were compared or `label_key.csv` was opened; Andrei had seen his own labels): computed on the 30
+pairs whose forced choices agree. For each labeller, the share labelled Different among those pairs, Can't tell
+excluded; average the two shares. At 20% or more, conclusions "often differ" and H2 fails as stated. Pairs whose
+forced choices differ are expected to differ in conclusion, so they are reported but do not count toward the
+threshold. Computed by `scripts/label_agreement.py`.
