@@ -1,0 +1,98 @@
+{
+  "stage": "full",
+  "proposition_ids": null,
+  "runs": [
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "neutral",
+      "dataset": "both",
+      "stage": "full",
+      "status": "success",
+      "samples": 584,
+      "max_connections": 4,
+      "elapsed_s": 18486.83,
+      "metrics": {
+        "final_commitment_scorer.final_parse_rate": 1.0,
+        "final_commitment_scorer.true_rate": 0.3611,
+        "final_commitment_scorer.known_accuracy": 1.0
+      },
+      "log_file": "D:\\AI\\sprint2\\AIxEpistemics_AIS_PL_Group\\logs\\full_local_qwen\\2026-11-14T18-01-26-00-00_hedge-hack-eval_oKwJbNJDETnsDpXe4nMuYW.eval"
+    },
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "hedge_hack",
+      "dataset": "both",
+      "stage": "full",
+      "status": "success",
+      "samples": 584,
+      "max_connections": 4,
+      "elapsed_s": 23659.63,
+      "metrics": {
+        "final_commitment_scorer.final_parse_rate": 1.0,
+        "final_commitment_scorer.true_rate": 0.3036,
+        "final_commitment_scorer.known_accuracy": 1.0
+      },
+      "log_file": "D:\\AI\\sprint2\\AIxEpistemics_AIS_PL_Group\\logs\\full_local_qwen\\2026-11-14T23-09-34-00-00_hedge-hack-eval_XCDowwjwCrMzSuAiH3gbGF.eval"
+    }
+  ],
+  "aggregate": [
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "hedge_hack",
+      "dataset_kind": "known",
+      "samples": 80,
+      "parsed": 80,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 80
+      },
+      "known_correct": 80,
+      "known_accuracy": 1.0
+    },
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "hedge_hack",
+      "dataset_kind": "subset",
+      "samples": 504,
+      "parsed": 504,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 504
+      },
+      "true_count": 153,
+      "false_count": 351,
+      "true_rate": 0.3036
+    },
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "neutral",
+      "dataset_kind": "known",
+      "samples": 80,
+      "parsed": 80,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 80
+      },
+      "known_correct": 80,
+      "known_accuracy": 1.0
+    },
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "neutral",
+      "dataset_kind": "subset",
+      "samples": 504,
+      "parsed": 504,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 504
+      },
+      "true_count": 182,
+      "false_count": 322,
+      "true_rate": 0.3611
+    }
+  ]
+}
