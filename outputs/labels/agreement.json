@@ -1,0 +1,149 @@
+{
+  "labellers": [
+    "Andrei Iliescu",
+    "Kacper Walczak"
+  ],
+  "pairs_sha256": "9a6095d36b83f419f9638e1558536e666567a3c4ea492946b8a9398a438c72fe",
+  "n_pairs": 60,
+  "kappa_3": 0.2612419700214133,
+  "raw_agreement_3": 0.6166666666666667,
+  "kappa_same_vs_different": 0.3911917098445598,
+  "n_same_vs_different": 47,
+  "threshold": {
+    "rule": "mean Different share on forced-choice-agree pairs >= 20%",
+    "value": 0.19230769230769232,
+    "ci95": [
+      0.07172413793103448,
+      0.3364285714285714
+    ],
+    "often_differ": false
+  },
+  "groups": {
+    "all": {
+      "n": 60,
+      "Andrei Iliescu": {
+        "same": 34,
+        "different": 20,
+        "unclear": 6
+      },
+      "Kacper Walczak": {
+        "same": 45,
+        "different": 8,
+        "unclear": 7
+      },
+      "different_share_Andrei Iliescu": 0.37037037037037035,
+      "different_share_Kacper Walczak": 0.1509433962264151,
+      "different_share_mean": 0.2606568832983927,
+      "kappa_3": 0.2612419700214133,
+      "raw_agreement": 0.6166666666666667
+    },
+    "forced choices agree": {
+      "n": 30,
+      "Andrei Iliescu": {
+        "same": 20,
+        "different": 6,
+        "unclear": 4
+      },
+      "Kacper Walczak": {
+        "same": 22,
+        "different": 4,
+        "unclear": 4
+      },
+      "different_share_Andrei Iliescu": 0.23076923076923078,
+      "different_share_Kacper Walczak": 0.15384615384615385,
+      "different_share_mean": 0.19230769230769232,
+      "kappa_3": 0.3571428571428572,
+      "raw_agreement": 0.7
+    },
+    "forced choices differ": {
+      "n": 30,
+      "Andrei Iliescu": {
+        "same": 14,
+        "different": 14,
+        "unclear": 2
+      },
+      "Kacper Walczak": {
+        "same": 23,
+        "different": 4,
+        "unclear": 3
+      },
+      "different_share_Andrei Iliescu": 0.5,
+      "different_share_Kacper Walczak": 0.14814814814814814,
+      "different_share_mean": 0.32407407407407407,
+      "kappa_3": 0.18604651162790695,
+      "raw_agreement": 0.5333333333333333
+    },
+    "grok-4.6": {
+      "n": 15,
+      "Andrei Iliescu": {
+        "same": 9,
+        "different": 5,
+        "unclear": 1
+      },
+      "Kacper Walczak": {
+        "same": 10,
+        "different": 3,
+        "unclear": 2
+      },
+      "different_share_Andrei Iliescu": 0.35714285714285715,
+      "different_share_Kacper Walczak": 0.23076923076923078,
+      "different_share_mean": 0.29395604395604397,
+      "kappa_3": 0.23728813559322037,
+      "raw_agreement": 0.6
+    },
+    "kimi-k3": {
+      "n": 15,
+      "Andrei Iliescu": {
+        "same": 9,
+        "different": 2,
+        "unclear": 4
+      },
+      "Kacper Walczak": {
+        "same": 13,
+        "different": 0,
+        "unclear": 2
+      },
+      "different_share_Andrei Iliescu": 0.18181818181818182,
+      "different_share_Kacper Walczak": 0.0,
+      "different_share_mean": 0.09090909090909091,
+      "kappa_3": 0.0999999999999999,
+      "raw_agreement": 0.6
+    },
+    "mistral-small-3.1-24b": {
+      "n": 15,
+      "Andrei Iliescu": {
+        "same": 9,
+        "different": 6,
+        "unclear": 0
+      },
+      "Kacper Walczak": {
+        "same": 10,
+        "different": 2,
+        "unclear": 3
+      },
+      "different_share_Andrei Iliescu": 0.4,
+      "different_share_Kacper Walczak": 0.16666666666666666,
+      "different_share_mean": 0.2833333333333333,
+      "kappa_3": 0.3902439024390244,
+      "raw_agreement": 0.6666666666666666
+    },
+    "qwen-3.8-27b": {
+      "n": 15,
+      "Andrei Iliescu": {
+        "same": 7,
+        "different": 7,
+        "unclear": 1
+      },
+      "Kacper Walczak": {
+        "same": 12,
+        "different": 3,
+        "unclear": 0
+      },
+      "different_share_Andrei Iliescu": 0.5,
+      "different_share_Kacper Walczak": 0.2,
+      "different_share_mean": 0.35,
+      "kappa_3": 0.24999999999999994,
+      "raw_agreement": 0.6
+    }
+  }
+}
