@@ -1,0 +1,39 @@
+{
+  "stage": "noise_rerun",
+  "proposition_ids": null,
+  "runs": [
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "neutral",
+      "dataset": "subset",
+      "stage": "noise_rerun",
+      "status": "success",
+      "samples": 60,
+      "max_connections": 4,
+      "elapsed_s": 2196.6,
+      "metrics": {
+        "final_commitment_scorer.final_parse_rate": 1.0,
+        "final_commitment_scorer.true_rate": 0.5833,
+        "final_commitment_scorer.known_accuracy": 0.0
+      },
+      "log_file": "D:\\AI\\sprint2\\AIxEpistemics_AIS_PL_Group\\logs\\noise_local\\2026-11-15T11-13-04-00-00_hedge-hack-eval_myWZ4ovUm72EvtdKnvRDuC.eval"
+    }
+  ],
+  "aggregate": [
+    {
+      "target_model": "qwen-3.8-27b",
+      "policy": "neutral",
+      "dataset_kind": "subset",
+      "samples": 60,
+      "parsed": 60,
+      "final_parse_rate": 1.0,
+      "retries": 0,
+      "parse_reasons": {
+        "final_tag": 60
+      },
+      "true_count": 35,
+      "false_count": 25,
+      "true_rate": 0.5833
+    }
+  ]
+}

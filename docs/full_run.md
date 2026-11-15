@@ -107,29 +107,33 @@ both judges' fields. All 2,016 replies were rewritten; 42 propositions kept for 
 - Judge spend: judge-openai 11.23M in / 0.54M out, judge-google 11.91M in / 1.39M out, about $59.35 (rewrites
   are longer than the originals). Running total about $290 against the $285 budget.
 
-## Noise floor for the local models: Mistral neutral rerun, 2026-11-15
+## Noise floor for the local models: Mistral and Qwen neutral reruns, 2026-11-15
 
 The local models run at temperature 0, so the API models' noise floor (16.7% neutral-vs-neutral flips in the
-pilot rerun) does not carry over. Mistral was rerun under neutral on the 60 pilot prompts (all in the full set),
-same Mac and settings as its full run, forced choice only (no judging, free):
+pilot rerun) does not carry over. Both local models were rerun under neutral on the 60 pilot prompts (all in the full set),
+on the same machines and settings as their full runs, forced choice only (no judging, free):
 
     uv run --project external/pander-score python -I scripts/run_local_batch.py --model mistral-small-3.1-24b \
         --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy neutral --stage noise_rerun \
         --log-dir logs/noise_local --export-dir outputs/noise_local/mistral --display plain
+    python -u -I scripts/run_local_batch.py --model qwen-3.8-27b \
+        --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy neutral --stage noise_rerun \
+        --log-dir logs/noise_local --export-dir outputs/noise_local/qwen --display plain
 
-| comparison (same 60 prompts) | `FINAL:` flips |
-|---|---|
-| neutral rerun vs full-run neutral (same machine) | **0 / 60 (0%)**; 57 / 60 replies identical word for word |
-| neutral rerun vs Kacper's local pilot (different machine) | 3 / 60 (5%) |
-| hedge_hack vs neutral (full run) | **9 / 60 (15%)**; 61 / 504 (12.1%) over the full set |
+| model | comparison (same 60 prompts) | `FINAL:` flips |
+|---|---|---|
+| Mistral | neutral rerun vs full-run neutral (same Mac) | **0 / 60 (0%)**; 57 / 60 replies identical word for word |
+| Mistral | neutral rerun vs Kacper's local pilot (different machine) | 3 / 60 (5%) |
+| Mistral | hedge_hack vs neutral (full run) | **9 / 60 (15%)**; 61 / 504 (12.1%) over the full set |
+| Qwen | neutral rerun vs full-run neutral (same PC, 60- vs 504-prompt batch) | **5 / 60 (8.3%)** (`38 → 35` `TRUE`; 4 `T→F`, 1 `F→T`) |
+| Qwen | neutral rerun vs local pilot neutral (same PC, both 60-prompt batches) | **5 / 60 (8.3%)** (`34 → 35` `TRUE`; 2 `T→F`, 3 `F→T`); 32 / 60 replies identical word for word |
+| Qwen | hedge_hack vs neutral (full run) | **18 / 60 (30.0%)** (`38 → 28` `TRUE`; 14 `T→F`, 4 `F→T`); **79 / 504 (15.7%)** over the full set (54 `T→F`, 25 `F→T`) |
 
 - Mistral's hedge-hack flips are caused by the prompt, not sampling noise. The pre-registered H2 test is on
   the change in the `TRUE` rate (220 → 209, −2.2 points, within M = 10), so it likely still passes; report
   both the aggregate and the per-prompt flips.
-- Different hardware alone flips about 5% at temperature 0, so a noise floor must come from the machine that
-  produced the full run. Qwen's needs a rerun on Kacper's machine (same command, `--model qwen-3.8-27b`,
-  `--export-dir outputs/noise_local/qwen`).
-- `outputs/noise_local/mistral/pipeline_results.jsonl` (60 rows) and `summary.json`.
+- Qwen's same-machine neutral noise floor on RTX 4060 Ti (`max_connections=4` CUDA continuous batching) is **5 / 60 (8.3%)** both against the 504-prompt full run and against the 60-prompt pilot (where 32 / 60 replies are word-for-word identical), whereas `hedge_hack` flips **18 / 60 (30.0%)** on the same 60 prompts and **79 / 504 (15.7%)** over the full set (skewed 54 `TRUE → FALSE` vs 25 `FALSE → TRUE`).
+- `outputs/noise_local/mistral/pipeline_results.jsonl` (60 rows) and `summary.json`; `outputs/noise_local/qwen/pipeline_results.jsonl` (60 rows) and `summary.json`.
 
 ## Local full run — Qwen 3.8 27B (`qwen-3.8-27b`), 2026-11-15
 
