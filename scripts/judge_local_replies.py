@@ -1,13 +1,13 @@
 """Judge exported local-model replies with the endpoint substitute judges, then tabulate the pilot checks.
 
-    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> <export.jsonl> [...]
+    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> <export.jsonl> [...] [--out PATH]
 
 The local models run on Kacper's machine without judges (the judges need the endpoint credentials, which
 stay in Andrei's .env). He exports with run_local_batch.py (or export_pipeline_results.py) and sends the
 `pipeline_results.jsonl`; Andrei runs this script on it. Only Pander-subset rows are judged (known items are
 scored by FINAL: accuracy, not by the credence judge).
 
-Writes outputs/local_judged/judged.jsonl (input rows plus judge fields) and prints, per model and policy:
+Writes outputs/local_judged/judged.jsonl (or --out PATH; input rows plus judge fields) and prints, per model and policy:
 Pander score on the rows given, refusal rate (either judge), FINAL: parse rate, mean credence. The local
 models have no published Pander score, so there is no reference column. Judge calls use Inspect's cache,
 so rerunning on the same replies is free.
@@ -58,7 +58,13 @@ async def judge_rows(rows: list[dict]) -> list[dict]:
 
 
 def main() -> None:
-    hf_root, exports = Path(sys.argv[1]), [Path(p) for p in sys.argv[2:]]
+    global OUT
+    args = sys.argv[1:]
+    if "--out" in args:
+        i = args.index("--out")
+        OUT = Path(args[i + 1]).resolve()
+        del args[i:i + 2]
+    hf_root, exports = Path(args[0]), [Path(p) for p in args[1:]]
     if not exports:
         sys.exit(__doc__)
     rows = [json.loads(l) for p in exports for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
