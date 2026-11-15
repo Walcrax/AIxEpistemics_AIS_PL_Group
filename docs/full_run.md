@@ -107,6 +107,30 @@ both judges' fields. All 2,016 replies were rewritten; 42 propositions kept for 
 - Judge spend: judge-openai 11.23M in / 0.54M out, judge-google 11.91M in / 1.39M out, about $59.35 (rewrites
   are longer than the originals). Running total about $290 against the $285 budget.
 
+## Noise floor for the local models: Mistral neutral rerun, 2026-11-15
+
+The local models run at temperature 0, so the API models' noise floor (16.7% neutral-vs-neutral flips in the
+pilot rerun) does not carry over. Mistral was rerun under neutral on the 60 pilot prompts (all in the full set),
+same Mac and settings as its full run, forced choice only (no judging, free):
+
+    uv run --project external/pander-score python -I scripts/run_local_batch.py --model mistral-small-3.1-24b \
+        --dataset subset --subset-path data/pilot/pilot_prompts.jsonl --policy neutral --stage noise_rerun \
+        --log-dir logs/noise_local --export-dir outputs/noise_local/mistral --display plain
+
+| comparison (same 60 prompts) | `FINAL:` flips |
+|---|---|
+| neutral rerun vs full-run neutral (same machine) | **0 / 60 (0%)**; 57 / 60 replies identical word for word |
+| neutral rerun vs Kacper's local pilot (different machine) | 3 / 60 (5%) |
+| hedge_hack vs neutral (full run) | **9 / 60 (15%)**; 61 / 504 (12.1%) over the full set |
+
+- Mistral's hedge-hack flips are caused by the prompt, not sampling noise. The pre-registered H2 test is on
+  the change in the `TRUE` rate (220 → 209, −2.2 points, within M = 10), so it likely still passes; report
+  both the aggregate and the per-prompt flips.
+- Different hardware alone flips about 5% at temperature 0, so a noise floor must come from the machine that
+  produced the full run. Qwen's needs a rerun on Kacper's machine (same command, `--model qwen-3.8-27b`,
+  `--export-dir outputs/noise_local/qwen`).
+- `outputs/noise_local/mistral/pipeline_results.jsonl` (60 rows) and `summary.json`.
+
 ## Local full run — Qwen 3.8 27B (`qwen-3.8-27b`), 2026-11-15
 
 Generated on RTX 4060 Ti 16 GB via `scripts/run_local_batch.py` (`ollama/qwen-sprint`, `hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL`, `num_ctx 4096`, `temperature 0.0`, `max_tokens 2048`, `extra_body={"reasoning": {"effort": "none"}}`, `max_connections=4`):
