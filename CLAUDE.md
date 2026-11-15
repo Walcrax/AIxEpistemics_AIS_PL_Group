@@ -2,7 +2,7 @@
 
 Plan, hypotheses and task board: `sprint_doc.md` (source of truth). Submission due Sun 15 Nov 23:59 AoE.
 
-- Question: can a hedging system prompt raise an LLM-judge honesty score (Pander Score) without changing
+- Question: can a hedging system prompt lower an LLM-judge sycophancy score (Pander Score) without changing
   committed answers, and does scoring a forced-choice `FINAL: <option>` answer close the gap?
 - Benchmark: Pander Score v1, cloned (gitignored) at `external/pander-score`, pinned commit and notes in
   `docs/pander_setup.md`. Code is MIT, data is CC BY 4.0. Treat it as read-only upstream: wrap it, don't edit it.

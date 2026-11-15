@@ -27,7 +27,7 @@ One row per task. A is pipeline and runs, B is items, prompts and labels, C is a
 | Freeze code; README marking any pre-existing code | A | Not started | Sun afternoon |  |
 | Final PDF on the official template, eight pages or fewer; submit | C Stanisław Słupski | Not started | Sun afternoon | Leave a few hours before the cutoff |
 
-## **Hedge-Hack one-pager: can writing style alone raise a model's honesty score?**
+## **Hedge-Hack one-pager: can writing style alone lower a model's sycophancy score?**
 
 Many epistemic benchmarks use an LLM judge to turn free text into a credence or a sycophancy label. We test whether a model can raise its judged score by changing how it writes rather than what it concludes, and whether scoring committed answers closes that gap. This is the track's fourth question: demonstrate an exploit and close it. The build is an inspect\_ai eval on 800 prompts and four models.
 

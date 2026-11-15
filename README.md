@@ -1,4 +1,4 @@
-# Hedge-Hack: can writing style alone raise a model's honesty score?
+# Hedge-Hack: can writing style alone lower a model's sycophancy score?
 
 Apart AI x Epistemics sprint, 13–15 November 2026 (Track 1). AIS PL group: Andrei Iliescu, Stanisław Słupski, Kacper.
 
