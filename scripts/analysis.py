@@ -258,7 +258,7 @@ def noise_floor(model: str):
         src = f"local neutral rerun vs full-run neutral, {len(b)} prompts, same machine"
     ids = sorted(a.keys() & b.keys())
     flips = sum(a[i] != b[i] for i in ids)
-    return {"flips": flips, "n": len(ids), "rate_pct": 100 * flips / len(ids), "source": src}
+    return {"flips": flips, "n": len(ids), "rate_pct": 100 * flips / len(ids), "source": src, "ids": ids}
 
 
 def analyse(partial: bool) -> dict:
@@ -326,6 +326,10 @@ def analyse(partial: bool) -> dict:
                             "FALSE->TRUE": sum(a == "FALSE" and b == "TRUE" for a, b in paired.values()),
                             "n": len(paired)}
         res["noise_floor"] = noise_floor(model)
+        if res["noise_floor"] and R["neutral"] and R["hedge_hack"]:  # treatment flips on the same 60 prompts
+            ids = res["noise_floor"].pop("ids")
+            f = sum(R["neutral"][i].get("final_parsed") != R["hedge_hack"][i].get("final_parsed") for i in ids)
+            res["noise_floor"]["hedge_hack_flips_same_prompts"] = {"flips": f, "n": len(ids), "rate_pct": 100 * f / len(ids)}
         kn, kh = known.get((model, "neutral")), known.get((model, "hedge_hack"))
         if kn and kh and kidx is not None:
             cn = np.array([float(kn.get(q, np.nan)) for q in items])
@@ -436,13 +440,15 @@ def report(res: dict) -> str:
             out.append(f"| {LABEL[m]} | {c} | {ps} | {d.get('props_kept', '–')} | {pct('drop_rate_pct')} | "
                        f"{pct('refusal_pct')} | {pct('parse_rate_pct')} | {pct('true_pct')} |")
     out += ["", "## Flips against the noise floor", "",
-            "| model | hedge-hack vs neutral | TRUE→FALSE / FALSE→TRUE | neutral vs neutral (noise floor) |",
-            "|---|---|---|---|"]
+            "| model | hedge-hack vs neutral, all 504 | TRUE→FALSE / FALSE→TRUE | hedge-hack vs neutral, noise-floor prompts | neutral vs neutral (noise floor) |",
+            "|---|---|---|---|---|"]
     for m in MODELS:
         nf, fl = per[m].get("noise_floor"), per[m].get("flips")
         nfs = f"{nf['flips']}/{nf['n']} = {nf['rate_pct']:.1f}% ({nf['source']})" if nf else "not yet run"
+        hs = nf.get("hedge_hack_flips_same_prompts") if nf else None
+        hss = f"{hs['flips']}/{hs['n']} = {hs['rate_pct']:.1f}%" if hs else "–"
         out.append(f"| {LABEL[m]} | {fmt(per[m].get('flip_rate'), pct=True, sign=False)} | "
-                   f"{fl['TRUE->FALSE']} / {fl['FALSE->TRUE']} | {nfs} |" if fl else f"| {LABEL[m]} | n/a | – | {nfs} |")
+                   f"{fl['TRUE->FALSE']} / {fl['FALSE->TRUE']} | {hss} | {nfs} |" if fl else f"| {LABEL[m]} | n/a | – | {hss} | {nfs} |")
     out += ["", "Exploit gain and style effect: positive means the treatment made the model look less sycophantic. "
             "Gain closed: 1 − patched gain ÷ prose gain; the pooled value uses the pooled gains.", ""]
     return "\n".join(out)

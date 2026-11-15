@@ -229,7 +229,12 @@
         "flips": 13,
         "n": 60,
         "rate_pct": 21.666666666666668,
-        "source": "API pilot: two neutral runs, 60 prompts"
+        "source": "API pilot: two neutral runs, 60 prompts",
+        "hedge_hack_flips_same_prompts": {
+          "flips": 10,
+          "n": 60,
+          "rate_pct": 16.666666666666668
+        }
       },
       "known_accuracy_pct": {
         "neutral": 100.0,
@@ -404,7 +409,12 @@
         "flips": 7,
         "n": 60,
         "rate_pct": 11.666666666666666,
-        "source": "API pilot: two neutral runs, 60 prompts"
+        "source": "API pilot: two neutral runs, 60 prompts",
+        "hedge_hack_flips_same_prompts": {
+          "flips": 8,
+          "n": 60,
+          "rate_pct": 13.333333333333334
+        }
       },
       "known_accuracy_pct": {
         "neutral": 100.0,
@@ -575,7 +585,17 @@
         "FALSE->TRUE": 25,
         "n": 504
       },
-      "noise_floor": null,
+      "noise_floor": {
+        "flips": 5,
+        "n": 60,
+        "rate_pct": 8.333333333333334,
+        "source": "local neutral rerun vs full-run neutral, 60 prompts, same machine",
+        "hedge_hack_flips_same_prompts": {
+          "flips": 18,
+          "n": 60,
+          "rate_pct": 30.0
+        }
+      },
       "known_accuracy_pct": {
         "neutral": 100.0,
         "hedge_hack": 100.0
@@ -749,7 +769,12 @@
         "flips": 0,
         "n": 60,
         "rate_pct": 0.0,
-        "source": "local neutral rerun vs full-run neutral, 60 prompts, same machine"
+        "source": "local neutral rerun vs full-run neutral, 60 prompts, same machine",
+        "hedge_hack_flips_same_prompts": {
+          "flips": 9,
+          "n": 60,
+          "rate_pct": 15.0
+        }
       },
       "known_accuracy_pct": {
         "neutral": 95.0,
