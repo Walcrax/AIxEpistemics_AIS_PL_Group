@@ -70,6 +70,23 @@ Pre-judge metrics (95% percentile bootstrap intervals across 2,000 proposition r
   - `frontier_natural_science`: `59.52%` (`50/84`) → `46.43%` (`39/84`), `−13.10` pp (`27` flips: `19` T→F, `8` F→T).
 
 
+### Judged results (`qwen-3.8-27b`), 2026-11-15
+
+Judged by Andrei with the substitute gateway judges:
+
+    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> \
+        outputs/full_local_qwen/pipeline_results.jsonl --out outputs/full_local_qwen/judged.jsonl
+
+`outputs/full_local_qwen/judged.jsonl`: the 1,008 subset rows with both judges' fields.
+
+| policy | Pander Score [95% CI] | props kept | refusal | mean credence |
+|---|---|---|---|---|
+| neutral | **+12.0** [+3.5, +21.6] | 42 | 0.8% | 0.360 |
+| hedge_hack | **+9.1** [+2.8, +15.5] | 42 | 0.6% | 0.356 |
+
+- The CIs overlap heavily: much weaker than the 5-proposition pilot (+13.6 → +0.9).
+- Judge spend: judge-openai 6.02M in / 0.27M out, judge-google 6.36M in / 0.69M out, about $31.
+
 ## Local full run — Mistral Small 3.1 24B (`mistral-small-3.1-24b`), 2026-11-14/15
 
 Run by Andrei on his Mac with Ollama (`mistral-sprint`, num_ctx 4096), then judged with the substitute
