@@ -54,8 +54,8 @@ def main() -> None:
     if len(sys.argv) != 5:
         sys.exit(__doc__)
     key_p, pairs_p, *label_ps = map(Path, sys.argv[1:])
-    sha = hashlib.sha256(pairs_p.read_bytes()).hexdigest()
-    with key_p.open(newline="") as f:
+    sha = hashlib.sha256(pairs_p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    with key_p.open(newline="", encoding="utf-8") as f:
         key = {r["pair_id"]: r for r in csv.DictReader(f)}
 
     names, files = [], []

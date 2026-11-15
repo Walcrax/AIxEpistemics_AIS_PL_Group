@@ -41,7 +41,13 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy.stats import linregress
+try:
+    from scipy.stats import linregress
+except ImportError:
+    def linregress(x, y):  # type: ignore[misc]
+        dx = x - x.mean()
+        denom = float((dx * dx).sum())
+        return type("_R", (), {"slope": float((dx * (y - y.mean())).sum()) / denom if denom else math.nan})()
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED, B, EPS, AGREE, MIN_PROMPTS = 20261114, 2000, 0.001, 0.2, 4
@@ -502,6 +508,8 @@ def main() -> None:
     (a.out_dir / "results.json").write_text(json.dumps(res, indent=2, default=float) + "\n", encoding="utf-8")
     md = report(res)
     (a.out_dir / "results.md").write_text(md, encoding="utf-8")
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     print(md)
 
 

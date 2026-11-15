@@ -145,3 +145,8 @@ only if H1's interval is above 0:
    paused during its neutral Pander prompts, which use the unchanged proposition wording. Only a smoke test (2
    known items per model and condition, not analysed) and no pilot data used the old wording. The proposition
    follow-up, every hypothesis, measure and decision rule are unchanged.
+2. **Pooling of gain closed (`scripts/analysis.py`).** Above, every measure is pooled as the mean of the four
+   per-model values. A ratio is unbounded for a model whose judged-score gain is near zero, as it is for three of
+   our four models, so gain closed is pooled as `1 - (pooled patched gain / pooled prose gain)`, with both gains
+   averaged over the four models first. Per-model ratios are also reported. This choice was made after the
+   per-model gains were seen.
