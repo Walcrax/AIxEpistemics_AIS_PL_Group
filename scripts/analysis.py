@@ -11,6 +11,10 @@ Inputs (all in the repo; no model or judge calls, numpy + scipy only):
 - Hedge-only rewrites, judged: outputs/hedge_only/judged.jsonl.
 - Known items: outputs/full_local_*/pipeline_results.jsonl and outputs/full_api/known_results.jsonl.
 - Noise floor: data/pilot/final_answers.csv (API neutral reruns), outputs/noise_local/<model>/ (local reruns).
+- Reference check (API models): outputs/rejudged/per_model/*.parquet, Pander's published replies re-judged by our
+  substitute judges (scripts/rejudge_published.py). Scored on the same 504 prompts with the same estimator and
+  draws; reported next to our neutral score with the paired difference. Reading the parquet needs polars (run
+  with `uv run --project external/pander-score`); without it the check is skipped and the report says why.
 
 Without outputs/full_api/judged.jsonl the API models get forced choices only, from
 outputs/full_api/{neutral,hedge}_subset_results.jsonl. That needs --partial: pooled values are then means over
@@ -47,6 +51,19 @@ LABEL = {"kimi-k3": "Kimi K3", "grok-4.6": "Grok 4.6", "qwen-3.8-27b": "Qwen 3.8
          "mistral-small-3.1-24b": "Mistral Small 3.1 24B", "pooled": "Pooled"}
 LOCAL_DIR = {"qwen-3.8-27b": "full_local_qwen", "mistral-small-3.1-24b": "full_local_mistral"}
 NOISE_LOCAL = {"qwen-3.8-27b": "qwen", "mistral-small-3.1-24b": "mistral"}
+REJUDGED = {"kimi-k3": "openai-api-fireworks-accounts-fireworks-models-kimi-k3", "grok-4.6": "grok-grok-4.6"}
+
+
+def reference_rows(model: str, prompts) -> dict[str, dict] | str:
+    """Published replies re-judged by our judges, on our prompts; a string says why they are unavailable."""
+    p = ROOT / "outputs" / "rejudged" / "per_model" / f"{REJUDGED[model]}.parquet"
+    if not p.exists():
+        return f"{p.relative_to(ROOT)} (reference check): run scripts/rejudge_published.py"
+    try:
+        import polars as pl
+    except ImportError:
+        return "polars (reference check): run with `uv run --project external/pander-score`"
+    return {r["sample_id"]: r for r in pl.read_parquet(p).to_dicts() if r["sample_id"] in prompts}
 
 
 # ---------- loading ----------
@@ -325,6 +342,17 @@ def analyse(partial: bool) -> dict:
             res["flips"] = {"TRUE->FALSE": sum(a == "TRUE" and b == "FALSE" for a, b in paired.values()),
                             "FALSE->TRUE": sum(a == "FALSE" and b == "TRUE" for a, b in paired.values()),
                             "n": len(paired)}
+        if model in REJUDGED and model in judged_for and R["neutral"]:
+            ref = reference_rows(model, prompts)
+            if isinstance(ref, str):
+                res["reference_unavailable"] = ref   # a side check: never makes the run PARTIAL
+            else:
+                sr, wr = slopes(ref, prompts, props, "credence", True)
+                sn, wn = slopes(R["neutral"], prompts, props, "credence", True)
+                res["reference_score"] = entry(weighted(sr, wr), weighted(sr, wr, idx))
+                res["reference_score"].update(n_replies=len(ref), props_kept=int((wr > 0).sum()))
+                res["neutral_minus_reference"] = entry(weighted(sn, wn) - weighted(sr, wr),
+                                                       weighted(sn, wn, idx) - weighted(sr, wr, idx))
         res["noise_floor"] = noise_floor(model)
         if res["noise_floor"] and R["neutral"] and R["hedge_hack"]:  # treatment flips on the same 60 prompts
             ids = res["noise_floor"].pop("ids")
@@ -449,6 +477,16 @@ def report(res: dict) -> str:
         hss = f"{hs['flips']}/{hs['n']} = {hs['rate_pct']:.1f}%" if hs else "–"
         out.append(f"| {LABEL[m]} | {fmt(per[m].get('flip_rate'), pct=True, sign=False)} | "
                    f"{fl['TRUE->FALSE']} / {fl['FALSE->TRUE']} | {hss} | {nfs} |" if fl else f"| {LABEL[m]} | n/a | – | {hss} | {nfs} |")
+    out += ["", "## Reference check (API models)", "",
+            "Pander's published replies for the same 504 prompts, re-judged by our judges, scored with the same "
+            "estimator and draws. Neutral should be close to the reference.", "",
+            "| model | our neutral | published replies, re-judged | neutral − reference |", "|---|---|---|---|"]
+    for m in REJUDGED:
+        if "reference_score" in per[m]:
+            out.append(f"| {LABEL[m]} | {fmt(per[m]['conditions']['neutral'].get('pander_score'))} | "
+                       f"{fmt(per[m]['reference_score'])} | {fmt(per[m]['neutral_minus_reference'])} |")
+        else:
+            out.append(f"| {LABEL[m]} | n/a | not available: {per[m].get('reference_unavailable', 'no data')} | n/a |")
     out += ["", "Exploit gain and style effect: positive means the treatment made the model look less sycophantic. "
             "Gain closed: 1 − patched gain ÷ prose gain; the pooled value uses the pooled gains.", ""]
     return "\n".join(out)
