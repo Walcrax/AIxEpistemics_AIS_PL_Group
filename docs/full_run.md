@@ -69,3 +69,45 @@ Pre-judge metrics (95% percentile bootstrap intervals across 2,000 proposition r
   - `historical_facts`: `46.43%` (`39/84`) → `51.19%` (`43/84`), `+4.76` pp (`8` flips: `2` T→F, `6` F→T).
   - `frontier_natural_science`: `59.52%` (`50/84`) → `46.43%` (`39/84`), `−13.10` pp (`27` flips: `19` T→F, `8` F→T).
 
+
+### Judged results (`qwen-3.8-27b`), 2026-11-15
+
+Judged by Andrei with the substitute gateway judges:
+
+    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> \
+        outputs/full_local_qwen/pipeline_results.jsonl --out outputs/full_local_qwen/judged.jsonl
+
+`outputs/full_local_qwen/judged.jsonl`: the 1,008 subset rows with both judges' fields.
+
+| policy | Pander Score [95% CI] | props kept | refusal | mean credence |
+|---|---|---|---|---|
+| neutral | **+12.0** [+3.5, +21.6] | 42 | 0.8% | 0.360 |
+| hedge_hack | **+9.1** [+2.8, +15.5] | 42 | 0.6% | 0.356 |
+
+- The CIs overlap heavily: much weaker than the 5-proposition pilot (+13.6 → +0.9).
+- Judge spend: judge-openai 6.02M in / 0.27M out, judge-google 6.36M in / 0.69M out, about $31.
+
+## Local full run — Mistral Small 3.1 24B (`mistral-small-3.1-24b`), 2026-11-14/15
+
+Run by Andrei on his Mac with Ollama (`mistral-sprint`, num_ctx 4096), then judged with the substitute
+gateway judges:
+
+    uv run --project external/pander-score python -I scripts/run_local_batch.py --model mistral-small-3.1-24b \
+        --dataset both --subset-path data/full_run/full_run_prompts.jsonl --policy both \
+        --log-dir logs/full_local --export-dir outputs/full_local_mistral
+    uv run --project external/pander-score python -I scripts/judge_local_replies.py <hf v1/benchmark dir> \
+        outputs/full_local_mistral/pipeline_results.jsonl --out outputs/full_local_mistral/judged.jsonl
+
+Files in `outputs/full_local_mistral/`: `pipeline_results.jsonl` (1,168 rows: 2 policies × (504 subset + 80
+known)), `summary.json`, `neutral_for_rewrite.jsonl` / `neutral_rewritten.jsonl` (hedge-only rewrites, not
+judged yet), `judged.jsonl` (the 1,008 subset rows with both judges' fields). 0 errors, `FINAL:` parsed 100%.
+
+| policy | Pander Score [95% CI] | props kept | refusal | `TRUE` (subset) | known accuracy |
+|---|---|---|---|---|---|
+| neutral | **+32.6** [+25.9, +39.9] | 42 | 0.0% | 220 / 504 | 95.0% (76/80) |
+| hedge_hack | **+17.9** [+13.5, +22.8] | 42 | 0.0% | 209 / 504 | 90.0% (72/80) |
+
+- Paired flip rate (subset): 61 / 504 = 12.1% (36 `TRUE → FALSE`, 25 `FALSE → TRUE`).
+- Known items: 8 / 80 flips; mapped to accuracy, 4 items fewer correct under hedge_hack.
+- Judge spend: judge-openai 5.37M in / 0.25M out, judge-google 5.69M in / 0.70M out, about $28.50.
+- Formal H1–H3 tests (CIs on the agreement change, H3 patched score) are left to the analysis script.
