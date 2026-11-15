@@ -1,4 +1,4 @@
-# Full run (API models)
+# Full run
 
 Design: the 42-proposition set (`data/full_run/full_run_prompts.jsonl`, 504 prompts) and the 80 known items,
 neutral and hedge-hack, judged by the current substitute judges. Budget: $285 total (decided 2026-11-14).
@@ -26,6 +26,51 @@ known items scored (4/4 correct) and not judged. Cost $0.63.
 Per Pander prompt (target + judges), from the smoke test: Kimi about $0.04, Grok about $0.05. Projection for
 504 prompts × 2 policies plus known items: **Grok about $52, Kimi about $45**. Grok took about 1.4 minutes per
 prompt, end to end; at 16 connections, about 45 minutes per policy if the endpoint allows that concurrency.
+
+## API full run — Grok 4.6 and Kimi K3, 2026-11-14
+
+Both models, both policies, 504 Pander prompts + 80 known items each: 8 evals, all `success`, 0 errors,
+`FINAL:` parsed 100%. Scores from the logs:
+
+    uv run --project external/pander-score python -I scripts/api_full_scores.py <hf v1/benchmark dir>
+
+| model | policy | Pander Score [95% CI] | props kept | refusal | mean credence | `TRUE` (subset) | known accuracy |
+|---|---|---|---|---|---|---|---|
+| grok-4.6 | neutral | +5.9 [+0.3, +12.4] | 42 | 1.0% | 0.327 | 106 / 504 | 100% |
+| grok-4.6 | hedge_hack | +4.7 [+2.2, +7.5] | 42 | 0.2% | 0.329 | 92 / 504 | 100% |
+| kimi-k3 | neutral | +1.6 [−3.6, +6.7] | 42 | 0.4% | 0.330 | 122 / 504 | 100% |
+| kimi-k3 | hedge_hack | +3.0 [−1.7, +7.4] | 42 | 0.0% | 0.341 | 132 / 504 | 100% |
+
+- Paired flip rate (subset): Grok 32 / 504 = 6.3% (22 `TRUE → FALSE`, 8 `FALSE → TRUE`); Kimi 46 / 504 = 9.1%
+  (18 `TRUE → FALSE`, 28 `FALSE → TRUE`).
+- The pilot's Grok signal (+8.3/+11.9 → +3.7 on 5 propositions, 19–20 → 12 `TRUE`) did not hold at 42.
+- Spend (`outputs/full/spend.jsonl`): Grok $47.24, Kimi $48.65, total $95.89.
+
+Log files (`logs/full/`; ignore the earlier non-`success` logs, e.g. the paused Grok run):
+
+| model | policy | part | log |
+|---|---|---|---|
+| grok-4.6 | neutral | subset | `2026-11-14T17-53-15-00-00_hedge-hack-eval_7fg2QwKCdMeXi5d6yyWToE.eval` |
+| grok-4.6 | neutral | known | `2026-11-14T18-22-41-00-00_hedge-hack-eval_YAf78nvgv5n5qF2G7qsRDf.eval` |
+| grok-4.6 | hedge_hack | subset | `2026-11-14T18-23-43-00-00_hedge-hack-eval_agZTzLYBz53dgPWwrCQiqb.eval` |
+| grok-4.6 | hedge_hack | known | `2026-11-14T19-06-40-00-00_hedge-hack-eval_RhSi9n3hUVTf843bKwDDer.eval` |
+| kimi-k3 | neutral | subset | `2026-11-14T18-24-00-00-00_hedge-hack-eval_GVJcAUT69EpydjqYBC3bko.eval` |
+| kimi-k3 | neutral | known | `2026-11-14T18-39-25-00-00_hedge-hack-eval_2sVTvaMytHLkTXWoXYdP9W.eval` |
+| kimi-k3 | hedge_hack | subset | `2026-11-14T18-40-01-00-00_hedge-hack-eval_DpivyBWYWb7Nug8Rb6AwK6.eval` |
+| kimi-k3 | hedge_hack | known | `2026-11-14T18-54-45-00-00_hedge-hack-eval_TLWjXN6bbCHJXL9A8MAGwc.eval` |
+
+## All four targets, descriptive summary (before the formal H1–H3 analysis)
+
+| model | neutral | hedge_hack | change | flip rate | `TRUE` neutral → hedge | known accuracy |
+|---|---|---|---|---|---|---|
+| mistral-small-3.1-24b | +32.6 [+25.9, +39.9] | +17.9 [+13.5, +22.8] | −14.7 | 12.1% | 220 → 209 | 95% → 90% |
+| qwen-3.8-27b | +12.0 [+3.5, +21.6] | +9.1 [+2.8, +15.5] | −2.9 | 15.7% | 182 → 153 | 100% → 100% |
+| grok-4.6 | +5.9 [+0.3, +12.4] | +4.7 [+2.2, +7.5] | −1.2 | 6.3% | 106 → 92 | 100% → 100% |
+| kimi-k3 | +1.6 [−3.6, +6.7] | +3.0 [−1.7, +7.4] | +1.4 | 9.1% | 122 → 132 | 100% → 100% |
+
+Only Mistral, the model with the highest neutral score, shows a clear drop; Qwen and Grok move slightly down with
+overlapping CIs, and Kimi is near zero under both policies. The formal tests (H1 exploit gain, H2 agreement
+change within M = 10, H3 patched score) are for the analysis script.
 
 ## Local full run — Qwen 3.8 27B (`qwen-3.8-27b`), 2026-11-15
 
